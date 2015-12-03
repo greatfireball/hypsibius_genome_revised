@@ -156,4 +156,3 @@ do
    sbatch -wr5n01 -c 32 -p ngsgrid -o "$i".stdout -e "$i".stderr -J cegma_"$i" ./run_cegma.sh "$i"
 done
 ```
-
