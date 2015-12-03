@@ -3,6 +3,8 @@
 use strict;
 use warnings;
 
+use Term::ProgressBar;
+
 my %files = ();
 
 $files{300}      = shift;
@@ -20,11 +22,27 @@ my %data = ();
 
 for my $file (@order)
 {
+    my $filesize = -s $files{$file};
+
+    my $progress = Term::ProgressBar->new(
+	{
+	    name  => 'File '.$file,
+	    count => $filesize,
+	    ETA   => 'linear',
+	}
+	);
+    $progress->max_update_rate(1);
+    my $next_update = 0;
+
     open( my $fh, "<", $files{$file} )
       || die "Unable to open file '" . $files{$file} . "': $!";
 
     while (<$fh>)
     {
+	if ( tell($fh) > $next_update ) {
+	    $next_update = $progress->update( tell($fh) );
+	}
+
 	chomp;
 	unless (/^([AGCT]+)\t(\d+)/)
 	{
@@ -35,6 +53,12 @@ for my $file (@order)
 
 	$data{$kmer}{$file} = $val;
     }
+
+
+    if ( $filesize >= $next_update ) {
+	$progress->update($filesize);
+    }
+    print STDERR "\n";
 
     close( $fh )
       || die "Unable to close file '" . $files{$file} . "': $!";
@@ -48,8 +72,27 @@ print join( "\t", ( "#kmer", @order, "flag" ) ), "\n";
 
 my %flag_hash = ();
 
+my $hashsize = (keys %data)+0;
+
+my $progress = Term::ProgressBar->new(
+    {
+	name  => 'Output',
+	count => $hashsize,
+	ETA   => 'linear',
+    }
+    );
+$progress->max_update_rate(1);
+my $next_update = 0;
+
+my $hashcount = 0;
+
 foreach my $kmer (keys %data)
 {
+    $hashcount++;
+
+    if ( $hashcount > $next_update ) {
+        $next_update = $progress->update($hashcount );
+    }
 
     my @values = ();
     my $flag = 0;
@@ -70,7 +113,11 @@ foreach my $kmer (keys %data)
     print join("\t", ($kmer, @values, $flag)),"\n";
 }
 
-print STDERR "Flags generated:\n";
+if ( $hashsize >= $next_update ) {
+    $progress->update($hashsize);
+}
+
+print STDERR "\nFlags generated:\n";
 foreach my $flag (sort {$a <=> $b} (keys %flag_hash))
 {
     print STDERR $flag,"\t",$flag_hash{$flag},"\n";
