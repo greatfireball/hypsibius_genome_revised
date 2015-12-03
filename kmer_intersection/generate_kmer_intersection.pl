@@ -12,9 +12,8 @@ $files{moleculo} = shift;
 
 my @order = qw(300 500 800 moleculo);
 my %flags = ();
-for(my $i=0; $i<@order; $i++)
-{
-    $flags{$order[$i]} = 2**$i;
+for ( my $i = 0 ; $i < @order ; $i++ ) {
+    $flags{ $order[$i] } = 2**$i;
 }
 
 foreach my $file (@order) {
@@ -28,7 +27,6 @@ foreach my $file (@order) {
 
 # print a header
 print join( "\t", ( "#kmer", @order, "flag" ) ), "\n";
-
 
 while ( grep { !eof( $files{$_}{fh} ) } (@order) ) {
 
@@ -50,13 +48,13 @@ while ( grep { !eof( $files{$_}{fh} ) } (@order) ) {
 
     # extract the information from each input file
     my @values = ();
-    my $flag = 0;
+    my $flag   = 0;
     foreach my $file (@order) {
         my $val = 0;
         if ( $files{$file}{kmer} eq $next_kmer ) {
             $val = $files{$file}{count};
             $files{$file}{line} = undef;
-	    $flag |= $flags{$file};
+            $flag |= $flags{$file};
         }
         push( @values, $val );
     }
