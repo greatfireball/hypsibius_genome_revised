@@ -33,28 +33,36 @@ while ( grep { !eof( $files{$_}{fh} ) } (@order) ) {
     # which file I have to read?
     foreach my $file (@order) {
 
-       # read the next line from the file if not eof and the line value is undef
-        unless ( defined $files{$file}{line} && eof( $files{$file}{fh} ) ) {
-            my $fh = $files{$file}{fh};
+	my $fh = $files{$file}{fh};
+	# read the next line from the file if not eof and the line value is undef
+        unless ( defined $files{$file}{line} && eof( $fh ) ) {
             $files{$file}{line} = <$fh>;
-            chomp( $files{$file}{line} );
-            ( $files{$file}{kmer}, $files{$file}{count} ) =
-              split( /\t/, $files{$file}{line} );
+
+	    unless (defined $files{$file}{line})
+	    {
+		$files{$file}{line} = "";
+		$files{$file}{kmer} = undef;
+	    } else {
+		chomp( $files{$file}{line} );
+		( $files{$file}{kmer}, $files{$file}{count} ) =
+		    split( /\t/, $files{$file}{line} );
+	    }
         }
     }
 
     # find the next (alphabetically first) kmer
-    my ($next_kmer) = sort map { $files{$_}{kmer} } (@order);
+    my ($next_kmer) = sort map { $files{$_}{kmer} } grep {defined $files{$_}{kmer}} (@order);
 
     # extract the information from each input file
     my @values = ();
     my $flag   = 0;
     foreach my $file (@order) {
         my $val = 0;
-        if ( $files{$file}{kmer} eq $next_kmer ) {
+        if ( defined $files{$file}{kmer} && $files{$file}{kmer} eq $next_kmer ) {
             $val = $files{$file}{count};
             $files{$file}{line} = undef;
-            $flag |= $flags{$file};
+	    $files{$file}{kmer} = undef;
+            $flag = $flag + $flags{$file};
         }
         push( @values, $val );
     }
