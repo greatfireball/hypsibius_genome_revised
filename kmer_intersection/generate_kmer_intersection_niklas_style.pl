@@ -42,3 +42,23 @@ for my $file (@order)
 }
 
 print STDERR "Import of ", (keys %data)+0, " kmers finished\n";
+
+foreach my $kmer (keys %data)
+{
+
+    my @values = ();
+    my $flag = 0;
+
+    foreach my $file (@order)
+    {
+	my $val = 0;
+	if (exists $data{$kmer}{$file})
+	{
+	    $val = $data{$kmer}{$file};
+	    $flag |= $flags{$file};
+	}
+	push(@values, $val);
+    }
+
+    print join("\t", ($kmer, @values, $flag)),"\n";
+}
