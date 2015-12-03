@@ -16,3 +16,17 @@ for ( my $i = 0 ; $i < @order ; $i++ ) {
     $flags{ $order[$i] } = 2**$i;
 }
 
+for my $file (@order)
+{
+    open( my $fh, "<", $files{$file} )
+      || die "Unable to open file '" . $files{$file} . "': $!";
+
+    while (<$fh>)
+    {
+    }
+
+    close( $fh )
+      || die "Unable to close file '" . $files{$file} . "': $!";
+
+}
+
