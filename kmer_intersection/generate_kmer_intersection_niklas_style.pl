@@ -16,6 +16,8 @@ for ( my $i = 0 ; $i < @order ; $i++ ) {
     $flags{ $order[$i] } = 2**$i;
 }
 
+my %data = ();
+
 for my $file (@order)
 {
     open( my $fh, "<", $files{$file} )
@@ -23,6 +25,15 @@ for my $file (@order)
 
     while (<$fh>)
     {
+	chomp;
+	unless (/^([AGCT]+)\t(\d+)/)
+	{
+	    die "Something is wrong for file: '$files{$file}' line $. : '$_'";
+	}
+
+	my ($kmer, $val) = ($1, $2);
+
+	$data{$kmer}{$file} = $val;
     }
 
     close( $fh )
@@ -30,3 +41,4 @@ for my $file (@order)
 
 }
 
+print STDERR "Import of ".(keys %data)+0." kmers finished\n";
