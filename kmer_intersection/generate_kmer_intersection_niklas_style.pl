@@ -46,6 +46,8 @@ print STDERR "Import of ", (keys %data)+0, " kmers finished\n";
 # print a header
 print join( "\t", ( "#kmer", @order, "flag" ) ), "\n";
 
+my %flag_hash = ();
+
 foreach my $kmer (keys %data)
 {
 
@@ -63,5 +65,13 @@ foreach my $kmer (keys %data)
 	push(@values, $val);
     }
 
+    $flag_hash{$flag}++;
+
     print join("\t", ($kmer, @values, $flag)),"\n";
+}
+
+print STDERR "Flags generated:\n";
+foreach my $flag (sort {$a <=> $b} (keys %flag_hash))
+{
+    print STDERR $flag,"\t",$flag_hash{$flag},"\n";
 }
