@@ -26,6 +26,10 @@ foreach my $file (@order) {
     $files{$file}{fh} = $fh;
 }
 
+# print a header
+print join( "\t", ( "#kmer", @order, "flag" ) ), "\n";
+
+
 while ( grep { !eof( $files{$_}{fh} ) } (@order) ) {
 
     # which file I have to read?
