@@ -36,6 +36,22 @@ while ( grep { !eof( $files{$_}{fh} ) } (@order) ) {
         }
     }
 
+    # find the next (alphabetically first) kmer
+    my ($next_kmer) = sort map { $files{$_}{kmer} } (@order);
+
+    # extract the information from each input file
+    my @values = ();
+    foreach my $file (@order) {
+        my $val = 0;
+        if ( $files{$file}{kmer} eq $next_kmer ) {
+            $val = $files{$file}{count};
+            $files{$file}{line} = undef;
+        }
+        push( @values, $val );
+    }
+
+    print join( "\t", ( $next_kmer, @values ) ), "\n";
+
 }
 
 foreach my $file (@order) {
