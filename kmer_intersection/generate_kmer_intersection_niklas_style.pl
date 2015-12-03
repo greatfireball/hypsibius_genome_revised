@@ -43,6 +43,9 @@ for my $file (@order)
 
 print STDERR "Import of ", (keys %data)+0, " kmers finished\n";
 
+# print a header
+print join( "\t", ( "#kmer", @order, "flag" ) ), "\n";
+
 foreach my $kmer (keys %data)
 {
 
