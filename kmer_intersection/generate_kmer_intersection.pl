@@ -14,9 +14,11 @@ my @order = qw(300 500 800 moleculo);
 
 foreach my $file (@order)
 {
-    $files{$file}{name} = $files{$file};
+    my $name = $files{$file};
+    $files{$file} = {name => $name};
     $files{$file}{line} = undef;
-    open($files{$file}{fh}, "<", $files{$file}{name}) || die "Unable to open file '".$files{$file}{name}."': $!";
+    open(my $fh, "<", $files{$file}{name}) || die "Unable to open file '".$files{$file}{name}."': $!";
+    $files{$file}{fh} = $fh;
 }
 
 while (grep {! eof($files{$_}{fh})}  (@order))
@@ -25,12 +27,16 @@ while (grep {! eof($files{$_}{fh})}  (@order))
     foreach my $file (@order)
     {
 	# read the next line from the file if not eof and the line value is undef
-	unless (defined $files{$file}{line} && ! eof($files{$file}{fh}))
+	unless (defined $files{$file}{line} && eof($files{$file}{fh}))
 	{
-	    $files{$file}{line} = <$files{$file}{fh}>;
+	    my $fh = $files{$file}{fh};
+	    $files{$file}{line} = <$fh>;
 	    chomp($files{$file}{line});
+	    ($files{$file}{kmer},$files{$file}{count}) = split(/\t/, $files{$file}{line});
 	}
     }
+
+    
     
 }
 
