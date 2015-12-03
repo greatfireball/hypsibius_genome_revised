@@ -41,4 +41,4 @@ for my $file (@order)
 
 }
 
-print STDERR "Import of ".(keys %data)+0." kmers finished\n";
+print STDERR "Import of ", (keys %data)+0, " kmers finished\n";
