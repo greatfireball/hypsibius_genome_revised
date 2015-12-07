@@ -35,6 +35,30 @@ if (exists $options{outputfile} && defined $options{outputfile})
 # close the output file
 close($outfh) || die "Unable to close output file '$options{outputfile}': $!";
 
+sub kmerize
+{
+    my ($seq, $size) = @_;
+
+    my @kmers = ();
+
+    for (my $i=0; $i<=length($seq)-$size; $i++)
+    {
+	my $kmer = substr($seq, $i, $size);
+
+	my $rev_kmer = reverse $kmer;
+	$rev_kmer =~ tr/AGCT/TCGA/;
+
+	if ($kmer lt $rev_kmer)
+	{
+	    push(@kmers, $kmer);
+	} else {
+	    push(@kmers, $rev_kmer);
+	}
+    }
+
+    return @kmers;
+}
+
 __END__
 
 =pod
