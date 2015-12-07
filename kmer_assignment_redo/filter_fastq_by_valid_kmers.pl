@@ -5,6 +5,8 @@ use warnings;
 
 use Getopt::Long;
 
+use jellyfish;
+
 our $VERSION = '0.1';
 
 my %options = ();
@@ -21,7 +23,13 @@ GetOptions(
 # same for the kmerlib files
 foreach my $kmerlib (keys %{$options{kmerlibs}})
 {
-    $options{kmerlibs}{$kmerlib} = [ split(',', $options{kmerlibs}{$kmerlib}) ];
+    $options{kmerlibs}{$kmerlib} = [ map { { filename => $_, jellyfish_obj => undef } } split(',', $options{kmerlibs}{$kmerlib}) ];
+
+    # create a jellyfish object for each input file
+    foreach my $file (@{$options{kmerlibs}{$kmerlib}})
+    {
+	$file->{jellyfish_obj} = jellyfish::ReadMerFile->new($file->{filename});
+    }
 }
 
 # open the output file
