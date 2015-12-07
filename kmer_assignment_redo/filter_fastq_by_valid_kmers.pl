@@ -59,6 +59,15 @@ sub kmerize
     return @kmers;
 }
 
+sub get_validity_and_kmer_count
+{
+    my ($kmer) = @_;
+
+    my @result = (0, 0);
+
+    return @result;
+}
+
 __END__
 
 =pod
