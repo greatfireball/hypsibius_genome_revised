@@ -68,6 +68,31 @@ sub get_validity_and_kmer_count
     return @result;
 }
 
+sub calc_mean_median
+{
+    my ($array_ref) = @_;
+
+    my @sorted = sort {$a <=> $b} (@{$array_ref});
+
+    my ($median, $mean, $sum);
+
+    foreach (@sorted)
+    {
+	$sum+=$_;
+    }
+
+    $mean = $sum/(@sorted+0);
+
+    if (@sorted%2==0)
+    {
+	$median = ($sorted[int(@sorted/2)]+$sorted[int(@sorted/2)+1])/2;
+    } else {
+	$median = $sorted[int((@sorted+1)/2)];
+    }
+
+    return ($mean, $median);
+}
+
 __END__
 
 =pod
