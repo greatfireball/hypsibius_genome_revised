@@ -18,7 +18,7 @@ GetOptions(
     ) || die ("Error in command line arguments\n");
 
 # prepare input files
-@{$options{inputfiles}} = split(',', join(",", @{$options{inputfiles}}));
+$options{inputfiles} = [ split(',', join(",", @{$options{inputfiles}})) ];
 
 # same for the kmerlib files
 foreach my $kmerlib (keys %{$options{kmerlibs}})
@@ -115,9 +115,30 @@ sub get_validity_and_kmer_count
 {
     my ($kmer) = @_;
 
-    my @result = (0, 0);
+    my ($valid_kmer, $kmercount) = (0, 0);
 
-    return @result;
+    my %kmer_groups = ();
+
+    foreach my $kmerlib (keys %{$options{kmerlibs}})
+    {
+	$kmer_groups{$kmerlib} = 0;
+
+	foreach my $file (@{$options{kmerlibs}{$kmerlib}})
+	{
+	    $kmer_groups{$kmerlib} += $file->{jellyfish_obj}->get($kmer);
+	}
+    }
+
+    # kmercount is the sum of all kmer groups
+    foreach my $group (keys %kmer_groups)
+    {
+	$kmercount += $kmer_groups{$group};
+    }
+
+    # valid_kmer is true, if all groups have a count > 0
+    $valid_kmer = ((grep { $kmer_groups{$_} > 0 } (keys %kmer_groups))==(keys %kmer_groups)) ? 1 : 0;
+
+    return ($valid_kmer, $kmercount);
 }
 
 sub calc_mean_median
