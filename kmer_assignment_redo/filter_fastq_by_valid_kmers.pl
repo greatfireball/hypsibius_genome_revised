@@ -24,6 +24,17 @@ foreach my $kmerlib (keys %{$options{kmerlibs}})
     $options{kmerlibs}{$kmerlib} = [ split(',', $options{kmerlibs}{$kmerlib}) ];
 }
 
+# open the output file
+my $outfh = undef;
+if (exists $options{outputfile} && defined $options{outputfile})
+{
+    open($outfh, ">", $options{outputfile}) || die "Unable to open output file '$options{outputfile}': $!";
+    $options{outputfile} = { filename => $options{outputfile}, fh => $outfh};
+}
+
+# close the output file
+close($outfh) || die "Unable to close output file '$options{outputfile}': $!";
+
 __END__
 
 =pod
