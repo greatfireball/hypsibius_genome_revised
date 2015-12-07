@@ -9,6 +9,12 @@ our $VERSION = '0.1';
 
 my %options = ();
 
+GetOptions(
+    'i|infile=s@' => \$options{inputfiles},
+    'o|output=s'  => \$options{outputfile},
+    'k|kmerlib=s%' => \$options{kmerlibs}
+    ) || die ("Error in command line arguments\n");
+
 __END__
 
 =pod
