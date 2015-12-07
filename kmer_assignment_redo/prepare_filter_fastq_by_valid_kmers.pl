@@ -46,7 +46,7 @@ foreach my $kmerlib (keys %{$options{kmerlibs}})
 	    }
 	    
 	    chomp;
-	    my @fields = split(/\t/, $_);
+	    my @fields = split(/\s/, $_);
 
 	    $kmer_cache{$fields[0]}{$kmerlib} += $fields[1];
 	}
