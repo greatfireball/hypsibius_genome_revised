@@ -32,6 +32,50 @@ if (exists $options{outputfile} && defined $options{outputfile})
     $options{outputfile} = { filename => $options{outputfile}, fh => $outfh};
 }
 
+# go through the input files
+foreach my $inputfile (@{$options{inputfiles}})
+{
+    open(INPUT, "<", $inputfile) || die "Unable to open input file '$inputfile': $!";
+
+    while(! eof(INPUT))
+    {
+
+	my ($header, $seq, $header2, $qual) = (scalar <INPUT>, scalar <INPUT>, scalar <INPUT>, scalar <INPUT>);
+
+	chomp($header);
+	chomp($seq);
+	chomp($header2);
+	chomp($qual);
+
+	# create the kmers and check for each kmer if the kmer is present
+	my ($num_kmers, $num_valid_kmers) = (0, 0);
+	my @kmer_counts = ();
+
+	foreach my $k (kmerize($seq, 19))
+	{
+	    $num_kmers++;
+
+	    my ($valid_kmer, $kmer_count) = get_validity_and_kmer_count($k);
+	    if ($valid_kmer)
+	    {
+		$num_valid_kmers++;
+	    }
+
+	    push(@kmer_counts, $kmer_count);
+	}
+
+	my $percentage_valid_kmers = $num_valid_kmers/$num_kmers;
+	my ($mean_coverage, $median_coverage) = calc_mean_median(\@kmer_counts);
+	if ($percentage_valid_kmers >= 0.95)
+	{
+	    printf $outfh, "%s percent_valid:%.5f mean_coverage:%.1f median_coverage:%.1f\n%s\n%s\n%s\n",
+	    $header, $percentage_valid_kmers, $mean_coverage, $median_coverage, $seq, $header2, $qual;
+	}
+    }
+
+    close(INPUT) || die "Unable to close input file '$inputfile': $!";
+}
+
 # close the output file
 close($outfh) || die "Unable to close output file '$options{outputfile}': $!";
 
