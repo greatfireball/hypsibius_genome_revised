@@ -15,6 +15,15 @@ GetOptions(
     'k|kmerlib=s%' => \$options{kmerlibs}
     ) || die ("Error in command line arguments\n");
 
+# prepare input files
+@{$options{inputfiles}} = split(',', join(",", @{$options{inputfiles}}));
+
+# same for the kmerlib files
+foreach my $kmerlib (keys %{$options{kmerlibs}})
+{
+    $options{kmerlibs}{$kmerlib} = [ split(',', $options{kmerlibs}{$kmerlib}) ];
+}
+
 __END__
 
 =pod
