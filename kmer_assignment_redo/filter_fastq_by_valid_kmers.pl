@@ -28,7 +28,7 @@ foreach my $kmerlib (keys %{$options{kmerlibs}})
     # create a jellyfish object for each input file
     foreach my $file (@{$options{kmerlibs}{$kmerlib}})
     {
-	$file->{jellyfish_obj} = jellyfish::ReadMerFile->new($file->{filename});
+	$file->{jellyfish_obj} = jellyfish::QueryMerFile->new($file->{filename});
     }
 }
 
@@ -119,13 +119,16 @@ sub get_validity_and_kmer_count
 
     my %kmer_groups = ();
 
+    my $mer = jellyfish::MerDNA->new($kmer);
+    $mer->canonicalize();
+
     foreach my $kmerlib (keys %{$options{kmerlibs}})
     {
 	$kmer_groups{$kmerlib} = 0;
 
 	foreach my $file (@{$options{kmerlibs}{$kmerlib}})
 	{
-	    $kmer_groups{$kmerlib} += $file->{jellyfish_obj}->get($kmer);
+	    $kmer_groups{$kmerlib} += $file->{jellyfish_obj}->get($mer);
 	}
     }
 
