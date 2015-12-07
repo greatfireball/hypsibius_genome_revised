@@ -10,6 +10,7 @@ use jellyfish;
 our $VERSION = '0.1';
 
 my %options = ();
+my %kmer_cache = ();
 
 GetOptions(
     'i|infile=s@' => \$options{inputfiles},
@@ -76,7 +77,7 @@ foreach my $inputfile (@{$options{inputfiles}})
 	my ($mean_coverage, $median_coverage) = calc_mean_median(\@kmer_counts);
 	if ($percentage_valid_kmers >= 0.95)
 	{
-	    printf $outfh, "%s percent_valid:%.5f mean_coverage:%.1f median_coverage:%.1f\n%s\n%s\n%s\n",
+	    printf $outfh "%s percent_valid:%.5f mean_coverage:%.1f median_coverage:%.1f\n%s\n%s\n%s\n",
 	    $header, $percentage_valid_kmers, $mean_coverage, $median_coverage, $seq, $header2, $qual;
 	}
     }
@@ -117,31 +118,36 @@ sub get_validity_and_kmer_count
 
     my ($valid_kmer, $kmercount) = (0, 0);
 
-    my %kmer_groups = ();
-
-    my $mer = jellyfish::MerDNA->new($kmer);
-    $mer->canonicalize();
-
-    foreach my $kmerlib (keys %{$options{kmerlibs}})
+    unless (exists $kmer_cache{$kmer})
     {
-	$kmer_groups{$kmerlib} = 0;
+	my %kmer_groups = ();
 
-	foreach my $file (@{$options{kmerlibs}{$kmerlib}})
+	my $mer = jellyfish::MerDNA->new($kmer);
+	$mer->canonicalize();
+
+	foreach my $kmerlib (keys %{$options{kmerlibs}})
 	{
-	    $kmer_groups{$kmerlib} += $file->{jellyfish_obj}->get($mer);
+	    $kmer_groups{$kmerlib} = 0;
+	    
+	    foreach my $file (@{$options{kmerlibs}{$kmerlib}})
+	    {
+		$kmer_groups{$kmerlib} += $file->{jellyfish_obj}->get($mer);
+	    }
 	}
+	
+	# kmercount is the sum of all kmer groups
+	foreach my $group (keys %kmer_groups)
+	{
+	    $kmercount += $kmer_groups{$group};
+	}
+	
+	# valid_kmer is true, if all groups have a count > 0
+	$valid_kmer = ((grep { $kmer_groups{$_} > 0 } (keys %kmer_groups))==(keys %kmer_groups)) ? 1 : 0;
+	
+	$kmer_cache{$kmer} = { valid => $valid_kmer, count => $kmercount };
     }
 
-    # kmercount is the sum of all kmer groups
-    foreach my $group (keys %kmer_groups)
-    {
-	$kmercount += $kmer_groups{$group};
-    }
-
-    # valid_kmer is true, if all groups have a count > 0
-    $valid_kmer = ((grep { $kmer_groups{$_} > 0 } (keys %kmer_groups))==(keys %kmer_groups)) ? 1 : 0;
-
-    return ($valid_kmer, $kmercount);
+    return ($kmer_cache{$kmer}{valid}, $kmer_cache{$kmer}{count});
 }
 
 sub calc_mean_median
