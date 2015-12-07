@@ -4,6 +4,7 @@ use strict;
 use warnings;
 
 use Getopt::Long;
+use Term::ProgressBar;
 
 use jellyfish;
 
@@ -44,11 +45,25 @@ if (exists $options{outputfile} && defined $options{outputfile})
 # go through the input files
 foreach my $inputfile (@{$options{inputfiles}})
 {
+    my $filesize = -s $inputfile;
+    my $progress = Term::ProgressBar->new(
+	{
+	    name  => 'Kmer File',
+	    count => $filesize,
+	    ETA   => 'linear',
+	}
+	);
+    $progress->max_update_rate(1);
+    my $next_update = 0;
+
     open(INPUT, "<", $inputfile) || die "Unable to open input file '$inputfile': $!";
 
     while(! eof(INPUT))
     {
 
+	if ( tell(INPUT) > $next_update ) {
+	    $next_update = $progress->update( tell(INPUT) );
+	}
 	my ($header, $seq, $header2, $qual) = (scalar <INPUT>, scalar <INPUT>, scalar <INPUT>, scalar <INPUT>);
 
 	chomp($header);
@@ -80,6 +95,10 @@ foreach my $inputfile (@{$options{inputfiles}})
 	    printf $outfh "%s percent_valid:%.5f mean_coverage:%.1f median_coverage:%.1f\n%s\n%s\n%s\n",
 	    $header, $percentage_valid_kmers, $mean_coverage, $median_coverage, $seq, $header2, $qual;
 	}
+    }
+
+    if ( $filesize >= $next_update ) {
+	$progress->update($filesize);
     }
 
     close(INPUT) || die "Unable to close input file '$inputfile': $!";
