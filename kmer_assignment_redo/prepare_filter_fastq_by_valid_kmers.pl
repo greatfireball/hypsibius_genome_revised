@@ -131,7 +131,7 @@ $progress->max_update_rate(3);
 my $next_update = 0;
 
 open(FH, ">", $file) || die "Unable to open dump file '$file': $!";
-print FH join("\t", ("#kmer", @order)),"\n";
+print FH join("\t", ("#kmer", @order, "combined", "flag")),"\n";
 while (my ($kmer, $values_packed) = each %kmer_cache)
 {
     $counter++;
