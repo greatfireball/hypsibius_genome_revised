@@ -16,8 +16,6 @@ GetOptions(
     ) || die ("Error in command line arguments\n");
 
 my %kmer_cache = ();
-# set the number of elements to 400 Mio
-keys %kmer_cache = 400000000;
 
 my @order = sort grep {lc($_) ne 'all'} (keys %{$options{kmerlibs}});
 my $numtostore = (@order+0);
@@ -25,12 +23,13 @@ my $pack_str = 'Q'x$numtostore."Q"."Q";
 
 # same for the kmerlib files
 # do we have an all file?
+my ($starttime, $endtime) = (time(), 0);
 if (exists $options{kmerlibs}{all})
 {
+    print STDERR "Started import \@ $starttime\n";
+
     my $file = $options{kmerlibs}{all};
-    
-    delete $options{kmerlibs}{all};
-    
+
     my $filesize = -s $file;
     my $progress = Term::ProgressBar->new(
 	{
@@ -39,38 +38,33 @@ if (exists $options{kmerlibs}{all})
 	    ETA   => 'linear',
 	}
 	);
-    $progress->max_update_rate(1);
+    $progress->max_update_rate(3);
     my $next_update = 0;
     
-    open(FH, "<", $file) || die "Unable to open file '$file': $!";
+    delete $options{kmerlibs}{all};
     
-    my @kmers = ();
+    open(FH, "<", $file) || die "Unable to open file '$file': $!";
     
     my $initial_value = pack($pack_str, map { 0 } (@order));
 
     while (<FH>)
     {
-	
-	if ( tell(FH) > $next_update ) {
-	    $next_update = $progress->update( tell(FH) );
+	$kmer_cache{substr($_, 0, 19)} = $initial_value;
+
+	if ( tell( FH ) > $next_update ) {
+	    $next_update = $progress->update( tell ( FH ) );
 	}
-	
-	push(@kmers, substr($_, 0, 19));
     }
     
-    close(FH) || die "Unable to close file '$file->{filename}': $!";
-    
-    if ( $filesize >= $next_update ) {
-	$progress->update($filesize);
+    close(FH) || die "Unable to close file '$file': $!";
+
+    if ( $filesize > $next_update ) {
+	$next_update = $progress->update( $filesize );
     }
-    
-    print STDERR "\nStarted import \@".time()."\n";
-
-    %kmer_cache = map { $kmers[$_] => $initial_value } (0..@kmers-1);
-
-    print STDERR "Finished import \@".time()."\n";
 
 }
+$endtime = time();
+printf STDERR "Finished import \@ %d Import took %d seconds\n", $endtime, ($endtime-$starttime);;
 
 foreach my $kmerlib_pos (0..@order-1)
 {
@@ -88,7 +82,7 @@ foreach my $kmerlib_pos (0..@order-1)
 	    ETA   => 'linear',
 	}
 	);
-	$progress->max_update_rate(1);
+	$progress->max_update_rate(3);
 	my $next_update = 0;
 
 	open(FH, "<", $file->{filename}) || die "Unable to open file '$file->{filename}': $!";
@@ -133,7 +127,7 @@ my $progress = Term::ProgressBar->new(
 	ETA   => 'linear',
     }
     );
-$progress->max_update_rate(1);
+$progress->max_update_rate(3);
 my $next_update = 0;
 
 open(FH, ">", $file) || die "Unable to open dump file '$file': $!";
