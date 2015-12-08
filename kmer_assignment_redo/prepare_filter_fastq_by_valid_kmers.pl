@@ -97,6 +97,10 @@ foreach my $kmerlib_pos (0..@order-1)
 	    my $kmer = substr($_, 0, 19);
 	    my $count = substr($_, 19);
 
+	    unless (exists $kmer_cache{$kmer})
+	    {
+		$kmer_cache{$kmer} = pack($pack_str, 0);
+	    }
 	    my @values = unpack($pack_str, $kmer_cache{$kmer});
 	    $values[$kmerlib_pos] += $count;
 	    $kmer_cache{$kmer} = pack($pack_str, @values);
