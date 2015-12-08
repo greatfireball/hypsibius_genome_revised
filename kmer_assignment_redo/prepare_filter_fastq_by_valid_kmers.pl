@@ -139,7 +139,7 @@ while (my ($kmer, $values_packed) = each %kmer_cache)
     # estimate the total count
     my @values = unpack($pack_str, $values_packed);
     my $sum = 0;
-    foreach (0..@order)
+    foreach (0..@order-1)
     {
 	my $flag = 2**$_;
 	$values[@order+0] += $values[$_];
