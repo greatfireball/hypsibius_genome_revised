@@ -6,33 +6,24 @@ use warnings;
 use Getopt::Long;
 use Term::ProgressBar;
 
-use jellyfish;
+use Storable;
 
 our $VERSION = '0.1';
 
 my %options = ();
-my %kmer_cache = ();
+my $kmer_cache = {};
 
 GetOptions(
     'i|infile=s@' => \$options{inputfiles},
     'o|output=s'  => \$options{outputfile},
-    'k|kmerlib=s%' => \$options{kmerlibs}
+    'k|kmerhash=s' => \$options{kmerhash}
     ) || die ("Error in command line arguments\n");
 
 # prepare input files
 $options{inputfiles} = [ split(',', join(",", @{$options{inputfiles}})) ];
 
 # same for the kmerlib files
-foreach my $kmerlib (keys %{$options{kmerlibs}})
-{
-    $options{kmerlibs}{$kmerlib} = [ map { { filename => $_, jellyfish_obj => undef } } split(',', $options{kmerlibs}{$kmerlib}) ];
-
-    # create a jellyfish object for each input file
-    foreach my $file (@{$options{kmerlibs}{$kmerlib}})
-    {
-	$file->{jellyfish_obj} = jellyfish::QueryMerFile->new($file->{filename});
-    }
-}
+$kmer_cache = Storable::retrieve($options{kmerhash});
 
 # open the output file
 my $outfh = undef;
@@ -54,7 +45,8 @@ foreach my $inputfile (@{$options{inputfiles}})
 	}
 	);
     $progress->max_update_rate(1);
-    my $next_update = 0;
+    my $update_block_size=50*1024*1024;
+    my $next_update = $update_block_size;
 
     open(INPUT, "<", $inputfile) || die "Unable to open input file '$inputfile': $!";
 
@@ -62,7 +54,8 @@ foreach my $inputfile (@{$options{inputfiles}})
     {
 
 	if ( tell(INPUT) > $next_update ) {
-	    $next_update = $progress->update( tell(INPUT) );
+	    $progress->update( tell(INPUT) );
+	    $next_update += $update_block_size;
 	}
 	my ($header, $seq, $header2, $qual) = (scalar <INPUT>, scalar <INPUT>, scalar <INPUT>, scalar <INPUT>);
 
@@ -137,36 +130,11 @@ sub get_validity_and_kmer_count
 
     my ($valid_kmer, $kmercount) = (0, 0);
 
-    unless (exists $kmer_cache{$kmer})
-    {
-	my %kmer_groups = ();
+    die "Error missing kmer: $kmer" unless (exists $kmer_cache->{$kmer});
 
-	my $mer = jellyfish::MerDNA->new($kmer);
-	$mer->canonicalize();
+    my ($lib300, $lib500, $lib800, $moleculo, $combined, $flag) = unpack("Q"x6, $kmer_cache->{$kmer});
 
-	foreach my $kmerlib (keys %{$options{kmerlibs}})
-	{
-	    $kmer_groups{$kmerlib} = 0;
-	    
-	    foreach my $file (@{$options{kmerlibs}{$kmerlib}})
-	    {
-		$kmer_groups{$kmerlib} += $file->{jellyfish_obj}->get($mer);
-	    }
-	}
-	
-	# kmercount is the sum of all kmer groups
-	foreach my $group (keys %kmer_groups)
-	{
-	    $kmercount += $kmer_groups{$group};
-	}
-	
-	# valid_kmer is true, if all groups have a count > 0
-	$valid_kmer = ((grep { $kmer_groups{$_} > 0 } (keys %kmer_groups))==(keys %kmer_groups)) ? 1 : 0;
-	
-	$kmer_cache{$kmer} = { valid => $valid_kmer, count => $kmercount };
-    }
-
-    return ($kmer_cache{$kmer}{valid}, $kmer_cache{$kmer}{count});
+    return ( ($flag==15) ? 1 : 0, $combined );
 }
 
 sub calc_mean_median
@@ -233,14 +201,9 @@ This is mendatory, but can be multiple input files.
 This file is used for the output of the filtering. If no file is given
 the output will be put on STDOUT
 
-=item --kmerlib FILE(S)
+=item --kmerhash FILE
 
-Indicate the location of kmer-hash file(s) belonging to one single
-group of kmers. I assume that the kmer is present in all hashs of the
-library. If not, it will result in a warning message, but the kmer is
-still valid if present in all Libraries. Count values for kmers will
-be reported for whole libraries. Valid kmers have to be represented in
-all defined libraries.
+Indicate the location of kmer-hash file produced by the Storable module.
 
 =back
 
