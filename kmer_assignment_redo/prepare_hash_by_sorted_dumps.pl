@@ -6,11 +6,16 @@ use warnings;
 use Getopt::Long;
 use Term::ProgressBar;
 
+use Log::Log4perl qw(:easy);
+Log::Log4perl->easy_init($INFO);
+
 our $VERSION = '0.1';
 
 my %kmer_cache = ();
 
 my %options = ();
+
+print INFO "Startet";
 
 GetOptions(
     'o|output=s'   => \$options{outputfile},
@@ -33,38 +38,31 @@ foreach my $kmerlib_pos ( 0 .. @order - 1 ) {
     $options{kmerlibs}{$kmerlib}{filebuffer} = "";
 }
 
-my $progress = Term::ProgressBar->new(
-    {
-        name  => 'Kmer Files: ',
-        count => $filesize,
-        ETA   => 'linear',
-    }
-);
-$progress->max_update_rate(1);
-my $next_update = 0;
-
 my $pos = 0;
+my $report_size = 1024*1024*100;
+my $next_report = $report_size;
 while (1) {
     foreach my $current (@order) {
 
         # read the next line for each buffer
-        if ( $options{kmerlib}{$current}{filebuffer} eq "" ) {
-            my $fh = $options{kmerlib}{$current}{filehandle};
+        if ( $options{kmerlibs}{$current}{filebuffer} eq "" ) {
+            my $fh = $options{kmerlibs}{$current}{filehandle};
             unless ( eof($fh) ) {
-                $options{kmerlib}{$current}{filebuffer} = scalar <$fh>;
-                $options{kmerlib}{$current}{fields} =
-                  [ split( /\s+/, $options{kmerlib}{$current}{filebuffer} ) ];
-                $pos += length( $options{kmerlib}{$current}{filebuffer} );
+                $options{kmerlibs}{$current}{filebuffer} = scalar <$fh>;
+                $options{kmerlibs}{$current}{fields} =
+                  [ split( /\s+/, $options{kmerlibs}{$current}{filebuffer} ) ];
+                $pos += length( $options{kmerlibs}{$current}{filebuffer} );
             }
         }
     }
 
-    if ( $pos >= $next_update ) {
-        $progress->update($pos);
+    if ( $pos > $next_report ) { 
+        print INFO sprintf("Finished %.0f MB (%.1f%%) and identified %d valid kmers...\n", $pos/(1024*1024), $pos/$filesize*100, (keys %kmer_cache)+0);
+	$next_report+=$report_size;
     }
 
     # generate a list of current kmers
-    my @kmers = map { $options{kmerlib}{$_}{fields}[0] } (@order);
+    my @kmers = grep { defined $_ && $_ ne "" } map { $options{kmerlibs}{$_}{fields}[0] } (@order);
 
     # sort the list to find the next kmer
     @kmers = sort @kmers;
@@ -74,13 +72,14 @@ while (1) {
     foreach my $current (@order) {
         my $value = 0;    # assume no count
                           # check if the current line own the kmer
-        if ( $options{kmerlib}{$current}{fields}[0] eq $kmers[0] ) {
+        if ( $options{kmerlibs}{$current}{fields}[0] eq $kmers[0] ) {
 
             # get the value
-            $value = int( $options{kmerlib}{$current}{fields}[1] );
+            $value = int( $options{kmerlibs}{$current}{fields}[1] );
 
             # empty the filebuffer
-            $options{kmerlib}{$current}{filebuffer} = "";
+            $options{kmerlibs}{$current}{filebuffer} = "";
+	    $options{kmerlibs}{$current}{fields} = ['',0];
         }
         push( @kmer_counts, $value ) if ( $value > 0 );
     }
@@ -101,7 +100,7 @@ while (1) {
     # check if all files reached the eof
     my $num_eof = 0;
     foreach my $current (@order) {
-        my $fh = $options{kmerlib}{$current}{filehandle};
+        my $fh = $options{kmerlibs}{$current}{filehandle};
         $num_eof++ if ( eof($fh) );
     }
 
@@ -110,32 +109,26 @@ while (1) {
     }
 }
 
-if ( $filesize >= $next_update ) {
-    $progress->update($filesize);
-}
-
 # store a dump
 my $file = $options{outputfile} . ".dump";
 
 my $counter = 0;
 
-$progress = Term::ProgressBar->new(
+my $progress = Term::ProgressBar->new(
     {
         name  => 'Kmer Dump (' . $file . '): ',
         count => ( keys %kmer_cache ) + 0,
         ETA   => 'linear',
     }
 );
-$progress->max_update_rate(1);
-$next_update = 0;
+$progress->max_update_rate(30);
+my $next_update = 0;
 
 open( FH, ">", $file ) || die "Unable to open dump file '$file': $!";
-print FH join( "\t", ( "#kmer", @order ) ), "\n";
-while ( my ( $kmer, $array_ref ) = each %kmer_cache ) {
+print FH join( "\t", ( "#kmer", "valid_counts" ) ), "\n";
+while ( my ( $kmer, $counts ) = each %kmer_cache ) {
     $counter++;
-    @$array_ref = map { ( defined $_ ) ? $_ : 0 } (@$array_ref);
-    $kmer_cache{$kmer} = $array_ref;
-    print FH join( "\t", ( $kmer, @$array_ref ) ), "\n";
+    print FH join( "\t", ( $kmer, $counts ) ), "\n";
     if ( $counter > $next_update ) {
         $next_update = $progress->update($counter);
     }
