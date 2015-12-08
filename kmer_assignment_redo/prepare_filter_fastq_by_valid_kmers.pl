@@ -19,6 +19,10 @@ my %kmer_cache = ();
 # set the number of elements to 400 Mio
 keys %kmer_cache = 400000000;
 
+my @order = sort grep {lc($_) ne 'all'} (keys %{$options{kmerlibs}});
+my $numtostore = (@order+0);
+my $pack_str = 'Q'x$numtostore."Q"."Q";
+
 # same for the kmerlib files
 # do we have an all file?
 if (exists $options{kmerlibs}{all})
@@ -42,6 +46,8 @@ if (exists $options{kmerlibs}{all})
     
     my @kmers = ();
     
+    my $initial_value = pack($pack_str, map { 0 } (@order));
+
     while (<FH>)
     {
 	
@@ -57,16 +63,15 @@ if (exists $options{kmerlibs}{all})
     if ( $filesize >= $next_update ) {
 	$progress->update($filesize);
     }
+    
+    print STDERR "\nStarted import \@".time()."\n";
 
-    my @store = keys %{$options{kmerlibs}};
+    %kmer_cache = map { $kmers[$_] => $initial_value } (0..@kmers-1);
 
-    %kmer_cache = map { $_ => [0, 0, 0, 0] } (@kmers);
-
-    print STDERR "\n";
+    print STDERR "Finished import \@".time()."\n";
 
 }
 
-my @order = sort (keys %{$options{kmerlibs}});
 foreach my $kmerlib_pos (0..@order-1)
 {
     my $kmerlib = $order[$kmerlib_pos];
@@ -98,7 +103,9 @@ foreach my $kmerlib_pos (0..@order-1)
 	    my $kmer = substr($_, 0, 19);
 	    my $count = substr($_, 19);
 
-	    $kmer_cache{$kmer}[$kmerlib_pos] += $count;
+	    my @values = unpack($pack_str, $kmer_cache{$kmer});
+	    $values[$kmerlib_pos] += $count;
+	    $kmer_cache{$kmer} = pack($pack_str, @values);
 	}
 	
 	close(FH) || die "Unable to close file '$file->{filename}': $!";
@@ -131,12 +138,25 @@ my $next_update = 0;
 
 open(FH, ">", $file) || die "Unable to open dump file '$file': $!";
 print FH join("\t", ("#kmer", @order)),"\n";
-while (my ($kmer, $array_ref) = each %kmer_cache)
+while (my ($kmer, $values_packed) = each %kmer_cache)
 {
     $counter++;
-    @$array_ref = map { (defined $_) ? $_ : 0 } (@$array_ref);
-    $kmer_cache{$kmer} = $array_ref;
-    print FH join("\t", ($kmer, @$array_ref)),"\n";
+
+    # estimate the total count
+    my @values = unpack($pack_str, $values_packed);
+    my $sum = 0;
+    foreach (0..@order)
+    {
+	my $flag = 2**$_;
+	$values[@order+0] += $values[$_];
+	if ($values[$_] > 0)
+	{
+	    $values[-1] += $flag;
+	}
+    }
+    $kmer_cache{$kmer} = pack($pack_str, @values);
+    
+    print FH join("\t", ($kmer, @values)),"\n";
     if ( $counter > $next_update ) {
 	$next_update = $progress->update( $counter );
     }
