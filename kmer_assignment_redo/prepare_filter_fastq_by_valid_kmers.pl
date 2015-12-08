@@ -16,10 +16,60 @@ GetOptions(
     ) || die ("Error in command line arguments\n");
 
 my %kmer_cache = ();
+# set the number of elements to 400 Mio
+keys %kmer_cache = 400000000;
 
 # same for the kmerlib files
-foreach my $kmerlib (keys %{$options{kmerlibs}})
+# do we have an all file?
+if (exists $options{kmerlibs}{all})
 {
+    my $file = $options{kmerlibs}{all};
+    
+    delete $options{kmerlibs}{all};
+    
+    my $filesize = -s $file;
+    my $progress = Term::ProgressBar->new(
+	{
+	    name  => 'Kmer File ('.$file.'): ',
+	    count => $filesize,
+	    ETA   => 'linear',
+	}
+	);
+    $progress->max_update_rate(1);
+    my $next_update = 0;
+    
+    open(FH, "<", $file) || die "Unable to open file '$file': $!";
+    
+    my @kmers = ();
+    
+    while (<FH>)
+    {
+	
+	if ( tell(FH) > $next_update ) {
+	    $next_update = $progress->update( tell(FH) );
+	}
+	
+	push(@kmers, substr($_, 0, 19));
+    }
+    
+    close(FH) || die "Unable to close file '$file->{filename}': $!";
+    
+    if ( $filesize >= $next_update ) {
+	$progress->update($filesize);
+    }
+
+    my @store = keys %{$options{kmerlibs}};
+
+    %kmer_cache = map { $_ => [0, 0, 0, 0] } (@kmers);
+
+    print STDERR "\n";
+
+}
+
+my @order = sort (keys %{$options{kmerlibs}});
+foreach my $kmerlib_pos (0..@order-1)
+{
+    my $kmerlib = $order[$kmerlib_pos];
     $options{kmerlibs}{$kmerlib} = [ map { { filename => $_ } } split(',', $options{kmerlibs}{$kmerlib}) ];
 
     # read the content and create the hash
@@ -45,10 +95,10 @@ foreach my $kmerlib (keys %{$options{kmerlibs}})
 		$next_update = $progress->update( tell(FH) );
 	    }
 	    
-	    chomp;
-	    my @fields = split(/\s/, $_);
+	    my $kmer = substr($_, 0, 19);
+	    my $count = substr($_, 19);
 
-	    $kmer_cache{$fields[0]}{$kmerlib} += $fields[1];
+	    $kmer_cache{$kmer}[$kmerlib_pos] += $count;
 	}
 	
 	close(FH) || die "Unable to close file '$file->{filename}': $!";
@@ -60,7 +110,43 @@ foreach my $kmerlib (keys %{$options{kmerlibs}})
 	print STDERR "\n";
 
     }
+
+    $kmerlib_pos++;
 }
+
+# store a dump
+my $file = $options{outputfile}.".dump";
+
+my $counter = 0;
+
+my $progress = Term::ProgressBar->new(
+    {
+	name  => 'Kmer Dump ('.$file.'): ',
+	count => (keys %kmer_cache)+0,
+	ETA   => 'linear',
+    }
+    );
+$progress->max_update_rate(1);
+my $next_update = 0;
+
+open(FH, ">", $file) || die "Unable to open dump file '$file': $!";
+print FH join("\t", ("#kmer", @order)),"\n";
+while (my ($kmer, $array_ref) = each %kmer_cache)
+{
+    $counter++;
+    @$array_ref = map { (defined $_) ? $_ : 0 } (@$array_ref);
+    $kmer_cache{$kmer} = $array_ref;
+    print FH join("\t", ($kmer, @$array_ref)),"\n";
+    if ( $counter > $next_update ) {
+	$next_update = $progress->update( $counter );
+    }
+}
+close(FH) || die "Unable to close dump file '$file': $!"; 
+
+if ( (keys %kmer_cache)+0 >= $next_update ) {
+    $progress->update((keys %kmer_cache)+0);
+}
+
 
 # store the hash in the output file
 use Storable;
