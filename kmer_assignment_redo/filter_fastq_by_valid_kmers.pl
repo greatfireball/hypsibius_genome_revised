@@ -90,12 +90,8 @@ foreach my $inputfile (@{$options{inputfiles}})
 
 	my $percentage_valid_kmers = $num_valid_kmers/$num_kmers;
 	my ($mean_coverage, $median_coverage) = calc_mean_median(\@kmer_counts);
-	if ($percentage_valid_kmers >= 0.95)
-	{
-	    printf $outfh "%s percent_valid:%.5f mean_coverage:%.1f median_coverage:%.1f num_unknown_kmers_ignored_for_coverage: %d\n%s\n%s\n%s\n",
-	    $header, $percentage_valid_kmers, $mean_coverage, $median_coverage, $num_unknown_kmers, $seq, $header2, $qual;
-	}
->>>>>>> d9191c8... Counting missing kmers (should contain Ns!) and output of that number
+	printf $outfh "%s percent_valid:%.5f mean_coverage:%.1f median_coverage:%.1f num_unknown_kmers_ignored_for_coverage: %d\n%s\n%s\n%s\n",
+	$header, $percentage_valid_kmers, $mean_coverage, $median_coverage, $num_unknown_kmers, $seq, $header2, $qual;
     }
 
     if ( $filesize >= $next_update ) {
