@@ -65,7 +65,7 @@ foreach my $inputfile (@{$options{inputfiles}})
 	chomp($qual);
 
 	# create the kmers and check for each kmer if the kmer is present
-	my ($num_kmers, $num_valid_kmers) = (0, 0);
+	my ($num_kmers, $num_valid_kmers, $num_unknown_kmers) = (0, 0, 0);
 	my @kmer_counts = ();
 
 	foreach my $k (kmerize($seq, 19))
@@ -78,16 +78,23 @@ foreach my $inputfile (@{$options{inputfiles}})
 		$num_valid_kmers++;
 	    }
 
-	    push(@kmer_counts, $kmer_count);
+	    # if kmer_count was -1 the kmer was unknown, therefore increase the counter and ignore that coverage for coverage calculation
+	    if ($kmer_count == -1)
+	    {
+		$num_unknown_kmers++;
+	    } else {
+		push(@kmer_counts, $kmer_count);
+	    }
 	}
 
 	my $percentage_valid_kmers = $num_valid_kmers/$num_kmers;
 	my ($mean_coverage, $median_coverage) = calc_mean_median(\@kmer_counts);
 	if ($percentage_valid_kmers >= 0.95)
 	{
-	    printf $outfh "%s percent_valid:%.5f mean_coverage:%.1f median_coverage:%.1f\n%s\n%s\n%s\n",
-	    $header, $percentage_valid_kmers, $mean_coverage, $median_coverage, $seq, $header2, $qual;
+	    printf $outfh "%s percent_valid:%.5f mean_coverage:%.1f median_coverage:%.1f num_unknown_kmers_ignored_for_coverage: %d\n%s\n%s\n%s\n",
+	    $header, $percentage_valid_kmers, $mean_coverage, $median_coverage, $num_unknown_kmers, $seq, $header2, $qual;
 	}
+>>>>>>> d9191c8... Counting missing kmers (should contain Ns!) and output of that number
     }
 
     if ( $filesize >= $next_update ) {
@@ -130,7 +137,11 @@ sub get_validity_and_kmer_count
 
     my ($valid_kmer, $kmercount) = (0, 0);
 
-    die "Error missing kmer: $kmer" unless (exists $kmer_cache->{$kmer});
+    unless (exists $kmer_cache->{$kmer})
+    {
+	warn "Error missing kmer: $kmer\n";
+	return( 0, -1 );
+    }
 
     my ($lib300, $lib500, $lib800, $moleculo, $combined, $flag) = unpack("Q"x6, $kmer_cache->{$kmer});
 
