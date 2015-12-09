@@ -37,6 +37,42 @@ user@localhost:~/$ cat kmer_flags.csv
 ```
 ### plotting kmer venn
 ```bash
+# import data
+dat<-read.table("kmer_flags.csv")
+
+area.vector=c(
+	dat$V2[which(dat$V1==4)], 
+	dat$V2[which(dat$V1==12)], 
+	dat$V2[which(dat$V1==8)], 
+	dat$V2[which(dat$V1==5)], 
+	dat$V2[which(dat$V1==13)], 
+	dat$V2[which(dat$V1==15)], 
+	dat$V2[which(dat$V1==14)], 
+	dat$V2[which(dat$V1==10)], 
+	dat$V2[which(dat$V1==1)], 
+	dat$V2[which(dat$V1==9)], 
+	dat$V2[which(dat$V1==11)], 
+	dat$V2[which(dat$V1==7)], 
+	dat$V2[which(dat$V1==6)], 
+	dat$V2[which(dat$V1==2)], 
+	dat$V2[which(dat$V1==3)]
+)
+
+venn.plot <- draw.quad.venn(
+	  direct.area=T, area.vector=area.vector,
+	  print.mode='percent',
+	  sigdigs=2,
+	  category = c("300", "500", "800", "Moleculo"),
+	  fill = c("orange", "red", "green", "blue"),
+	  lty = "dashed",
+	  cex = 2,
+	  cat.cex = 2,
+	  cat.col = rep("black", 4),
+)
+
+pdf("venn_kmers_percentage.pdf")
+grid.draw(venn.plot)
+dev.off()
 ```
 
 ### generating histograms
