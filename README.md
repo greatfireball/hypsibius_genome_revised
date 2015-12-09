@@ -37,6 +37,9 @@ user@localhost:~/$ cat kmer_flags.csv
 ```
 ### plotting kmer venn
 ```bash
+# load the required library
+library("VennDiagram")
+
 # import data
 dat<-read.table("kmer_flags.csv")
 
