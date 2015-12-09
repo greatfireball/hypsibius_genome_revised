@@ -12,6 +12,7 @@ our $VERSION = '0.1';
 
 my %options = ();
 my $kmer_cache = {};
+my %missing_kmers = ();
 
 GetOptions(
     'i|infile=s@' => \$options{inputfiles},
@@ -136,7 +137,11 @@ sub get_validity_and_kmer_count
 
     unless (exists $kmer_cache->{$kmer})
     {
-	warn "Error missing kmer: $kmer\n";
+	unless (exists $missing_kmers{$kmer})
+	{
+	    warn "Error missing kmer: $kmer\n";
+	    $missing_kmers{$kmer}++;
+	}
 	return( 0, -1 );
     }
 
