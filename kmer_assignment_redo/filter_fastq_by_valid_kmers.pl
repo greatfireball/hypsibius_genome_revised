@@ -42,6 +42,7 @@ foreach my $inputfile (@{$options{inputfiles}})
 	    name  => 'Kmer File',
 	    count => $filesize,
 	    ETA   => 'linear',
+	    term_width => 50,
 	}
 	);
     $progress->max_update_rate(1);
