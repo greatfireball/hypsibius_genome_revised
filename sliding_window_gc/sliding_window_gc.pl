@@ -139,7 +139,7 @@ sub sw_gc {
 
     my @gc = ();
 
-    for ( my $i = 0 ; $i < length($$ref_seq) ; $i += $step_size ) {
+    for ( my $i = 0 ; $i < (length($$ref_seq)-$step_size) ; $i += $step_size ) {
         push( @gc, get_gc( \substr( $$ref_seq, $i, $sw_size ) ) );
     }
 
