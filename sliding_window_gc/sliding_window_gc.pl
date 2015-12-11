@@ -52,7 +52,7 @@ window. It is also possible to provide a percentage value or a
 floating point number. In those cases the meaning is relative to the
 sliding window size.
 
-Default value is 10% of the sliding window size.
+Default value is 100
 
 =item -m|--min-length
 
@@ -79,7 +79,7 @@ GetOptions(
     'i|input=s'               => \$config{inputfile},
     'o|output=s'              => \( $config{outputfile} = '-' ),
     's|sliding-window-size=s' => \( $config{size_sw} = 1000 ),
-    'w|step-width=s'          => \( $config{step_width} = '10%' ),
+    'w|step-width=s'          => \( $config{step_width} = 100 ),
     'm|min-length'            => \( $config{min_length} = 2500 ),
     'h|help'                  => \( $config{help} = 0 ),
     'man'                     => \( $config{man} = 0 ),
