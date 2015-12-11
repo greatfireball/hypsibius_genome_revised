@@ -113,9 +113,10 @@ while ( my $seq_obj = $seqio_object->next_seq ) {
 
     # skip to next sequence if the length is less then the required
     # length
-    if ($seq_obj->length() < $config{min_length})
-    {
-	warn sprintf "Skipping sequence '%s' due to length constrain (require a length of %s but found %s)\n", $seq_obj->id(), $config{min_length}, $seq_obj->length();
+    if ( $seq_obj->length() < $config{min_length} ) {
+        warn sprintf
+"Skipping sequence '%s' due to length constrain (require a length of %s but found %s)\n",
+          $seq_obj->id(), $config{min_length}, $seq_obj->length();
     }
 
     # calculate the GC content for each sliding window
@@ -139,7 +140,12 @@ sub sw_gc {
 
     my @gc = ();
 
-    for ( my $i = 0 ; $i < (length($$ref_seq)-$step_size) ; $i += $step_size ) {
+    for (
+        my $i = 0 ;
+        $i < ( length($$ref_seq) - $step_size ) ;
+        $i += $step_size
+      )
+    {
         push( @gc, get_gc( \substr( $$ref_seq, $i, $sw_size ) ) );
     }
 
