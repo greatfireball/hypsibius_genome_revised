@@ -104,6 +104,32 @@ eval { require Bio::SeqIO; }
 
 # program starts here
 
+# check the sliding window size:
+# Does it contain a suffix
+if ( $config{size_sw} =~ s/([Kk]|[Mm]|[Gg])($|b[p]?)// ) {
+    my $suffix = uc($1);
+
+    # the parameter now only contains digits
+    unless ( $config{size_sw} =~ /^\s*\d+\s*$/ ) {
+        die
+"The parameter for the window size seems to be wrong! Only integers with a size suffix (k|m|g(bp)) are allowed.\n";
+    }
+
+    # what is the suffix
+    if ( $suffix eq "K" ) {
+        $config{size_sw} *= 1000;
+    }
+    elsif ( $suffix eq "M" ) {
+        $config{size_sw} *= 1000000;
+    }
+    elsif ( $suffix eq "G" ) {
+        $config{size_sw} *= 1000000000;
+    }
+    else {
+        die "Should not happen!\n";
+    }
+}
+
 # open the input file
 
 my $seqio_object = Bio::SeqIO->new( -file => $config{inputfile} );
