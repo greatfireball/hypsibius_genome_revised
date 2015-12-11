@@ -100,6 +100,10 @@ unless ($config{inputfile})
     pod2usage(1);
 }
 
+eval {
+    require Bio::SeqIO;
+} || die "The module 'Bio::SeqIO' is required. Please install it.\n"; 
+
 # program starts here
 
 __END__
