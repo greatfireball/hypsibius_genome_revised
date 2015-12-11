@@ -102,7 +102,7 @@ unless ($config{inputfile})
 
 eval {
     require Bio::SeqIO;
-} || die "The module 'Bio::SeqIO' is required. Please install it.\n"; 
+} || die "The module 'Bio::SeqIO' is required. Please install it.\n";
 
 # program starts here
 
@@ -113,7 +113,53 @@ my $seqio_object = Bio::SeqIO->new(-file => $config{inputfile});
 # and go through all sequences
 while (my $seq_obj = $seqio_object->next_seq)
 {
-    print join("\t", ($seq_obj->id(), $seq_obj->seq())),"\n";
+    # calculate the GC content for each sliding window
+    my $seq = $seq_obj->seq();
+
+    my @gc = sw_gc(\$seq, $config{size_sw}, $config{step_width});
+
+    print join("\t", ($seq_obj->id(), join(",", @gc))),"\n";
+}
+
+sub sw_gc
+{
+    # parameters are
+    # 1) reference to the sequence string
+    # 2) sliding window size
+    # 3) step size for the width
+
+    # output is an array of gc values
+
+    my ($ref_seq, $sw_size, $step_size) = @_;
+
+    my @gc = ();
+
+    for (my $i=0; $i<length($$ref_seq); $i+=$step_size)
+    {
+	push(@gc, get_gc(\substr($$ref_seq, $i, $sw_size)));
+    }
+
+    return @gc;
+}
+
+sub get_gc
+{
+   # parameter is a reference to a sequence string
+
+   # output is a single value for the GC content
+
+    my ($ref_seq) = @_;
+
+    my $gc = undef;
+
+    # make the string upper case
+    my $seq = uc($$ref_seq);
+
+    # count the number of Gs and Cs inside the string
+    $gc = $seq =~ tr/GC/GC/;
+
+    return ($gc/length($seq));
+
 }
 
 __END__
