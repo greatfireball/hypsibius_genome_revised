@@ -111,6 +111,13 @@ my $seqio_object = Bio::SeqIO->new( -file => $config{inputfile} );
 # and go through all sequences
 while ( my $seq_obj = $seqio_object->next_seq ) {
 
+    # skip to next sequence if the length is less then the required
+    # length
+    if ($seq_obj->length() < $config{min_length})
+    {
+	warn sprintf "Skipping sequence '%s' due to length constrain (require a length of %s but found %s)\n", $seq_obj->id(), $config{min_length}, $seq_obj->length();
+    }
+
     # calculate the GC content for each sliding window
     my $seq = $seq_obj->seq();
 
