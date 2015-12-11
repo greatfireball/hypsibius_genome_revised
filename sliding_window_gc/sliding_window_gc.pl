@@ -25,7 +25,8 @@ my %config = ();
 
 =item -i|--input
 
-What is the input file. Any file format supported by Bioperl can be used.
+What is the input file. Any file format supported by Bioperl can be
+used. A value for that option is required.
 
 =item -o|--output
 
@@ -91,6 +92,12 @@ pod2usage( -exitval => 0, -verbose => 2 ) if ( $config{man} );
 if ( $config{version} ) {
     print $VERSION;
     exit(0);
+}
+
+unless ($config{inputfile})
+{
+    warn "\n\nError: An input is required to run the script!\n\n\n";
+    pod2usage(1);
 }
 
 # program starts here
