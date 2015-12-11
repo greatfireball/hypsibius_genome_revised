@@ -106,6 +106,16 @@ eval {
 
 # program starts here
 
+# open the input file
+
+my $seqio_object = Bio::SeqIO->new(-file => $config{inputfile});
+
+# and go through all sequences
+while (my $seq_obj = $seqio_object->next_seq)
+{
+    print join("\t", ($seq_obj->id(), $seq_obj->seq())),"\n";
+}
+
 __END__
 
 =pod
