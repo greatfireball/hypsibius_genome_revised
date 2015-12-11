@@ -94,35 +94,33 @@ if ( $config{version} ) {
     exit(0);
 }
 
-unless ($config{inputfile})
-{
+unless ( $config{inputfile} ) {
     warn "\n\nError: An input is required to run the script!\n\n\n";
     pod2usage(1);
 }
 
-eval {
-    require Bio::SeqIO;
-} || die "The module 'Bio::SeqIO' is required. Please install it.\n";
+eval { require Bio::SeqIO; }
+  || die "The module 'Bio::SeqIO' is required. Please install it.\n";
 
 # program starts here
 
 # open the input file
 
-my $seqio_object = Bio::SeqIO->new(-file => $config{inputfile});
+my $seqio_object = Bio::SeqIO->new( -file => $config{inputfile} );
 
 # and go through all sequences
-while (my $seq_obj = $seqio_object->next_seq)
-{
+while ( my $seq_obj = $seqio_object->next_seq ) {
+
     # calculate the GC content for each sliding window
     my $seq = $seq_obj->seq();
 
-    my @gc = sw_gc(\$seq, $config{size_sw}, $config{step_width});
+    my @gc = sw_gc( \$seq, $config{size_sw}, $config{step_width} );
 
-    print join("\t", ($seq_obj->id(), join(",", @gc))),"\n";
+    print join( "\t", ( $seq_obj->id(), join( ",", @gc ) ) ), "\n";
 }
 
-sub sw_gc
-{
+sub sw_gc {
+
     # parameters are
     # 1) reference to the sequence string
     # 2) sliding window size
@@ -130,23 +128,22 @@ sub sw_gc
 
     # output is an array of gc values
 
-    my ($ref_seq, $sw_size, $step_size) = @_;
+    my ( $ref_seq, $sw_size, $step_size ) = @_;
 
     my @gc = ();
 
-    for (my $i=0; $i<length($$ref_seq); $i+=$step_size)
-    {
-	push(@gc, get_gc(\substr($$ref_seq, $i, $sw_size)));
+    for ( my $i = 0 ; $i < length($$ref_seq) ; $i += $step_size ) {
+        push( @gc, get_gc( \substr( $$ref_seq, $i, $sw_size ) ) );
     }
 
     return @gc;
 }
 
-sub get_gc
-{
-   # parameter is a reference to a sequence string
+sub get_gc {
 
-   # output is a single value for the GC content
+    # parameter is a reference to a sequence string
+
+    # output is a single value for the GC content
 
     my ($ref_seq) = @_;
 
@@ -158,7 +155,7 @@ sub get_gc
     # count the number of Gs and Cs inside the string
     $gc = $seq =~ tr/GC/GC/;
 
-    return ($gc/length($seq));
+    return ( $gc / length($seq) );
 
 }
 
