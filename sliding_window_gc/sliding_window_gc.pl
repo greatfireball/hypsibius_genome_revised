@@ -80,7 +80,7 @@ GetOptions(
     'o|output=s'              => \( $config{outputfile} = '-' ),
     's|sliding-window-size=s' => \( $config{size_sw} = 1000 ),
     'w|step-width=s'          => \( $config{step_width} = 100 ),
-    'm|min-length'            => \( $config{min_length} = 2500 ),
+    'm|min-length=s'            => \( $config{min_length} = 2500 ),
     'h|help'                  => \( $config{help} = 0 ),
     'man'                     => \( $config{man} = 0 ),
     'v|version'               => \( $config{version} = 0 )
@@ -139,10 +139,11 @@ while ( my $seq_obj = $seqio_object->next_seq ) {
 
     # skip to next sequence if the length is less then the required
     # length
-    if ( $seq_obj->length() < $config{min_length} ) {
+    if ( $seq_obj->length() <= $config{min_length} ) {
         warn sprintf
 "Skipping sequence '%s' due to length constrain (require a length of %s but found %s)\n",
           $seq_obj->id(), $config{min_length}, $seq_obj->length();
+	next;
     }
 
     # calculate the GC content for each sliding window
