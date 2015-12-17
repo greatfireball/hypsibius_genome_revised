@@ -56,8 +56,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\usepackage{tabularx}
 \usepackage[backend=biber]{biblatex}
 \addbibresource{supplement.bib}
+\usepackage{rotating}
+\usepackage{cleveref}
+\usepackage{caption}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -97,6 +101,31 @@
 \captionof{figure}[Unknown Bacterial Genome]{Unknown Bacterial Genome}
 
 \section{Methods}
+
+\subsection*{Data set}
+We used the data set provided by \textcite{Boothby2015} and downloaded the data from \url{http://weatherby.genetics.utah.edu/seq_transf/}. A complete list of the used input files are given in \cref{tab:inputdata}.
+
+\begin{sidewaystable}
+\centering
+\captionof{table}{\label{tab:inputdata}Bla}
+\begin{tabularx}{\linewidth}{>{\ttfamily\tiny}X>{\ttfamily\tiny}l>{\ttfamily\tiny}r*{2}{>{\ttfamily\tiny}l}}\toprule
+Filename and location                                          & Modification time    & Size in Bytes     & MD5 check sum                    & MD5 check sum decompressed \\ \midrule
+tg.genome.fsa.gz                                               & 2015-11-25T01:34:44Z &    \num{72215266} & b8bd39390ef35dd43d1cda1ca6944d5a & 77be374d28b91232c0810cc4d3cd37b9 \\
+tg.default.maker.proteins.final.fasta.gz                       & 2015-12-02T23:43:44Z &    \num{12359873} & 2de12e5d28d6dba121973db2071565d9 & 1ad17cfa9e6c26e552fa8048c6ee90af \\
+short\_reads/TG-300-SIPE\_1\_sequence.txt                      & 2015-11-30T21:48:51Z & \num{11526955725} & c16b5442c9893b6feaa3aa81a39eefcd & c16b5442c9893b6feaa3aa81a39eefcd \\
+short\_reads/TG-300-SIPE\_2\_sequence.txt.gz                   & 2015-11-30T21:52:41Z &  \num{3920224257} & 3bea43d66d71926fb620966d281598c6 & bc8423d4fe4275863e0809445ffd21ce \\
+short\_reads/TG-500-SIPE\_1\_sequence.txt.gz                   & 2015-12-01T05:32:05Z &  \num{2738243219} & da8b15d388961938584343f8926f7b24 & eee7363557ccb1fb0fa75ebe55ae7ee5 \\
+short\_reads/TG-500-SIPE\_2\_sequence.txt.gz                   & 2015-12-01T05:35:15Z &  \num{2805269168} & aa8c2c345484b9464d272e0993d6968b & 325d74bbafd9b6019609e2fd33eca260 \\
+short\_reads/TG-800-SIPE\_1\_sequence.txt.gz                   & 2015-12-01T05:36:55Z &  \num{2155735304} & 6e9cce1a27000ae2b4f87181a976df92 & a85568ef53979c367870eee6390f2ced \\
+short\_reads/TG-800-SIPE\_2\_sequence.txt.gz                   & 2015-12-01T05:37:46Z &  \num{2058207374} & ccf097cf4f13bb5cbc5a8e002250093d & 4a4cc02c2f289d59c300810fb621eb28 \\
+moleculo\_reads/LR6000049-DNA\_A01-LRAAD-01\_LongRead.fastq.gz & 2015-11-30T17:50:17Z &   \num{825877986} & 86e75544f2d6ef5185bae419bbd2a4b2 & bace73ed4750b33fc144e56c155454ab \\
+moleculo\_reads/LR6000049-DNA\_A01-LRAAD-02\_LongRead.fastq.gz & 2015-11-30T17:51:34Z &   \num{835283315} & 4dea3e39a7a25059a6ebbd5588e845b2 & cb83c39f9a385f0b4fd1e507cfe40ff1 \\
+moleculo\_reads/LR6000049-DNA\_A01-LRAAD-03\_LongRead.fastq.gz & 2015-11-30T17:52:51Z &   \num{847867943} & 16276b6ef8dea90721eb67ac21d616e6 & 51d4ce37668684b4aa25e061fb95b4ef \\
+moleculo\_reads/LR6000049-DNA\_A01-LRAAD-04\_LongRead.fastq.gz & 2015-11-30T17:56:08Z &   \num{859746540} & 3364040445c7377c9323f82d98a2258c & dbe06ec4248199f416bb1d02ff1e65f5 \\
+moleculo\_reads/LR6000049-DNA\_A01-LRAAD-05\_LongRead.fastq.gz & 2015-11-30T17:56:51Z &   \num{854266597} & 7995559df803ef0de0250f1bfac71f1a & 98d30f3ceb813d9f53c6df2ed1fa2239 \\
+\end{tabularx}
+\end{sidewaystable}
+
 
 \subsection*{k-Mer Analysis and Filtering}
 
