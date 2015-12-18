@@ -37,6 +37,7 @@
 
 \usepackage[group-separator={,}, group-minimum-digits=3]{siunitx}
 \DeclareSIUnit\basepair{bp}
+\DeclareSIUnit\byte{B}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -61,7 +62,8 @@
 \addbibresource{supplement.bib}
 \usepackage{rotating}
 \usepackage{cleveref}
-\usepackage{caption}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\footnotesize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -155,6 +157,58 @@ Perl        & v5.14.2  & \url{https://www.perl.org/} \\
 
 \subsection*{Counting and Filtering bases on kmers}
 
+The kmers of all libraries where counted using the software jellyfish \parencite{Marcais2011}:
+
+\begin{lstlisting}[language=bash]
+# counting the kmers inside the trimmed sequence libraries
+mkdir kmer
+cd kmer
+jellyfish count -t 32 -m 19 -s 30G -C \
+   -o HD_gen.il_L300.trimmed_mer_19 \
+   ../trimmed/HD_gen.il_L300.trimmed_P1.fastq \
+   ../trimmed/HD_gen.il_L300.trimmed_P2.fastq
+jellyfish count -t 32 -m 19 -s 30G -C \
+   -o HD_gen.il_L500.trimmed_mer_19 \
+   ../trimmed/HD_gen.il_L500.trimmed_P1.fastq \
+   ../trimmed/HD_gen.il_L500.trimmed_P2.fastq
+jellyfish count -t 32 -m 19 -s 30G -C \
+   -o HD_gen.il_L800.trimmed_mer_19 \
+   ../trimmed/HD_gen.il_L800.trimmed_P1.fastq \
+   ../trimmed/HD_gen.il_L800.trimmed_P2.fastq
+for i in $(find ../trimmed/ -name HD_gen.mo_L[12345]*.trimmed.formatted.fastq)
+do
+    jellyfish count -t 32 -m 19 -s 30G -C -o $(basename "$i" .fastq)_mer_19 "$i"
+done
+
+# merging of the moleculo hashes
+jellyfish merge \
+   -o HD_gen.mo_L1-5.trimmed.formatted_mer_19 \
+   HD_gen.mo_L[12345].trimmed.formatted_mer_19
+\end{lstlisting}
+
+The resulting kmer hashes need to be dumped and converted to a hash
+utilized later during the filtering step. This step and the following
+required \SI{>200}{\giga\byte} of memory.
+
+\begin{lstlisting}[language=bash]
+cd kmer
+
+# dumping the kmer hashes
+for i in *_mer_19
+do
+   jellyfish dump --column --tab -o $(basename "$i").dump "$i"
+done
+
+# merging kmer hash information into a single perl hash
+prepare_filter_fastq_by_valid_kmers.pl \
+   --output kmer_hash.bin \
+   --kmerlib 300=HD_gen.il_L300.trimmed_mer_19.dump \
+   --kmerlib 500=HD_gen.il_L500.trimmed_mer_19.dump \
+   --kmerlib 800=HD_gen.il_L800.trimmed_mer_19.dump \
+   --kmerlib Moleculo=HD_gen.mo_L1-5.trimmed.formatted_mer_19.dump
+\end{lstlisting}
+
+The generated hash was used to filter indidual libraries.
 
 
 
