@@ -24,8 +24,6 @@
   Number                   = {4},
   Pages                    = {1513--1518},
   Volume                   = {108},
-
-  __markedentry            = {[frank:]},
   Abstract                 = {Massively parallel DNA sequencing technologies are revolutionizing genomics by making it possible to generate billions of relatively short (~100-base) sequence reads at very low cost. Whereas such data can be readily used for a wide range of biomedical applications, it has proven difficult to use them to generate high-quality de novo genome assemblies of large, repeat-rich vertebrate genomes. To date, the genome assemblies generated from such data have fallen far short of those obtained with the older (but much more expensive) capillary-based sequencing approach. Here, we report the development of an algorithm for genome assembly, ALLPATHS-LG, and its application to massively parallel DNA sequence data from the human and mouse genomes, generated on the Illumina platform. The resulting draft genome assemblies have good accuracy, short-range contiguity, long-range connectivity, and coverage of the genome. In particular, the base accuracy is high (≥99.95\%) and the scaffold sizes (N50 size = 11.5 Mb for human and 7.2 Mb for mouse) approach those obtained with capillary-based sequencing. The combination of improved sequencing technology and improved computational methods should now make it possible to increase dramatically the de novo sequencing of large genomes. The ALLPATHS-LG program is available at http://www.broadinstitute.org/science/programs/genome-biology/crd.},
   Doi                      = {10.1073/pnas.1017351108},
   Institution              = {Broad Institute of MIT and Harvard, Cambridge, MA 02142, USA.},
@@ -49,8 +47,6 @@
   Number                   = {4},
   Pages                    = {357--359},
   Volume                   = {9},
-
-  __markedentry            = {[frank:6]},
   Abstract                 = {As the rate of sequencing increases, greater throughput is demanded from read aligners. The full-text minute index is often used to make alignment very fast and memory-efficient, but the approach is ill-suited to finding longer, gapped alignments. Bowtie 2 combines the strengths of the full-text minute index with the flexibility and speed of hardware-accelerated dynamic programming algorithms to achieve a combination of high speed, sensitivity and accuracy.},
   Doi                      = {10.1038/nmeth.1923},
   Institution              = {Center for Bioinformatics and Computational Biology, Institute for Advanced Computer Studies, University of Maryland, College Park, Maryland, USA. blangmea@jhsph.edu},
@@ -62,6 +58,56 @@
   Pmid                     = {22388286},
   Timestamp                = {2015.12.19},
   Url                      = {http://dx.doi.org/10.1038/nmeth.1923}
+}
+
+@Article{Li2010,
+  Title                    = {Fast and accurate long-read alignment with Burrows-Wheeler transform.},
+  Author                   = {Li, Heng and Durbin, Richard},
+  Journal                  = {Bioinformatics},
+  Year                     = {2010},
+
+  Month                    = {Mar},
+  Number                   = {5},
+  Pages                    = {589--595},
+  Volume                   = {26},
+
+  __markedentry            = {[frank:6]},
+  Abstract                 = {Many programs for aligning short sequencing reads to a reference genome have been developed in the last 2 years. Most of them are very efficient for short reads but inefficient or not applicable for reads >200 bp because the algorithms are heavily and specifically tuned for short queries with low sequencing error rate. However, some sequencing platforms already produce longer reads and others are expected to become available soon. For longer reads, hashing-based software such as BLAT and SSAHA2 remain the only choices. Nonetheless, these methods are substantially slower than short-read aligners in terms of aligned bases per unit time.We designed and implemented a new algorithm, Burrows-Wheeler Aligner's Smith-Waterman Alignment (BWA-SW), to align long sequences up to 1 Mb against a large sequence database (e.g. the human genome) with a few gigabytes of memory. The algorithm is as accurate as SSAHA2, more accurate than BLAT, and is several to tens of times faster than both.http://bio-bwa.sourceforge.net},
+  Doi                      = {10.1093/bioinformatics/btp698},
+  Institution              = {Wellcome Trust Sanger Institute, Wellcome Genome Campus, Cambridge, CB10 1SA, UK.},
+  Keywords                 = {Algorithms; Base Sequence; Genome, Human; Genomics, methods; Humans; Sequence Alignment, methods; Sequence Analysis, DNA},
+  Language                 = {eng},
+  Medline-pst              = {ppublish},
+  Owner                    = {frank},
+  Pii                      = {btp698},
+  Pmid                     = {20080505},
+  Timestamp                = {2015.12.19},
+  Url                      = {http://dx.doi.org/10.1093/bioinformatics/btp698}
+}
+
+@Article{Li2009,
+  Title                    = {Fast and accurate short read alignment with Burrows-Wheeler transform.},
+  Author                   = {Li, Heng and Durbin, Richard},
+  Journal                  = {Bioinformatics},
+  Year                     = {2009},
+
+  Month                    = {Jul},
+  Number                   = {14},
+  Pages                    = {1754--1760},
+  Volume                   = {25},
+
+  __markedentry            = {[frank:]},
+  Abstract                 = {The enormous amount of short reads generated by the new DNA sequencing technologies call for the development of fast and accurate read alignment programs. A first generation of hash table-based methods has been developed, including MAQ, which is accurate, feature rich and fast enough to align short reads from a single individual. However, MAQ does not support gapped alignment for single-end reads, which makes it unsuitable for alignment of longer reads where indels may occur frequently. The speed of MAQ is also a concern when the alignment is scaled up to the resequencing of hundreds of individuals.We implemented Burrows-Wheeler Alignment tool (BWA), a new read alignment package that is based on backward search with Burrows-Wheeler Transform (BWT), to efficiently align short sequencing reads against a large reference sequence such as the human genome, allowing mismatches and gaps. BWA supports both base space reads, e.g. from Illumina sequencing machines, and color space reads from AB SOLiD machines. Evaluations on both simulated and real data suggest that BWA is approximately 10-20x faster than MAQ, while achieving similar accuracy. In addition, BWA outputs alignment in the new standard SAM (Sequence Alignment/Map) format. Variant calling and other downstream analyses after the alignment can be achieved with the open source SAMtools software package.http://maq.sourceforge.net.},
+  Doi                      = {10.1093/bioinformatics/btp324},
+  Institution              = {Wellcome Trust Sanger Institute, Wellcome Trust Genome Campus, Cambridge, CB10 1SA, UK.},
+  Keywords                 = {Algorithms; Genomics, methods; Sequence Alignment, methods; Sequence Analysis, DNA, methods; Software},
+  Language                 = {eng},
+  Medline-pst              = {ppublish},
+  Owner                    = {frank},
+  Pii                      = {btp324},
+  Pmid                     = {19451168},
+  Timestamp                = {2015.12.19},
+  Url                      = {http://dx.doi.org/10.1093/bioinformatics/btp324}
 }
 
 @Article{Marcais2011,
