@@ -2,6 +2,28 @@
 % Encoding: UTF-8
 
 
+@Article{Besemer2001,
+  Title                    = {GeneMarkS: a self-training method for prediction of gene starts in microbial genomes. Implications for finding sequence motifs in regulatory regions.},
+  Author                   = {Besemer, J. and Lomsadze, A. and Borodovsky, M.},
+  Journal                  = {Nucleic Acids Res},
+  Year                     = {2001},
+
+  Month                    = {Jun},
+  Number                   = {12},
+  Pages                    = {2607--2618},
+  Volume                   = {29},
+
+  __markedentry            = {[frank:]},
+  Abstract                 = {Improving the accuracy of prediction of gene starts is one of a few remaining open problems in computer prediction of prokaryotic genes. Its difficulty is caused by the absence of relatively strong sequence patterns identifying true translation initiation sites. In the current paper we show that the accuracy of gene start prediction can be improved by combining models of protein-coding and non-coding regions and models of regulatory sites near gene start within an iterative Hidden Markov model based algorithm. The new gene prediction method, called GeneMarkS, utilizes a non-supervised training procedure and can be used for a newly sequenced prokaryotic genome with no prior knowledge of any protein or rRNA genes. The GeneMarkS implementation uses an improved version of the gene finding program GeneMark.hmm, heuristic Markov models of coding and non-coding regions and the Gibbs sampling multiple alignment program. GeneMarkS predicted precisely 83.2\% of the translation starts of GenBank annotated Bacillus subtilis genes and 94.4\% of translation starts in an experimentally validated set of Escherichia coli genes. We have also observed that GeneMarkS detects prokaryotic genes, in terms of identifying open reading frames containing real genes, with an accuracy matching the level of the best currently used gene detection methods. Accurate translation start prediction, in addition to the refinement of protein sequence N-terminal data, provides the benefit of precise positioning of the sequence region situated upstream to a gene start. Therefore, sequence motifs related to transcription and translation regulatory sites can be revealed and analyzed with higher precision. These motifs were shown to possess a significant variability, the functional and evolutionary connections of which are discussed.},
+  Institution              = {School of Biology and School of Mathematics, Georgia Institute of Technology, Atlanta, GA 30332-0230, USA.},
+  Keywords                 = {Algorithms; Bacillus subtilis, genetics; Base Sequence; Codon, Initiator, genetics; Computational Biology, methods; Computer Simulation; Databases as Topic; Escherichia coli, genetics; Evolution, Molecular; Genes, Archaeal, genetics; Genes, Bacterial, genetics; Genes, Overlapping, genetics; Genome, Archaeal; Genome, Bacterial; Internet; Likelihood Functions; Markov Chains; Open Reading Frames, genetics; Protein Biosynthesis, genetics; Reproducibility of Results; Sensitivity and Specificity; Sequence Alignment; Software; Transcription, Genetic, genetics},
+  Language                 = {eng},
+  Medline-pst              = {ppublish},
+  Owner                    = {frank},
+  Pmid                     = {11410670},
+  Timestamp                = {2015.12.19}
+}
+
 @Article{Boothby2015,
   Title                    = {Evidence for extensive horizontal gene transfer from the draft genome of a tardigrade},
   Author                   = {Boothby, Thomas C. and Tenlen, Jennifer R. and Smith, Frank W. and Wang, Jeremy R. and Patanella, Kiera A. and Osborne Nishimura, Erin and Tintori, Sophia C. and Li, Qing and Jones, Corbin D. and Yandell, Mark and Messina, David N. and Glasscock, Jarret and Goldstein, Bob},
@@ -70,8 +92,6 @@
   Number                   = {5},
   Pages                    = {589--595},
   Volume                   = {26},
-
-  __markedentry            = {[frank:6]},
   Abstract                 = {Many programs for aligning short sequencing reads to a reference genome have been developed in the last 2 years. Most of them are very efficient for short reads but inefficient or not applicable for reads >200 bp because the algorithms are heavily and specifically tuned for short queries with low sequencing error rate. However, some sequencing platforms already produce longer reads and others are expected to become available soon. For longer reads, hashing-based software such as BLAT and SSAHA2 remain the only choices. Nonetheless, these methods are substantially slower than short-read aligners in terms of aligned bases per unit time.We designed and implemented a new algorithm, Burrows-Wheeler Aligner's Smith-Waterman Alignment (BWA-SW), to align long sequences up to 1 Mb against a large sequence database (e.g. the human genome) with a few gigabytes of memory. The algorithm is as accurate as SSAHA2, more accurate than BLAT, and is several to tens of times faster than both.http://bio-bwa.sourceforge.net},
   Doi                      = {10.1093/bioinformatics/btp698},
   Institution              = {Wellcome Trust Sanger Institute, Wellcome Genome Campus, Cambridge, CB10 1SA, UK.},
@@ -95,8 +115,6 @@
   Number                   = {14},
   Pages                    = {1754--1760},
   Volume                   = {25},
-
-  __markedentry            = {[frank:]},
   Abstract                 = {The enormous amount of short reads generated by the new DNA sequencing technologies call for the development of fast and accurate read alignment programs. A first generation of hash table-based methods has been developed, including MAQ, which is accurate, feature rich and fast enough to align short reads from a single individual. However, MAQ does not support gapped alignment for single-end reads, which makes it unsuitable for alignment of longer reads where indels may occur frequently. The speed of MAQ is also a concern when the alignment is scaled up to the resequencing of hundreds of individuals.We implemented Burrows-Wheeler Alignment tool (BWA), a new read alignment package that is based on backward search with Burrows-Wheeler Transform (BWT), to efficiently align short sequencing reads against a large reference sequence such as the human genome, allowing mismatches and gaps. BWA supports both base space reads, e.g. from Illumina sequencing machines, and color space reads from AB SOLiD machines. Evaluations on both simulated and real data suggest that BWA is approximately 10-20x faster than MAQ, while achieving similar accuracy. In addition, BWA outputs alignment in the new standard SAM (Sequence Alignment/Map) format. Variant calling and other downstream analyses after the alignment can be achieved with the open source SAMtools software package.http://maq.sourceforge.net.},
   Doi                      = {10.1093/bioinformatics/btp324},
   Institution              = {Wellcome Trust Sanger Institute, Wellcome Trust Genome Campus, Cambridge, CB10 1SA, UK.},
@@ -108,6 +126,31 @@
   Pmid                     = {19451168},
   Timestamp                = {2015.12.19},
   Url                      = {http://dx.doi.org/10.1093/bioinformatics/btp324}
+}
+
+@Article{Lomsadze2014,
+  Title                    = {Integration of mapped RNA-Seq reads into automatic training of eukaryotic gene finding algorithm.},
+  Author                   = {Lomsadze, Alexandre and Burns, Paul D. and Borodovsky, Mark},
+  Journal                  = {Nucleic Acids Res},
+  Year                     = {2014},
+
+  Month                    = {Sep},
+  Number                   = {15},
+  Pages                    = {e119},
+  Volume                   = {42},
+
+  __markedentry            = {[frank:6]},
+  Abstract                 = {We present a new approach to automatic training of a eukaryotic ab initio gene finding algorithm. With the advent of Next-Generation Sequencing, automatic training has become paramount, allowing genome annotation pipelines to keep pace with the speed of genome sequencing. Earlier we developed GeneMark-ES, currently the only gene finding algorithm for eukaryotic genomes that performs automatic training in unsupervised ab initio mode. The new algorithm, GeneMark-ET augments GeneMark-ES with a novel method that integrates RNA-Seq read alignments into the self-training procedure. Use of 'assembled' RNA-Seq transcripts is far from trivial; significant error rate of assembly was revealed in recent assessments. We demonstrated in computational experiments that the proposed method of incorporation of 'unassembled' RNA-Seq reads improves the accuracy of gene prediction; particularly, for the 1.3 GB genome of Aedes aegypti the mean value of prediction Sensitivity and Specificity at the gene level increased over GeneMark-ES by 24.5\%. In the current surge of genomic data when the need for accurate sequence annotation is higher than ever, GeneMark-ET will be a valuable addition to the narrow arsenal of automatic gene prediction tools.},
+  Doi                      = {10.1093/nar/gku557},
+  Institution              = {Joint Georgia Tech and Emory Wallace H. Coulter Department of Biomedical Engineering, Atlanta, GA, USA 30332 School of Computational Science and Engineering, Georgia Tech, Atlanta, GA, USA 30332 Department of Bioinformatics, Moscow Institute of Physics and Technology, Moscow, Russia 141700 borodovsky@gatech.edu.},
+  Keywords                 = {Algorithms; Animals; Culicidae, genetics; Drosophila melanogaster, genetics; Gene Expression Profiling; Genes; Genes, Insect; High-Throughput Nucleotide Sequencing, methods; Sequence Alignment, methods; Sequence Analysis, RNA, methods},
+  Language                 = {eng},
+  Medline-pst              = {ppublish},
+  Owner                    = {frank},
+  Pii                      = {gku557},
+  Pmid                     = {24990371},
+  Timestamp                = {2015.12.19},
+  Url                      = {http://dx.doi.org/10.1093/nar/gku557}
 }
 
 @Article{Marcais2011,
