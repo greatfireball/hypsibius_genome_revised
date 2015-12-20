@@ -68,7 +68,7 @@
   Pages                    = {W353--W356},
   Volume                   = {39},
 
-  __markedentry            = {[frank:6]},
+  __markedentry            = {[frank:]},
   Abstract                 = {Genomic neighborhood can provide important insights into evolution and function of a protein or gene. When looking at operons, changes in operon structure and composition can only be revealed by looking at the operon as a whole. To facilitate the analysis of the genomic context of a query in multiple organisms we have developed Genomic Context Viewer (GCView). GCView accepts results from one or multiple protein homology searches such as BLASTp as input. For each hit, the neighboring protein-coding genes are extracted, the regions of homology are labeled for each input and the results are presented as a clear, interactive graphical output. It is also possible to add more searches to iteratively refine the output. GCView groups outputs by the hits for different proteins. This allows for easy comparison of different operon compositions and structures. The tool is embedded in the framework of the Bioinformatics Toolkit of the Max-Planck Institute for Developmental Biology (MPI Toolkit). Job results from the homology search tools inside the MPI Toolkit can be forwarded to GCView and results can be subsequently analyzed by sequence analysis tools. Results are stored online, allowing for later reinspection. GCView is freely available at http://toolkit.tuebingen.mpg.de/gcview.},
   Doi                      = {10.1093/nar/gkr364},
   Institution              = {Max Planck Institute for Developmental Biology, Department I, Protein Evolution, Spemannstr. 35, 72076 Tübingen, Germany.},
@@ -161,8 +161,6 @@
   Number                   = {15},
   Pages                    = {e119},
   Volume                   = {42},
-
-  __markedentry            = {[frank:]},
   Abstract                 = {We present a new approach to automatic training of a eukaryotic ab initio gene finding algorithm. With the advent of Next-Generation Sequencing, automatic training has become paramount, allowing genome annotation pipelines to keep pace with the speed of genome sequencing. Earlier we developed GeneMark-ES, currently the only gene finding algorithm for eukaryotic genomes that performs automatic training in unsupervised ab initio mode. The new algorithm, GeneMark-ET augments GeneMark-ES with a novel method that integrates RNA-Seq read alignments into the self-training procedure. Use of 'assembled' RNA-Seq transcripts is far from trivial; significant error rate of assembly was revealed in recent assessments. We demonstrated in computational experiments that the proposed method of incorporation of 'unassembled' RNA-Seq reads improves the accuracy of gene prediction; particularly, for the 1.3 GB genome of Aedes aegypti the mean value of prediction Sensitivity and Specificity at the gene level increased over GeneMark-ES by 24.5\%. In the current surge of genomic data when the need for accurate sequence annotation is higher than ever, GeneMark-ET will be a valuable addition to the narrow arsenal of automatic gene prediction tools.},
   Doi                      = {10.1093/nar/gku557},
   Institution              = {Joint Georgia Tech and Emory Wallace H. Coulter Department of Biomedical Engineering, Atlanta, GA, USA 30332 School of Computational Science and Engineering, Georgia Tech, Atlanta, GA, USA 30332 Department of Bioinformatics, Moscow Institute of Physics and Technology, Moscow, Russia 141700 borodovsky@gatech.edu.},
@@ -189,6 +187,31 @@
   Doi                      = {10.1093/bioinformatics/btr011},
   Eprint                   = {http://bioinformatics.oxfordjournals.org/content/27/6/764.full.pdf+html},
   Url                      = {http://bioinformatics.oxfordjournals.org/content/27/6/764.abstract}
+}
+
+@Article{Quinlan2010,
+  Title                    = {BEDTools: a flexible suite of utilities for comparing genomic features.},
+  Author                   = {Quinlan, Aaron R. and Hall, Ira M.},
+  Journal                  = {Bioinformatics},
+  Year                     = {2010},
+
+  Month                    = {Mar},
+  Number                   = {6},
+  Pages                    = {841--842},
+  Volume                   = {26},
+
+  __markedentry            = {[frank:6]},
+  Abstract                 = {Testing for correlations between different sets of genomic features is a fundamental task in genomics research. However, searching for overlaps between features with existing web-based methods is complicated by the massive datasets that are routinely produced with current sequencing technologies. Fast and flexible tools are therefore required to ask complex questions of these data in an efficient manner.This article introduces a new software suite for the comparison, manipulation and annotation of genomic features in Browser Extensible Data (BED) and General Feature Format (GFF) format. BEDTools also supports the comparison of sequence alignments in BAM format to both BED and GFF features. The tools are extremely efficient and allow the user to compare large datasets (e.g. next-generation sequencing data) with both public and custom genome annotation tracks. BEDTools can be combined with one another as well as with standard UNIX commands, thus facilitating routine genomics tasks as well as pipelines that can quickly answer intricate questions of large genomic datasets.BEDTools was written in C++. Source code and a comprehensive user manual are freely available at http://code.google.com/p/bedtoolsaaronquinlan@gmail.com; imh4y@virginia.eduSupplementary data are available at Bioinformatics online.},
+  Doi                      = {10.1093/bioinformatics/btq033},
+  Institution              = {Department of Biochemistry and Molecular Genetics, University of Virginia School of Medicine, Charlottesville, VA 22908, USA. aaronquinlan@gmail.com},
+  Keywords                 = {Genome; Genomics, methods; Internet; Software},
+  Language                 = {eng},
+  Medline-pst              = {ppublish},
+  Owner                    = {frank},
+  Pii                      = {btq033},
+  Pmid                     = {20110278},
+  Timestamp                = {2015.12.20},
+  Url                      = {http://dx.doi.org/10.1093/bioinformatics/btq033}
 }
 
 @Article{Ribeiro2012,
