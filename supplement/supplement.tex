@@ -422,7 +422,16 @@ do
    done
 done
 
-
+# extraction of per base coverage
+for REF in HD_gen.supported.fasta HD_gen.unsupported.fasta
+do
+   for BAM in "$REF"*.bam
+   do
+      OUT=$(basename "$BAM" .bam).cov
+      bedtools genomecov \
+         -ibam "$BAM" -d -g "$REF" > "$OUT"
+   done
+done
 \end{lstlisting}
 
 Per-site Variability ?
