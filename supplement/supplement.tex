@@ -320,10 +320,27 @@ GeneMark-S and GeneMark-ES
 CGView -> Visualizatin
 
 \subsection*{Assembly Comparison}
+\paragraph{GC content}
+The GC content was determined for all contigs
+\SI{\ge1}{\kilo\basepair} using a sliding window of
+\SI{1}{\kilo\basepair} and a stepsize of \SI{100}{\basepair} by the
+perl script \texttt{sliding\_window\_gc.pl}.
 
-GC Sliding Windows ?
-Mapping Coverage ?
-Per-site Variability ?
+\begin{lstlisting}[language=bash]
+mkdir cg
+cd cg
+
+for i in ../assemblies/HD*.fasta
+do
+   ../scripts/sliding_window_gc/sliding_window_gc.pl
+      --in "$i" \
+      --min-length 1000
+      > $(basename "$i").sliding_gc.tsv
+done
+\end{lstlisting}
+
+
+Mapping Coverage ?  Per-site Variability ?
 sm-Packages to compare distributions
 
 \printbibliography
