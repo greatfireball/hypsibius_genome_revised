@@ -103,6 +103,56 @@
   Url                      = {http://dx.doi.org/10.1038/nmeth.1923}
 }
 
+@Article{Li2011a,
+  Title                    = {A statistical framework for SNP calling, mutation discovery, association mapping and population genetical parameter estimation from sequencing data.},
+  Author                   = {Li, Heng},
+  Journal                  = {Bioinformatics},
+  Year                     = {2011},
+
+  Month                    = {Nov},
+  Number                   = {21},
+  Pages                    = {2987--2993},
+  Volume                   = {27},
+
+  __markedentry            = {[frank:6]},
+  Abstract                 = {Most existing methods for DNA sequence analysis rely on accurate sequences or genotypes. However, in applications of the next-generation sequencing (NGS), accurate genotypes may not be easily obtained (e.g. multi-sample low-coverage sequencing or somatic mutation discovery). These applications press for the development of new methods for analyzing sequence data with uncertainty.We present a statistical framework for calling SNPs, discovering somatic mutations, inferring population genetical parameters and performing association tests directly based on sequencing data without explicit genotyping or linkage-based imputation. On real data, we demonstrate that our method achieves comparable accuracy to alternative methods for estimating site allele count, for inferring allele frequency spectrum and for association mapping. We also highlight the necessity of using symmetric datasets for finding somatic mutations and confirm that for discovering rare events, mismapping is frequently the leading source of errors.http://samtools.sourceforge.net.hengli@broadinstitute.org.},
+  Doi                      = {10.1093/bioinformatics/btr509},
+  Institution              = {Medical Population Genetics Program, Broad Institute, 7 Cambridge Center, Cambridge, MA 02142, USA. hengli@broadinstitute.org},
+  Keywords                 = {Alleles; Data Interpretation, Statistical; Gene Frequency; Genetic Association Studies; Genetics, Population, methods; Genotype; Humans; Mutation; Polymorphism, Single Nucleotide; Sequence Analysis, DNA},
+  Language                 = {eng},
+  Medline-pst              = {ppublish},
+  Owner                    = {frank},
+  Pii                      = {btr509},
+  Pmid                     = {21903627},
+  Timestamp                = {2015.12.20},
+  Url                      = {http://dx.doi.org/10.1093/bioinformatics/btr509}
+}
+
+@Article{Li2011b,
+  Title                    = {Improving SNP discovery by base alignment quality.},
+  Author                   = {Li, Heng},
+  Journal                  = {Bioinformatics},
+  Year                     = {2011},
+
+  Month                    = {Apr},
+  Number                   = {8},
+  Pages                    = {1157--1158},
+  Volume                   = {27},
+
+  __markedentry            = {[frank:6]},
+  Abstract                 = {I propose a new application of profile Hidden Markov Models in the area of SNP discovery from resequencing data, to greatly reduce false SNP calls caused by misalignments around insertions and deletions (indels). The central concept is per-Base Alignment Quality, which accurately measures the probability of a read base being wrongly aligned. The effectiveness of BAQ has been positively confirmed on large datasets by the 1000 Genomes Project analysis subgroup.http://samtools.sourceforge.nethengli@broadinstitute.org.},
+  Doi                      = {10.1093/bioinformatics/btr076},
+  Institution              = {Broad Institute, 7 Cambridge Center, Cambridge, MA 02142, USA. hengli@broadinstitute.org},
+  Keywords                 = {Algorithms; Base Sequence; Genomics; INDEL Mutation; Markov Chains; Polymorphism, Single Nucleotide; Sequence Alignment, methods/standards},
+  Language                 = {eng},
+  Medline-pst              = {ppublish},
+  Owner                    = {frank},
+  Pii                      = {btr076},
+  Pmid                     = {21320865},
+  Timestamp                = {2015.12.20},
+  Url                      = {http://dx.doi.org/10.1093/bioinformatics/btr076}
+}
+
 @Article{Li2010,
   Title                    = {Fast and accurate long-read alignment with Burrows-Wheeler transform.},
   Author                   = {Li, Heng and Durbin, Richard},
@@ -126,7 +176,7 @@
   Url                      = {http://dx.doi.org/10.1093/bioinformatics/btp698}
 }
 
-@Article{Li2009,
+@Article{Li2009a,
   Title                    = {Fast and accurate short read alignment with Burrows-Wheeler transform.},
   Author                   = {Li, Heng and Durbin, Richard},
   Journal                  = {Bioinformatics},
@@ -147,6 +197,28 @@
   Pmid                     = {19451168},
   Timestamp                = {2015.12.19},
   Url                      = {http://dx.doi.org/10.1093/bioinformatics/btp324}
+}
+
+@Article{Li2009b,
+  Title                    = {The Sequence Alignment/Map format and SAMtools.},
+  Author                   = {Li, Heng and Handsaker, Bob and Wysoker, Alec and Fennell, Tim and Ruan, Jue and Homer, Nils and Marth, Gabor and Abecasis, Goncalo and Durbin, Richard and , 1000 Genome Project Data Processing Subgroup},
+  Journal                  = {Bioinformatics},
+  Year                     = {2009},
+
+  Month                    = {Aug},
+  Number                   = {16},
+  Pages                    = {2078--2079},
+  Volume                   = {25},
+
+  __markedentry            = {[frank:6]},
+  Abstract                 = {The Sequence Alignment/Map (SAM) format is a generic alignment format for storing read alignments against reference sequences, supporting short and long reads (up to 128 Mbp) produced by different sequencing platforms. It is flexible in style, compact in size, efficient in random access and is the format in which alignments from the 1000 Genomes Project are released. SAMtools implements various utilities for post-processing alignments in the SAM format, such as indexing, variant caller and alignment viewer, and thus provides universal tools for processing read alignments.http://samtools.sourceforge.net.},
+  Institution              = {Wellcome Trust Sanger Institute, Wellcome Trust Genome Campus, Cambridge, CB10 1SA, UK, Broad Institute of MIT and Harvard, Cambridge, MA 02141, USA.},
+  Keywords                 = {Algorithms; Base Sequence; Computational Biology, methods; Genome; Genomics; Molecular Sequence Data; Sequence Alignment, methods; Sequence Analysis, DNA, methods; Software},
+  Language                 = {eng},
+  Medline-pst              = {ppublish},
+  Owner                    = {frank},
+  Pmid                     = {19505943},
+  Timestamp                = {2015.12.20}
 }
 
 @Article{Lomsadze2014,
@@ -197,8 +269,6 @@
   Number                   = {6},
   Pages                    = {841--842},
   Volume                   = {26},
-
-  __markedentry            = {[frank:]},
   Abstract                 = {Testing for correlations between different sets of genomic features is a fundamental task in genomics research. However, searching for overlaps between features with existing web-based methods is complicated by the massive datasets that are routinely produced with current sequencing technologies. Fast and flexible tools are therefore required to ask complex questions of these data in an efficient manner.This article introduces a new software suite for the comparison, manipulation and annotation of genomic features in Browser Extensible Data (BED) and General Feature Format (GFF) format. BEDTools also supports the comparison of sequence alignments in BAM format to both BED and GFF features. The tools are extremely efficient and allow the user to compare large datasets (e.g. next-generation sequencing data) with both public and custom genome annotation tracks. BEDTools can be combined with one another as well as with standard UNIX commands, thus facilitating routine genomics tasks as well as pipelines that can quickly answer intricate questions of large genomic datasets.BEDTools was written in C++. Source code and a comprehensive user manual are freely available at http://code.google.com/p/bedtoolsaaronquinlan@gmail.com; imh4y@virginia.eduSupplementary data are available at Bioinformatics online.},
   Doi                      = {10.1093/bioinformatics/btq033},
   Institution              = {Department of Biochemistry and Molecular Genetics, University of Virginia School of Medicine, Charlottesville, VA 22908, USA. aaronquinlan@gmail.com},
@@ -246,7 +316,7 @@
   Pages                    = {1611--1618},
   Volume                   = {12},
 
-  __markedentry            = {[frank:6]},
+  __markedentry            = {[frank:]},
   Abstract                 = {The Bioperl project is an international open-source collaboration of biologists, bioinformaticians, and computer scientists that has evolved over the past 7 yr into the most comprehensive library of Perl modules available for managing and manipulating life-science information. Bioperl provides an easy-to-use, stable, and consistent programming interface for bioinformatics application programmers. The Bioperl modules have been successfully and repeatedly used to reduce otherwise complex tasks to only a few lines of code. The Bioperl object model has been proven to be flexible enough to support enterprise-level applications such as EnsEMBL, while maintaining an easy learning curve for novice Perl programmers. Bioperl is capable of executing analyses and processing results from programs such as BLAST, ClustalW, or the EMBOSS suite. Interoperation with modules written in Python and Java is supported through the evolving BioCORBA bridge. Bioperl provides access to data stores such as GenBank and SwissProt via a flexible series of sequence input/output modules, and to the emerging common sequence data storage format of the Open Bioinformatics Database Access project. This study describes the overall architecture of the toolkit, the problem domains that it addresses, and gives specific examples of how the toolkit can be used to solve common life-sciences problems. We conclude with a discussion of how the open-source nature of the project has contributed to the development effort.},
   Doi                      = {10.1101/gr.361602},
   Institution              = {University Program in Genetics, Duke University, Durham, North Carolina 27710, USA. jason.stajich@duke.edu},
