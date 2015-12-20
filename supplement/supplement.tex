@@ -195,7 +195,8 @@ jellyfish merge \
 
 The resulting kmer hashes need to be dumped and converted to a hash
 utilized later during the filtering step. This step and the following
-required \SI{>200}{\giga\byte} of memory.
+required \SI{>200}{\giga\byte} of memory and was performed by the perl
+script \texttt{prepare\_filter\_fastq\_by\_valid\_kmers.pl}.
 
 \begin{lstlisting}[language=bash]
 cd kmer
@@ -215,7 +216,8 @@ prepare_filter_fastq_by_valid_kmers.pl \
    --kmerlib Moleculo=HD_gen.mo_L1-5.trimmed.formatted_mer_19.dump
 \end{lstlisting}
 
-The generated hash was used to filter individual libraries.
+The generated hash was used to filter individual libraries by the perl
+script \texttt{filter\_fastq\_by\_valid\_kmers\_reduced.pl}.
 
 \begin{lstlisting}[language=bash]
 mkdir kmer_filtered
