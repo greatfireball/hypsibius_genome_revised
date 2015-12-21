@@ -92,32 +92,55 @@
 \includegraphics[width=1\textwidth]{supplementary_figure_1}
 \captionof{figure}[kmer Analysis]{The plots depict the kmer
   distribution for each library before (black line) and after
-  classification into ``trusted'' (green line) and ``untrusted'' kmers
+  classification into `trusted' (green line) and `untrusted' kmers
   (red line).}
 
 \pagebreak
 
 \includegraphics[width=1\textwidth]{supplementary_figure_2}
-\captionof{figure}[Assembly Feature Comparisons]{A) Per-site coverage of trusted and untrusted assembly based on mappings of Moleculo reads. Contigs from the untrusted assembly generally don't share the coverage of the trusted, most likley nuclear, genome. B) GC concent of trusted and untrusted assembly estimated using sliding window approach. The untrusted assembly contains multiple peaks pointing towards contig subpopulations with different GC content. C) Per-site variability of trusted und untrusted assembly which can serve as ploidy proxy. The untrusted variability spectrum seems distored and contains a multiude of different peaks while the trusted assembly shows a typical diploid spectrum. D) Lenght distribution of intergenetic regions. Intragenetic regions are significantly larger in the trusted assembly than in the trusted.}
+\captionof{figure}[Assembly Feature Comparisons]{A) Per-site coverage
+  of trusted and untrusted assembly based on mappings of Moleculo
+  reads. Contigs from the untrusted assembly generally don't share the
+  coverage of the trusted, most likley nuclear, genome. B) GC concent
+  of trusted and untrusted assembly estimated using sliding window
+  approach. The untrusted assembly contains multiple peaks pointing
+  towards contig subpopulations with different GC content. C) Per-site
+  variability of trusted und untrusted assembly which can serve as
+  ploidy proxy. The untrusted variability spectrum seems distored and
+  contains a multiude of different peaks while the trusted assembly
+  shows a typical diploid spectrum. D) Lenght distribution of
+  intergenetic regions. Intragenetic regions are significantly larger
+  in the trusted assembly than in the trusted.}
 
 \pagebreak
 
 \includegraphics[width=1\textwidth]{supplementary_figure_3}
-\captionof{figure}[Unknown Bacterial Genome]{Circular map of an unknown bacterial genome probably belonging to the Chitinophagaceae drawn with CGView. Track 1 and 2 (blue) indicate GeneMark-S annoated genes on forward and reverse strand. Track 3 (red) visualizes regions of homology to a set of 30,844 Chitinophagaceae proteins downloaded from UniProtKB. Track 4 (green) shows homology between GeneMark-S predicted proteins and the published protein set of Boothby et al.}
+\captionof{figure}[Unknown Bacterial Genome]{Circular map of an
+  unknown bacterial genome probably belonging to the Chitinophagaceae
+  drawn with CGView. Track 1 and 2 (blue) indicate GeneMark-S annoated
+  genes on forward and reverse strand. Track 3 (red) visualizes
+  regions of homology to a set of 30,844 Chitinophagaceae proteins
+  downloaded from UniProtKB. Track 4 (green) shows homology between
+  GeneMark-S predicted proteins and the published protein set of
+  Boothby et al.}
 
 \pagebreak
 
 \section{Methods}
 
 \subsection*{GitHub repository}
-All script files are available from our GitHub repository (\url{https://github.com/greatfireball/hypsibius_genome_revised/}).
+All script files are available from our GitHub repository
+(\url{https://github.com/greatfireball/hypsibius_genome_revised/}).
 
 \subsection*{Data set}
-We used the data set provided by \textcite{Boothby2015} and downloaded the data from \url{http://weatherby.genetics.utah.edu/seq_transf/}. A complete list of the used input files are given in \cref{tab:inputdata}.
+We used the data set provided by \textcite{Boothby2015} and downloaded
+the data from \url{http://weatherby.genetics.utah.edu/seq_transf/}. A
+complete list of the used input files are given in
+\cref{tab:inputdata}.
 
 \begin{sidewaystable}
 \centering
-\captionof{table}{\label{tab:inputdata}Bla}
+\captionof{table}{\label{tab:inputdata}Used data set including checksums for compressed and decompressed file content.}
 \begin{tabularx}{\linewidth}{>{\ttfamily\tiny}X>{\ttfamily\tiny}l>{\ttfamily\tiny}r*{2}{>{\ttfamily\tiny}l}}\toprule
 Filename and location                                          & Modification time    & Size in Bytes     & MD5 check sum                    & MD5 check sum decompressed \\ \midrule
 \href{http://weatherby.genetics.utah.edu/seq_transf/tg.genome.fsa.gz}{tg.genome.fsa.gz}
@@ -189,7 +212,8 @@ java -jar trimmomatic-0.35.jar SE -phred33 HD_gen.mo_L[12345]*.fastq \
 
 \subsection*{Estimation of the genomes size}
 
-The genome size was esitmated by running the standalone error correction pipeline of Allpahts-LG.
+The genome size was esitmated by running the standalone error
+correction pipeline of Allpaths-LG.
 
 \begin{lstlisting}{language=bash}
 ErrorCorrectReads.pl PHRED_ENCODING=33 READS_OUT=$OUT \
@@ -201,7 +225,8 @@ ErrorCorrectReads.pl PHRED_ENCODING=33 READS_OUT=$OUT \
 
 \subsection*{Counting and Filtering bases on kmers}
 
-The kmers of all libraries where counted using the software jellyfish \parencite{Marcais2011}:
+The kmers of all libraries where counted using the software jellyfish
+\parencite{Marcais2011}:
 
 \begin{lstlisting}[language=bash]
 ./scripts/count_kmers.sh
@@ -223,10 +248,10 @@ script \texttt{filter\_fastq\_by\_valid\_kmers\_reduced.pl}.
 ./scripts/filter_input_data.sh
 \end{lstlisting}
 
-The filtered data sets are classified as ``trusted'' or ``untrusted''
-based on the ``trusted'' kmer content. Reads with at least
-\SI{95}{\percent} ``trusted'' kmers content are called ``trusted''
-while reads below that threshold are classified as ``untrusted''.
+The filtered data sets are classified as `trusted' or `untrusted'
+based on the `trusted' kmer content. Reads with at least
+\SI{95}{\percent} `trusted' kmers content are called `trusted'
+while reads below that threshold are classified as `untrusted'.
 
 \begin{lstlisting}[language=bash]
 ./scripts/extract_classified_sequences.sh
@@ -262,7 +287,8 @@ The largest untrusted sequence was visualized using the CGView Server.
 
 \subsection*{Assembly Comparison}
 
-Trusted and untrusted assemblies were compared using GC content, mapping coverage, per-site variability and gene spacing.
+Trusted and untrusted assemblies were compared using GC content,
+mapping coverage, per-site variability and gene spacing.
 
 \paragraph{GC content}
 The GC content was determined for all contigs
@@ -295,18 +321,23 @@ used \texttt{bowtie2} as mapper. Long read libraries were mapped by
 
 \paragraph{per-site Variability}
 
-The per-site variablity was calculated by counting bases covering each site of the two assembly. Each base that occurred at a given site with a minimum frequency of 0.2 was taken into account and a histogram of all these base frequencies was created.
+The per-site variablity was calculated by counting bases covering each
+site of the two assembly. Each base that occurred at a given site with
+a minimum frequency of \num{0.2} was taken into account and a histogram of
+all these base frequencies was created.
 
 \paragraph{Gene Spacing}
 
-Lenght of the intragenetic regions were directly extracted from the GeneMark-S/ES annotation files.
+Lenght of the intragenetic regions were directly extracted from the
+GeneMark-S/ES annotation files.
 
 \begin{lstlisting}[language=bash]
 gtf2genespacing.pl --gtf HD_gen.supported.gtf 
 gtf2genespacing.pl --gtf HD_gen.unsupported.gtf
 \end{lstlisting}
 
-All resulting data set were compared, tested and visualized using the GNU R package 'sm'.
+All resulting data set were compared, tested and visualized using the
+GNU R package `sm'.
 
 \printbibliography
 
