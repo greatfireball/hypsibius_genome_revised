@@ -101,14 +101,14 @@
 \captionof{figure}[Assembly Feature Comparisons]{A) Per-site coverage
   of trusted and untrusted assembly based on mappings of Moleculo
   reads. Contigs from the untrusted assembly generally don't share the
-  coverage of the trusted, most likley nuclear, genome. B) GC concent
+  coverage of the trusted, most likley nuclear, genome. B) GC content
   of trusted and untrusted assembly estimated using sliding window
   approach. The untrusted assembly contains multiple peaks pointing
   towards contig subpopulations with different GC content. C) Per-site
   variability of trusted und untrusted assembly which can serve as
   ploidy proxy. The untrusted variability spectrum seems distored and
   contains a multiude of different peaks while the trusted assembly
-  shows a typical diploid spectrum. D) Lenght distribution of
+  shows a typical diploid spectrum. D) Length distribution of
   intergenetic regions. Intragenetic regions are significantly larger
   in the trusted assembly than in the trusted.}
 
@@ -117,12 +117,12 @@
 \includegraphics[width=1\textwidth]{supplementary_figure_3}
 \captionof{figure}[Unknown Bacterial Genome]{Circular map of an
   unknown bacterial genome probably belonging to the Chitinophagaceae
-  drawn with CGView. Track 1 and 2 (blue) indicate GeneMark-S annoated
-  genes on forward and reverse strand. Track 3 (red) visualizes
-  regions of homology to a set of 30,844 Chitinophagaceae proteins
-  downloaded from UniProtKB. Track 4 (green) shows homology between
+  drawn with CGView. Tracks\,1 and 2\,(blue) indicate GeneMark-S annotated
+  genes on forward and reverse strand. Track\,3 (red) visualizes
+  regions of homology to a set of \num{30844} Chitinophagaceae proteins
+  downloaded from UniProtKB. Track\,4 (green) shows homology between
   GeneMark-S predicted proteins and the published protein set of
-  Boothby et al.}
+  \textcite{Boothby2015}}
 
 \pagebreak
 
@@ -140,7 +140,7 @@ complete list of the used input files are given in
 
 \begin{sidewaystable}
 \centering
-\captionof{table}{\label{tab:inputdata}Used data set including checksums for compressed and decompressed file content.}
+\captionof{table}{\label{tab:inputdata}Data set used for our analysis including checksums for compressed and decompressed file content.}
 \begin{tabularx}{\linewidth}{>{\ttfamily\tiny}X>{\ttfamily\tiny}l>{\ttfamily\tiny}r*{2}{>{\ttfamily\tiny}l}}\toprule
 Filename and location                                          & Modification time    & Size in Bytes     & MD5 check sum                    & MD5 check sum decompressed \\ \midrule
 \href{http://weatherby.genetics.utah.edu/seq_transf/tg.genome.fsa.gz}{tg.genome.fsa.gz}
@@ -190,6 +190,7 @@ Jellyfish   & v\,2.2.4  & \textcite{Marcais2011} \\
 Perl        & v\,5.14.2  & \url{https://www.perl.org/} \\
 samtools    & v\,1.1 & \textcite{Li2009b, Li2011a, Li2011b} \\
 skewer      & v\,0.1.124 & \textcite{Jiang2014} \\
+`sm' R\,package & v\,2.2-5.4 & \textcite{Bowman2014} \\
 Trimmomatic & v\,0.3.5 & \textcite{Bolger2014} \\
 \end{tabularx}
 
@@ -212,7 +213,7 @@ java -jar trimmomatic-0.35.jar SE -phred33 HD_gen.mo_L[12345]*.fastq \
 
 \subsection*{Estimation of the genomes size}
 
-The genome size was esitmated by running the standalone error
+The genome size was estimated by the standalone error
 correction pipeline of Allpaths-LG.
 
 \begin{lstlisting}{language=bash}
@@ -241,8 +242,9 @@ script \texttt{prepare\_filter\_fastq\_by\_valid\_kmers.pl}.
 ./scripts/dump_kmers.sh
 \end{lstlisting}
 
-The generated hash was used to filter individual libraries by the perl
-script \texttt{filter\_fastq\_by\_valid\_kmers\_reduced.pl}.
+The generated hash was used to filter individual libraries. Therefore,
+we have written the perl script
+\texttt{filter\_fastq\_by\_valid\_kmers\_reduced.pl}.
 
 \begin{lstlisting}[language=bash]
 ./scripts/filter_input_data.sh
@@ -276,7 +278,7 @@ gmes_petap.pl --sequence HD_gen.trusted.fasta \
    --ES --cores 64
 \end{lstlisting}
 
-The untrusted assemmbly was annotated with GeneMark-S
+The untrusted assembly was annotated with GeneMark-S
 
 \begin{lstlisting}[language=bash]
 gmsn.pl --fnn --faa --species HD --gm \
@@ -310,7 +312,7 @@ done
 \end{lstlisting}
 
 \paragraph{Mapping Coverage}
-The mapping coverage was determinded by remapping of the short or
+The mapping coverage was determined by remapping of the short or
 longreads onto the assembled contig. For the short read libraries, we
 used \texttt{bowtie2} as mapper. Long read libraries were mapped by
 \texttt{bwa}. The per-base coverage was determined by bedtools.
@@ -319,16 +321,16 @@ used \texttt{bowtie2} as mapper. Long read libraries were mapped by
 ./scripts/determine_mapping_coverage.sh
 \end{lstlisting}
 
-\paragraph{per-site Variability}
+\paragraph{Per-site Variability}
 
-The per-site variablity was calculated by counting bases covering each
-site of the two assembly. Each base that occurred at a given site with
+The per-site variability was calculated by counting bases covering each
+site of the two assemblies. Each base that occurred at a given site with
 a minimum frequency of \num{0.2} was taken into account and a histogram of
 all these base frequencies was created.
 
 \paragraph{Gene Spacing}
 
-Lenght of the intragenetic regions were directly extracted from the
+Length of the intragenetic regions were directly extracted from the
 GeneMark-S/ES annotation files.
 
 \begin{lstlisting}[language=bash]
@@ -336,7 +338,7 @@ gtf2genespacing.pl --gtf HD_gen.supported.gtf
 gtf2genespacing.pl --gtf HD_gen.unsupported.gtf
 \end{lstlisting}
 
-All resulting data set were compared, tested and visualized using the
+All resulting data sets were compared, tested and visualized using the
 GNU R package `sm'.
 
 \printbibliography
