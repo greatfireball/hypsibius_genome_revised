@@ -12,6 +12,7 @@
   Number                   = {12},
   Pages                    = {2607--2618},
   Volume                   = {29},
+
   Abstract                 = {Improving the accuracy of prediction of gene starts is one of a few remaining open problems in computer prediction of prokaryotic genes. Its difficulty is caused by the absence of relatively strong sequence patterns identifying true translation initiation sites. In the current paper we show that the accuracy of gene start prediction can be improved by combining models of protein-coding and non-coding regions and models of regulatory sites near gene start within an iterative Hidden Markov model based algorithm. The new gene prediction method, called GeneMarkS, utilizes a non-supervised training procedure and can be used for a newly sequenced prokaryotic genome with no prior knowledge of any protein or rRNA genes. The GeneMarkS implementation uses an improved version of the gene finding program GeneMark.hmm, heuristic Markov models of coding and non-coding regions and the Gibbs sampling multiple alignment program. GeneMarkS predicted precisely 83.2\% of the translation starts of GenBank annotated Bacillus subtilis genes and 94.4\% of translation starts in an experimentally validated set of Escherichia coli genes. We have also observed that GeneMarkS detects prokaryotic genes, in terms of identifying open reading frames containing real genes, with an accuracy matching the level of the best currently used gene detection methods. Accurate translation start prediction, in addition to the refinement of protein sequence N-terminal data, provides the benefit of precise positioning of the sequence region situated upstream to a gene start. Therefore, sequence motifs related to transcription and translation regulatory sites can be revealed and analyzed with higher precision. These motifs were shown to possess a significant variability, the functional and evolutionary connections of which are discussed.},
   Institution              = {School of Biology and School of Mathematics, Georgia Institute of Technology, Atlanta, GA 30332-0230, USA.},
   Keywords                 = {Algorithms; Bacillus subtilis, genetics; Base Sequence; Codon, Initiator, genetics; Computational Biology, methods; Computer Simulation; Databases as Topic; Escherichia coli, genetics; Evolution, Molecular; Genes, Archaeal, genetics; Genes, Bacterial, genetics; Genes, Overlapping, genetics; Genome, Archaeal; Genome, Bacterial; Internet; Likelihood Functions; Markov Chains; Open Reading Frames, genetics; Protein Biosynthesis, genetics; Reproducibility of Results; Sensitivity and Specificity; Sequence Alignment; Software; Transcription, Genetic, genetics},
@@ -44,6 +45,7 @@
   Number                   = {4},
   Pages                    = {1513--1518},
   Volume                   = {108},
+
   Abstract                 = {Massively parallel DNA sequencing technologies are revolutionizing genomics by making it possible to generate billions of relatively short (~100-base) sequence reads at very low cost. Whereas such data can be readily used for a wide range of biomedical applications, it has proven difficult to use them to generate high-quality de novo genome assemblies of large, repeat-rich vertebrate genomes. To date, the genome assemblies generated from such data have fallen far short of those obtained with the older (but much more expensive) capillary-based sequencing approach. Here, we report the development of an algorithm for genome assembly, ALLPATHS-LG, and its application to massively parallel DNA sequence data from the human and mouse genomes, generated on the Illumina platform. The resulting draft genome assemblies have good accuracy, short-range contiguity, long-range connectivity, and coverage of the genome. In particular, the base accuracy is high (≥99.95\%) and the scaffold sizes (N50 size = 11.5 Mb for human and 7.2 Mb for mouse) approach those obtained with capillary-based sequencing. The combination of improved sequencing technology and improved computational methods should now make it possible to increase dramatically the de novo sequencing of large genomes. The ALLPATHS-LG program is available at http://www.broadinstitute.org/science/programs/genome-biology/crd.},
   Doi                      = {10.1073/pnas.1017351108},
   Institution              = {Broad Institute of MIT and Harvard, Cambridge, MA 02142, USA.},
@@ -67,6 +69,7 @@
   Number                   = {Web Server issue},
   Pages                    = {W353--W356},
   Volume                   = {39},
+
   Abstract                 = {Genomic neighborhood can provide important insights into evolution and function of a protein or gene. When looking at operons, changes in operon structure and composition can only be revealed by looking at the operon as a whole. To facilitate the analysis of the genomic context of a query in multiple organisms we have developed Genomic Context Viewer (GCView). GCView accepts results from one or multiple protein homology searches such as BLASTp as input. For each hit, the neighboring protein-coding genes are extracted, the regions of homology are labeled for each input and the results are presented as a clear, interactive graphical output. It is also possible to add more searches to iteratively refine the output. GCView groups outputs by the hits for different proteins. This allows for easy comparison of different operon compositions and structures. The tool is embedded in the framework of the Bioinformatics Toolkit of the Max-Planck Institute for Developmental Biology (MPI Toolkit). Job results from the homology search tools inside the MPI Toolkit can be forwarded to GCView and results can be subsequently analyzed by sequence analysis tools. Results are stored online, allowing for later reinspection. GCView is freely available at http://toolkit.tuebingen.mpg.de/gcview.},
   Doi                      = {10.1093/nar/gkr364},
   Institution              = {Max Planck Institute for Developmental Biology, Department I, Protein Evolution, Spemannstr. 35, 72076 Tübingen, Germany.},
@@ -80,6 +83,28 @@
   Url                      = {http://dx.doi.org/10.1093/nar/gkr364}
 }
 
+@Article{Jiang2014,
+  Title                    = {Skewer: a fast and accurate adapter trimmer for next-generation sequencing paired-end reads.},
+  Author                   = {Jiang, Hongshan and Lei, Rong and Ding, Shou-Wei and Zhu, Shuifang},
+  Journal                  = {BMC Bioinformatics},
+  Year                     = {2014},
+  Pages                    = {182},
+  Volume                   = {15},
+
+  __markedentry            = {[frf53jh:6]},
+  Abstract                 = {Adapter trimming is a prerequisite step for analyzing next-generation sequencing (NGS) data when the reads are longer than the target DNA/RNA fragments. Although typically used in small RNA sequencing, adapter trimming is also used widely in other applications, such as genome DNA sequencing and transcriptome RNA/cDNA sequencing, where fragments shorter than a read are sometimes obtained because of the limitations of NGS protocols. For the newly emerged Nextera long mate-pair (LMP) protocol, junction adapters are located in the middle of all properly constructed fragments; hence, adapter trimming is essential to gain the correct paired reads. However, our investigations have shown that few adapter trimming tools meet both efficiency and accuracy requirements simultaneously. The performances of these tools can be even worse for paired-end and/or mate-pair sequencing.To improve the efficiency of adapter trimming, we devised a novel algorithm, the bit-masked k-difference matching algorithm, which has O(kn) expected time with O(m) space, where k is the maximum number of differences allowed, n is the read length, and m is the adapter length. This algorithm makes it possible to fully enumerate all candidates that meet a specified threshold, e.g. error ratio, within a short period of time. To improve the accuracy of this algorithm, we designed a simple and easy-to-explain statistical scoring scheme to evaluate candidates in the pattern matching step. We also devised scoring schemes to fully exploit the paired-end/mate-pair information when it is applicable. All these features have been implemented in an industry-standard tool named Skewer (https://sourceforge.net/projects/skewer). Experiments on simulated data, real data of small RNA sequencing, paired-end RNA sequencing, and Nextera LMP sequencing showed that Skewer outperforms all other similar tools that have the same utility. Further, Skewer is considerably faster than other tools that have comparative accuracies; namely, one times faster for single-end sequencing, more than 12 times faster for paired-end sequencing, and 49\% faster for LMP sequencing.Skewer achieved as yet unmatched accuracies for adapter trimming with low time bound.},
+  Doi                      = {10.1186/1471-2105-15-182},
+  Institution              = {Institute of Plant Quarantine Research, Chinese Academy of Inspection and Quarantine, Huixinli 241, Beijing, 100029 China. hongshan.jiang@gmail.com.},
+  Keywords                 = {Algorithms; Animals; Arabidopsis; Caenorhabditis elegans; Drosophila; High-Throughput Nucleotide Sequencing, methods; Humans; Sequence Analysis, RNA; Software; Time Factors},
+  Language                 = {eng},
+  Medline-pst              = {epublish},
+  Owner                    = {frf53jh},
+  Pii                      = {1471-2105-15-182},
+  Pmid                     = {24925680},
+  Timestamp                = {2015.12.21},
+  Url                      = {http://dx.doi.org/10.1186/1471-2105-15-182}
+}
+
 @Article{Langmead2012,
   Title                    = {Fast gapped-read alignment with Bowtie 2.},
   Author                   = {Langmead, Ben and Salzberg, Steven L.},
@@ -90,6 +115,7 @@
   Number                   = {4},
   Pages                    = {357--359},
   Volume                   = {9},
+
   Abstract                 = {As the rate of sequencing increases, greater throughput is demanded from read aligners. The full-text minute index is often used to make alignment very fast and memory-efficient, but the approach is ill-suited to finding longer, gapped alignments. Bowtie 2 combines the strengths of the full-text minute index with the flexibility and speed of hardware-accelerated dynamic programming algorithms to achieve a combination of high speed, sensitivity and accuracy.},
   Doi                      = {10.1038/nmeth.1923},
   Institution              = {Center for Bioinformatics and Computational Biology, Institute for Advanced Computer Studies, University of Maryland, College Park, Maryland, USA. blangmea@jhsph.edu},
@@ -113,8 +139,6 @@
   Number                   = {21},
   Pages                    = {2987--2993},
   Volume                   = {27},
-
-  __markedentry            = {[frank:6]},
   Abstract                 = {Most existing methods for DNA sequence analysis rely on accurate sequences or genotypes. However, in applications of the next-generation sequencing (NGS), accurate genotypes may not be easily obtained (e.g. multi-sample low-coverage sequencing or somatic mutation discovery). These applications press for the development of new methods for analyzing sequence data with uncertainty.We present a statistical framework for calling SNPs, discovering somatic mutations, inferring population genetical parameters and performing association tests directly based on sequencing data without explicit genotyping or linkage-based imputation. On real data, we demonstrate that our method achieves comparable accuracy to alternative methods for estimating site allele count, for inferring allele frequency spectrum and for association mapping. We also highlight the necessity of using symmetric datasets for finding somatic mutations and confirm that for discovering rare events, mismapping is frequently the leading source of errors.http://samtools.sourceforge.net.hengli@broadinstitute.org.},
   Doi                      = {10.1093/bioinformatics/btr509},
   Institution              = {Medical Population Genetics Program, Broad Institute, 7 Cambridge Center, Cambridge, MA 02142, USA. hengli@broadinstitute.org},
@@ -138,8 +162,6 @@
   Number                   = {8},
   Pages                    = {1157--1158},
   Volume                   = {27},
-
-  __markedentry            = {[frank:6]},
   Abstract                 = {I propose a new application of profile Hidden Markov Models in the area of SNP discovery from resequencing data, to greatly reduce false SNP calls caused by misalignments around insertions and deletions (indels). The central concept is per-Base Alignment Quality, which accurately measures the probability of a read base being wrongly aligned. The effectiveness of BAQ has been positively confirmed on large datasets by the 1000 Genomes Project analysis subgroup.http://samtools.sourceforge.nethengli@broadinstitute.org.},
   Doi                      = {10.1093/bioinformatics/btr076},
   Institution              = {Broad Institute, 7 Cambridge Center, Cambridge, MA 02142, USA. hengli@broadinstitute.org},
@@ -163,6 +185,7 @@
   Number                   = {5},
   Pages                    = {589--595},
   Volume                   = {26},
+
   Abstract                 = {Many programs for aligning short sequencing reads to a reference genome have been developed in the last 2 years. Most of them are very efficient for short reads but inefficient or not applicable for reads >200 bp because the algorithms are heavily and specifically tuned for short queries with low sequencing error rate. However, some sequencing platforms already produce longer reads and others are expected to become available soon. For longer reads, hashing-based software such as BLAT and SSAHA2 remain the only choices. Nonetheless, these methods are substantially slower than short-read aligners in terms of aligned bases per unit time.We designed and implemented a new algorithm, Burrows-Wheeler Aligner's Smith-Waterman Alignment (BWA-SW), to align long sequences up to 1 Mb against a large sequence database (e.g. the human genome) with a few gigabytes of memory. The algorithm is as accurate as SSAHA2, more accurate than BLAT, and is several to tens of times faster than both.http://bio-bwa.sourceforge.net},
   Doi                      = {10.1093/bioinformatics/btp698},
   Institution              = {Wellcome Trust Sanger Institute, Wellcome Genome Campus, Cambridge, CB10 1SA, UK.},
@@ -186,6 +209,7 @@
   Number                   = {14},
   Pages                    = {1754--1760},
   Volume                   = {25},
+
   Abstract                 = {The enormous amount of short reads generated by the new DNA sequencing technologies call for the development of fast and accurate read alignment programs. A first generation of hash table-based methods has been developed, including MAQ, which is accurate, feature rich and fast enough to align short reads from a single individual. However, MAQ does not support gapped alignment for single-end reads, which makes it unsuitable for alignment of longer reads where indels may occur frequently. The speed of MAQ is also a concern when the alignment is scaled up to the resequencing of hundreds of individuals.We implemented Burrows-Wheeler Alignment tool (BWA), a new read alignment package that is based on backward search with Burrows-Wheeler Transform (BWT), to efficiently align short sequencing reads against a large reference sequence such as the human genome, allowing mismatches and gaps. BWA supports both base space reads, e.g. from Illumina sequencing machines, and color space reads from AB SOLiD machines. Evaluations on both simulated and real data suggest that BWA is approximately 10-20x faster than MAQ, while achieving similar accuracy. In addition, BWA outputs alignment in the new standard SAM (Sequence Alignment/Map) format. Variant calling and other downstream analyses after the alignment can be achieved with the open source SAMtools software package.http://maq.sourceforge.net.},
   Doi                      = {10.1093/bioinformatics/btp324},
   Institution              = {Wellcome Trust Sanger Institute, Wellcome Trust Genome Campus, Cambridge, CB10 1SA, UK.},
@@ -201,7 +225,7 @@
 
 @Article{Li2009b,
   Title                    = {The Sequence Alignment/Map format and SAMtools.},
-  Author                   = {Li, Heng and Handsaker, Bob and Wysoker, Alec and Fennell, Tim and Ruan, Jue and Homer, Nils and Marth, Gabor and Abecasis, Goncalo and Durbin, Richard and , 1000 Genome Project Data Processing Subgroup},
+  Author                   = {Li, Heng and Handsaker, Bob and Wysoker, Alec and Fennell, Tim and Ruan, Jue and Homer, Nils and Marth, Gabor and Abecasis, Goncalo and Durbin, Richard and  {1000 Genome Project Data Processing Subgroup}},
   Journal                  = {Bioinformatics},
   Year                     = {2009},
 
@@ -209,8 +233,6 @@
   Number                   = {16},
   Pages                    = {2078--2079},
   Volume                   = {25},
-
-  __markedentry            = {[frank:6]},
   Abstract                 = {The Sequence Alignment/Map (SAM) format is a generic alignment format for storing read alignments against reference sequences, supporting short and long reads (up to 128 Mbp) produced by different sequencing platforms. It is flexible in style, compact in size, efficient in random access and is the format in which alignments from the 1000 Genomes Project are released. SAMtools implements various utilities for post-processing alignments in the SAM format, such as indexing, variant caller and alignment viewer, and thus provides universal tools for processing read alignments.http://samtools.sourceforge.net.},
   Institution              = {Wellcome Trust Sanger Institute, Wellcome Trust Genome Campus, Cambridge, CB10 1SA, UK, Broad Institute of MIT and Harvard, Cambridge, MA 02141, USA.},
   Keywords                 = {Algorithms; Base Sequence; Computational Biology, methods; Genome; Genomics; Molecular Sequence Data; Sequence Alignment, methods; Sequence Analysis, DNA, methods; Software},
@@ -231,6 +253,7 @@
   Number                   = {15},
   Pages                    = {e119},
   Volume                   = {42},
+
   Abstract                 = {We present a new approach to automatic training of a eukaryotic ab initio gene finding algorithm. With the advent of Next-Generation Sequencing, automatic training has become paramount, allowing genome annotation pipelines to keep pace with the speed of genome sequencing. Earlier we developed GeneMark-ES, currently the only gene finding algorithm for eukaryotic genomes that performs automatic training in unsupervised ab initio mode. The new algorithm, GeneMark-ET augments GeneMark-ES with a novel method that integrates RNA-Seq read alignments into the self-training procedure. Use of 'assembled' RNA-Seq transcripts is far from trivial; significant error rate of assembly was revealed in recent assessments. We demonstrated in computational experiments that the proposed method of incorporation of 'unassembled' RNA-Seq reads improves the accuracy of gene prediction; particularly, for the 1.3 GB genome of Aedes aegypti the mean value of prediction Sensitivity and Specificity at the gene level increased over GeneMark-ES by 24.5\%. In the current surge of genomic data when the need for accurate sequence annotation is higher than ever, GeneMark-ET will be a valuable addition to the narrow arsenal of automatic gene prediction tools.},
   Doi                      = {10.1093/nar/gku557},
   Institution              = {Joint Georgia Tech and Emory Wallace H. Coulter Department of Biomedical Engineering, Atlanta, GA, USA 30332 School of Computational Science and Engineering, Georgia Tech, Atlanta, GA, USA 30332 Department of Bioinformatics, Moscow Institute of Physics and Technology, Moscow, Russia 141700 borodovsky@gatech.edu.},
@@ -269,6 +292,7 @@
   Number                   = {6},
   Pages                    = {841--842},
   Volume                   = {26},
+
   Abstract                 = {Testing for correlations between different sets of genomic features is a fundamental task in genomics research. However, searching for overlaps between features with existing web-based methods is complicated by the massive datasets that are routinely produced with current sequencing technologies. Fast and flexible tools are therefore required to ask complex questions of these data in an efficient manner.This article introduces a new software suite for the comparison, manipulation and annotation of genomic features in Browser Extensible Data (BED) and General Feature Format (GFF) format. BEDTools also supports the comparison of sequence alignments in BAM format to both BED and GFF features. The tools are extremely efficient and allow the user to compare large datasets (e.g. next-generation sequencing data) with both public and custom genome annotation tracks. BEDTools can be combined with one another as well as with standard UNIX commands, thus facilitating routine genomics tasks as well as pipelines that can quickly answer intricate questions of large genomic datasets.BEDTools was written in C++. Source code and a comprehensive user manual are freely available at http://code.google.com/p/bedtoolsaaronquinlan@gmail.com; imh4y@virginia.eduSupplementary data are available at Bioinformatics online.},
   Doi                      = {10.1093/bioinformatics/btq033},
   Institution              = {Department of Biochemistry and Molecular Genetics, University of Virginia School of Medicine, Charlottesville, VA 22908, USA. aaronquinlan@gmail.com},
@@ -292,6 +316,7 @@
   Number                   = {11},
   Pages                    = {2270--2277},
   Volume                   = {22},
+
   Abstract                 = {Exceptionally accurate genome reference sequences have proven to be of great value to microbial researchers. Thus, to date, about 1800 bacterial genome assemblies have been "finished" at great expense with the aid of manual laboratory and computational processes that typically iterate over a period of months or even years. By applying a new laboratory design and new assembly algorithm to 16 samples, we demonstrate that assemblies exceeding finished quality can be obtained from whole-genome shotgun data and automated computation. Cost and time requirements are thus dramatically reduced.},
   Doi                      = {10.1101/gr.141515.112},
   Institution              = {Broad Institute of MIT and Harvard, Cambridge, MA 02142, USA.},
@@ -315,8 +340,6 @@
   Number                   = {10},
   Pages                    = {1611--1618},
   Volume                   = {12},
-
-  __markedentry            = {[frank:]},
   Abstract                 = {The Bioperl project is an international open-source collaboration of biologists, bioinformaticians, and computer scientists that has evolved over the past 7 yr into the most comprehensive library of Perl modules available for managing and manipulating life-science information. Bioperl provides an easy-to-use, stable, and consistent programming interface for bioinformatics application programmers. The Bioperl modules have been successfully and repeatedly used to reduce otherwise complex tasks to only a few lines of code. The Bioperl object model has been proven to be flexible enough to support enterprise-level applications such as EnsEMBL, while maintaining an easy learning curve for novice Perl programmers. Bioperl is capable of executing analyses and processing results from programs such as BLAST, ClustalW, or the EMBOSS suite. Interoperation with modules written in Python and Java is supported through the evolving BioCORBA bridge. Bioperl provides access to data stores such as GenBank and SwissProt via a flexible series of sequence input/output modules, and to the emerging common sequence data storage format of the Open Bioinformatics Database Access project. This study describes the overall architecture of the toolkit, the problem domains that it addresses, and gives specific examples of how the toolkit can be used to solve common life-sciences problems. We conclude with a discussion of how the open-source nature of the project has contributed to the development effort.},
   Doi                      = {10.1101/gr.361602},
   Institution              = {University Program in Genetics, Duke University, Durham, North Carolina 27710, USA. jason.stajich@duke.edu},
