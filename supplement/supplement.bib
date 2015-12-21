@@ -23,6 +23,31 @@
   Timestamp                = {2015.12.19}
 }
 
+@Article{Bolger2014,
+  Title                    = {Trimmomatic: a flexible trimmer for Illumina sequence data.},
+  Author                   = {Bolger, Anthony M. and Lohse, Marc and Usadel, Bjoern},
+  Journal                  = {Bioinformatics},
+  Year                     = {2014},
+
+  Month                    = {Aug},
+  Number                   = {15},
+  Pages                    = {2114--2120},
+  Volume                   = {30},
+
+  __markedentry            = {[frf53jh:6]},
+  Abstract                 = {Although many next-generation sequencing (NGS) read preprocessing tools already existed, we could not find any tool or combination of tools that met our requirements in terms of flexibility, correct handling of paired-end data and high performance. We have developed Trimmomatic as a more flexible and efficient preprocessing tool, which could correctly handle paired-end data.The value of NGS read preprocessing is demonstrated for both reference-based and reference-free tasks. Trimmomatic is shown to produce output that is at least competitive with, and in many cases superior to, that produced by other tools, in all scenarios tested.Trimmomatic is licensed under GPL V3. It is cross-platform (Java 1.5+ required) and available at http://www.usadellab.org/cms/index.php?page=trimmomaticusadel@bio1.rwth-aachen.deSupplementary data are available at Bioinformatics online.},
+  Doi                      = {10.1093/bioinformatics/btu170},
+  Institution              = {Department Metabolic Networks, Max Planck Institute of Molecular Plant Physiology, Am Mühlenberg 1, 14476 Golm,Institut für Biologie I, RWTH Aachen, Worringer Weg 3, 52074 Aachen and Institute of Bio- and Geosciences: Plant Sciences, Forschungszentrum Jülich, Leo-Brandt-Straße, 52425 Jülich, GermanyDepartment Metabolic Networks, Max Planck Institute of Molecular Plant Physiology, Am Mühlenberg 1, 14476 Golm,Institut für Biologie I, RWTH Aachen, Worringer Weg 3, 52074 Aachen and Institute of Bio- and Geosciences: Plant Sciences, Forschungszentrum Jülich, Leo-Brandt-Straße, 52425 Jülich, Germany.},
+  Keywords                 = {Computational Biology; Databases, Genetic; High-Throughput Nucleotide Sequencing, methods; Software},
+  Language                 = {eng},
+  Medline-pst              = {ppublish},
+  Owner                    = {frf53jh},
+  Pii                      = {btu170},
+  Pmid                     = {24695404},
+  Timestamp                = {2015.12.21},
+  Url                      = {http://dx.doi.org/10.1093/bioinformatics/btu170}
+}
+
 @Article{Boothby2015,
   Title                    = {Evidence for extensive horizontal gene transfer from the draft genome of a tardigrade},
   Author                   = {Boothby, Thomas C. and Tenlen, Jennifer R. and Smith, Frank W. and Wang, Jeremy R. and Patanella, Kiera A. and Osborne Nishimura, Erin and Tintori, Sophia C. and Li, Qing and Jones, Corbin D. and Yandell, Mark and Messina, David N. and Glasscock, Jarret and Goldstein, Bob},
@@ -91,7 +116,7 @@
   Pages                    = {182},
   Volume                   = {15},
 
-  __markedentry            = {[frf53jh:6]},
+  __markedentry            = {[frf53jh:]},
   Abstract                 = {Adapter trimming is a prerequisite step for analyzing next-generation sequencing (NGS) data when the reads are longer than the target DNA/RNA fragments. Although typically used in small RNA sequencing, adapter trimming is also used widely in other applications, such as genome DNA sequencing and transcriptome RNA/cDNA sequencing, where fragments shorter than a read are sometimes obtained because of the limitations of NGS protocols. For the newly emerged Nextera long mate-pair (LMP) protocol, junction adapters are located in the middle of all properly constructed fragments; hence, adapter trimming is essential to gain the correct paired reads. However, our investigations have shown that few adapter trimming tools meet both efficiency and accuracy requirements simultaneously. The performances of these tools can be even worse for paired-end and/or mate-pair sequencing.To improve the efficiency of adapter trimming, we devised a novel algorithm, the bit-masked k-difference matching algorithm, which has O(kn) expected time with O(m) space, where k is the maximum number of differences allowed, n is the read length, and m is the adapter length. This algorithm makes it possible to fully enumerate all candidates that meet a specified threshold, e.g. error ratio, within a short period of time. To improve the accuracy of this algorithm, we designed a simple and easy-to-explain statistical scoring scheme to evaluate candidates in the pattern matching step. We also devised scoring schemes to fully exploit the paired-end/mate-pair information when it is applicable. All these features have been implemented in an industry-standard tool named Skewer (https://sourceforge.net/projects/skewer). Experiments on simulated data, real data of small RNA sequencing, paired-end RNA sequencing, and Nextera LMP sequencing showed that Skewer outperforms all other similar tools that have the same utility. Further, Skewer is considerably faster than other tools that have comparative accuracies; namely, one times faster for single-end sequencing, more than 12 times faster for paired-end sequencing, and 49\% faster for LMP sequencing.Skewer achieved as yet unmatched accuracies for adapter trimming with low time bound.},
   Doi                      = {10.1186/1471-2105-15-182},
   Institution              = {Institute of Plant Quarantine Research, Chinese Academy of Inspection and Quarantine, Huixinli 241, Beijing, 100029 China. hongshan.jiang@gmail.com.},
