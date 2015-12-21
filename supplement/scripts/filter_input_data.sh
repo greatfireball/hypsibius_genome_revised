@@ -27,3 +27,6 @@ do
       --kmerhash ../kmer/kmers_hash.bin \
       --out $(basename "$i").filtered
 done
+
+# combine all moleculo data into a single file
+cat HD_gen.mo_L[12345]*.trimmed.formatted.fastq.filtered > HD_gen.mo_L12345.trimmed.kmerfiltered.fastq
