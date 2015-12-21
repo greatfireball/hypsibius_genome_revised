@@ -175,13 +175,16 @@ Trimmomatic & v\,0.3.5 & \textcite{Bolger2014} \\
 Short reads were trimmed with skewer.
 
 \begin{lstlisting}{language=bash}
-skewer -m pe -q 30 -Q 30 -l 60 -t 64 HD_gen.il_L[358]*00_P1.fastq HD_gen.il_L[358]*00_P2.fastq
+skewer -m pe -q 30 -Q 30 -l 60 -t 64 \
+   HD_gen.il_L[358]*00_P1.fastq HD_gen.il_L[358]*00_P2.fastq
 \end{lstlisting}
 
 Long reads were trimmed with Trimmomatic.
 
 \begin{lstlisting}{language=bash}
-java -jar trimmomatic-0.35.jar SE -phred33 HD_gen.mo_L[12345]*.fastq HD_gen.mo_L[12345]*.trimmed.fastq ILLUMINACLIP:adapter.fa:2:30:10 LEADING:30 TRAILING:30 MINLEN:250
+java -jar trimmomatic-0.35.jar SE -phred33 HD_gen.mo_L[12345]*.fastq \
+   HD_gen.mo_L[12345]*.trimmed.fastq \
+   ILLUMINACLIP:adapter.fa:2:30:10 LEADING:30 TRAILING:30 MINLEN:250
 \end{lstlisting}
 
 \subsection*{Estimation of the genomes size}
@@ -189,7 +192,11 @@ java -jar trimmomatic-0.35.jar SE -phred33 HD_gen.mo_L[12345]*.fastq HD_gen.mo_L
 The genome size was esitmated by running the standalone error correction pipeline of Allpahts-LG.
 
 \begin{lstlisting}{language=bash}
-ErrorCorrectReads.pl PHRED_ENCODING=33 READS_OUT=$OUT KEEP_KMER_SPECTRA=1 MAX_MEMORY_GB=$MEM PAIRED_READS_A_IN=$PE1 PAIRED_READS_B_IN=$PE2 THREADS=$CPU HAPLOIDIFY=TRUE
+ErrorCorrectReads.pl PHRED_ENCODING=33 READS_OUT=$OUT \
+   KEEP_KMER_SPECTRA=1 MAX_MEMORY_GB=$MEM \
+   PAIRED_READS_A_IN=$PE1 \
+   PAIRED_READS_B_IN=$PE2 \
+   THREADS=$CPU HAPLOIDIFY=TRUE
 \end{lstlisting}
 
 \subsection*{Counting and Filtering bases on kmers}
@@ -240,13 +247,15 @@ See configuration files for parameter details.
 The trusted assembly was annotated with GeneMark-ES.
 
 \begin{lstlisting}[language=bash]
-gmes_petap.pl --sequence HD_gen.trusted.fasta --ES --cores 64
+gmes_petap.pl --sequence HD_gen.trusted.fasta \
+   --ES --cores 64
 \end{lstlisting}
 
 The untrusted assemmbly was annotated with GeneMark-S
 
 \begin{lstlisting}[language=bash]
-gmsn.pl --fnn --faa --species HD --gm --name HD HD_gen.unsupported.fasta
+gmsn.pl --fnn --faa --species HD --gm \
+   --name HD HD_gen.unsupported.fasta
 \end{lstlisting}
 
 The largest untrusted sequence was visualized using the CGView Server.
