@@ -98,7 +98,7 @@
 \pagebreak
 
 \includegraphics[width=1\textwidth]{supplementary_figure_2}
-\captionof{figure}[Assembly Feature Comparisons]{Assembly Feature Comparisons}
+\captionof{figure}[Assembly Feature Comparisons]A) B) C) D)}
 
 \pagebreak
 
@@ -160,15 +160,35 @@ bwa         & v\,0.7.10 & \textcite{Li2009a,Li2010} \\
 CGView      & v\,1.0 & \textcite{Grin2011} \textcolor{red}{???} \\
 Falcon      & v\,0.4.0 & \url{https://github.com/PacificBiosciences/falcon} \\
 Genemark-S  & v\,4.3.2 & \textcite{Besemer2001} \\
-Genemark-ET & v\,4.29\textcolor{red}{XXXX} & \textcite{Lomsadze2014} \\
+Genemark-ET & v\,4.29 & \textcite{Lomsadze2014} \\
 Jellyfish   & v\,2.2.4  & \textcite{Marcais2011} \\
 Perl        & v\,5.14.2  & \url{https://www.perl.org/} \\
 samtools    & v\,1.1 & \textcite{Li2009b, Li2011a, Li2011b} \\
+skewer      & v\,0.1.124 & \textcolor{XXX} \\
+Trimmomatic & v\,0.3.5 & \textcolor{XXX} \\
 \end{tabularx}
 
 \subsection*{Trimming of the input data}
 
+Short reads were trimmed with skewer.
+
+\begin{lstlisting}{language=bash}
+skewer -m pe -q 30 -Q 30 -l 60 -t 64 HD_gen.il_L[358]*00_P1.fastq HD_gen.il_L[358]*00_P2.fastq
+\end{lstlisting}
+
+Long reads were trimmed with Trimmomatic.
+
+\begin{lstlisting}{language=bash}
+java -jar trimmomatic-0.35.jar SE -phred33 HD_gen.mo_L[12345]*.fastq HD_gen.mo_L[12345]*.trimmed.fastq ILLUMINACLIP:adapter.fa:2:30:10 LEADING:30 TRAILING:30 MINLEN:250
+\end{lstlisting}
+
 \subsection*{Estimation of the genomes size}
+
+The genome size was esitmated by running the standalone error correction pipeline of Allpahts-LG.
+
+\begin{lstlisting}{language=bash}
+ErrorCorrectReads.pl PHRED_ENCODING=33 READS_OUT=$OUT KEEP_KMER_SPECTRA=1 MAX_MEMORY_GB=$MEM PAIRED_READS_A_IN=$PE1 PAIRED_READS_B_IN=$PE2 THREADS=$CPU HAPLOIDIFY=TRUE
+\end{lstlisting}
 
 \subsection*{Counting and Filtering bases on kmers}
 
