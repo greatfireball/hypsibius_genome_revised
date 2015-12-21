@@ -98,12 +98,14 @@
 \pagebreak
 
 \includegraphics[width=1\textwidth]{supplementary_figure_2}
-\captionof{figure}[Assembly Feature Comparisons]A) B) C) D)}
+\captionof{figure}[Assembly Feature Comparisons]{A) Per-site coverage of trusted and untrusted assembly based on mappings of Moleculo reads. Contigs from the untrusted assembly generally don't share the coverage of the trusted, most likley nuclear, genome. B) GC concent of trusted and untrusted assembly estimated using sliding window approach. The untrusted assembly contains multiple peaks pointing towards contig subpopulations with different GC content. C) Per-site variability of trusted und untrusted assembly which can serve as ploidy proxy. The untrusted variability spectrum seems distored and contains a multiude of different peaks while the trusted assembly shows a typical diploid spectrum. D) Lenght distribution of intergenetic regions. Intragenetic regions are significantly larger in the trusted assembly than in the trusted.}
 
 \pagebreak
 
 \includegraphics[width=1\textwidth]{supplementary_figure_3}
-\captionof{figure}[Unknown Bacterial Genome]{Unknown Bacterial Genome}
+\captionof{figure}[Unknown Bacterial Genome]{Circular map of an unknown bacterial genome probably belonging to the Chitinophagaceae drawn with CGView. Track 1 and 2 (blue) indicate GeneMark-S annoated genes on forward and reverse strand. Track 3 (red) visualizes regions of homology to a set of 30,844 Chitinophagaceae proteins downloaded from UniProtKB. Track 4 (green) shows homology between GeneMark-S predicted proteins and the published protein set of Boothby et al.}
+
+\pagebreak
 
 \section{Methods}
 
@@ -164,8 +166,8 @@ Genemark-ET & v\,4.29 & \textcite{Lomsadze2014} \\
 Jellyfish   & v\,2.2.4  & \textcite{Marcais2011} \\
 Perl        & v\,5.14.2  & \url{https://www.perl.org/} \\
 samtools    & v\,1.1 & \textcite{Li2009b, Li2011a, Li2011b} \\
-skewer      & v\,0.1.124 & \textcolor{XXX} \\
-Trimmomatic & v\,0.3.5 & \textcolor{XXX} \\
+skewer      & v\,0.1.124 & \textcolor{red}{XXX} \\
+Trimmomatic & v\,0.3.5 & \textcolor{red}{XXX} \\
 \end{tabularx}
 
 \subsection*{Trimming of the input data}
@@ -337,14 +339,34 @@ pv HD_gen.il_L800.trimmed_P12.interleave.kmerfiltered.fastq | \
 
 \subsection*{Long Read Assembly}
 
-Falcon
+Trusted and untrusted Moleculo reads were assembled with Falcon.
+
+\begin{lstlisting}[language=bash]
+fc_run.py trusted.falcon.cfg
+fc_run.py untrusted.falcon.cfg
+\end{lstlisting}
+
+See configuration files for parameter details.
 
 \subsection*{Assembly Annotation}
+The trusted assembly was annotated with GeneMark-ES.
 
-GeneMark-S and GeneMark-ES
-CGView -> Visualizatin
+\begin{lstlisting}[language=bash]
+gmes_petap.pl --sequence HD_gen.trusted.fasta --ES --cores 64
+\end{lstlisting}
+
+The untrusted assemmbly was annotated with GeneMark-S
+
+\begin{lstlisting}[language=bash]
+gmsn.pl --fnn --faa --species HD --gm --name HD HD_gen.unsupported.fasta
+\end{lstlisting}
+
+The largest untrusted sequence was visualized using the CGView Server.
 
 \subsection*{Assembly Comparison}
+
+Trusted and untrusted assemblies were compared using GC content, mapping coverage, per-site variability and gene spacing.
+
 \paragraph{GC content}
 The GC content was determined for all contigs
 \SI{\ge1}{\kilo\basepair} using a sliding window of
@@ -457,8 +479,20 @@ do
 done
 \end{lstlisting}
 
-Per-site Variability ?
-sm-Packages to compare distributions
+\paragraph{per-site Variability}
+
+The per-site variablity was calculated by counting bases covering each site of the two assembly. Each base that occurred at a given site with a minimum frequency of 0.2 was taken into account and a histogram of all these base frequencies was created.
+
+\paragraph{Gene Spacing}
+
+Lenght of the intragenetic regions were directly extracted from the GeneMark-S/ES annotation files.
+
+\begin{lstlisting}[language=bash]
+gtf2genespacing.pl --gtf HD_gen.supported.gtf 
+gtf2genespacing.pl --gtf HD_gen.unsupported.gtf
+\end{lstlisting}
+
+All resulting data set were compared, tested and visualized using the GNU R package 'sm'.
 
 \printbibliography
 
