@@ -63,13 +63,18 @@
 \usepackage{rotating}
 \usepackage{cleveref}
 \usepackage{listings}
-\lstset{basicstyle=\ttfamily\footnotesize}
+\definecolor{light-gray}{gray}{0.95}
+\lstset{basicstyle=\ttfamily\footnotesize,backgroundcolor=\color{light-gray},frame=single}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{\Large The genome of a tardigrade - \\\large Horizontal gene transfer or bacterial contamination?}
-\author{\normalsize Felix Bemm, Clemens Weiß, Jörg Schultz, Frank Förster}
+\title{\Large The genome of a tardigrade - \\\large Horizontal gene transfer or bacterial contamination?\\\normalsize Supplemental material}
+\author{\normalsize Felix Bemm\textsuperscript{1}, Clemens Leonard Weiß\textsuperscript{1}, Jörg Schultz\textsuperscript{2,3}, Frank Förster\textsuperscript{2,3,*}\\[5em]
+  \scriptsize \textsuperscript{1} Max-Planck-Institute for Developmental Biology, Department Molecular Biology, 72076 Tübingen, Germany\\
+  \scriptsize \textsuperscript{2} Center for Computational and Theoretical Biology, Campus Nord, University of Würzburg, 97074 Würzburg, Germany\\
+  \scriptsize \textsuperscript{3} Department for Bioinformatics, Biozentrum, University of Würzburg, 97074 Würzburg, Germany\\
+  \scriptsize \textsuperscript{*} To whom correspondence should be addressed: \href{mailto:frank.foerster@uni-wuerzburg.de}{frank.foerster@uni-wuerzburg.de}}
 \date{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -92,32 +97,55 @@
 \includegraphics[width=1\textwidth]{supplementary_figure_1}
 \captionof{figure}[kmer Analysis]{The plots depict the kmer
   distribution for each library before (black line) and after
-  classification into ``trusted'' (green line) and ``untrusted'' kmers
+  classification into `trusted' (green line) and `untrusted' kmers
   (red line).}
 
 \pagebreak
 
 \includegraphics[width=1\textwidth]{supplementary_figure_2}
-\captionof{figure}[Assembly Feature Comparisons]{A) Per-site coverage of trusted and untrusted assembly based on mappings of Moleculo reads. Contigs from the untrusted assembly generally don't share the coverage of the trusted, most likley nuclear, genome. B) GC concent of trusted and untrusted assembly estimated using sliding window approach. The untrusted assembly contains multiple peaks pointing towards contig subpopulations with different GC content. C) Per-site variability of trusted und untrusted assembly which can serve as ploidy proxy. The untrusted variability spectrum seems distored and contains a multiude of different peaks while the trusted assembly shows a typical diploid spectrum. D) Lenght distribution of intergenetic regions. Intragenetic regions are significantly larger in the trusted assembly than in the trusted.}
+\captionof{figure}[Assembly Feature Comparisons]{A) Per-site coverage
+  of trusted and untrusted assembly based on mappings of Moleculo
+  reads. Contigs from the untrusted assembly generally don't share the
+  coverage of the trusted, most likley nuclear, genome. B) GC content
+  of trusted and untrusted assembly estimated using sliding window
+  approach. The untrusted assembly contains multiple peaks pointing
+  towards contig subpopulations with different GC content. C) Per-site
+  variability of trusted und untrusted assembly which can serve as
+  ploidy proxy. The untrusted variability spectrum seems distored and
+  contains a multiude of different peaks while the trusted assembly
+  shows a typical diploid spectrum. D) Length distribution of
+  intergenetic regions. Intragenetic regions are significantly larger
+  in the trusted assembly than in the trusted.}
 
 \pagebreak
 
 \includegraphics[width=1\textwidth]{supplementary_figure_3}
-\captionof{figure}[Unknown Bacterial Genome]{Circular map of an unknown bacterial genome probably belonging to the Chitinophagaceae drawn with CGView. Track 1 and 2 (blue) indicate GeneMark-S annoated genes on forward and reverse strand. Track 3 (red) visualizes regions of homology to a set of 30,844 Chitinophagaceae proteins downloaded from UniProtKB. Track 4 (green) shows homology between GeneMark-S predicted proteins and the published protein set of Boothby et al.}
+\captionof{figure}[Unknown Bacterial Genome]{Circular map of an
+  unknown bacterial genome probably belonging to the Chitinophagaceae
+  drawn with CGView. Tracks\,1 and 2\,(blue) indicate GeneMark-S annotated
+  genes on forward and reverse strand. Track\,3 (red) visualizes
+  regions of homology to a set of \num{30844} Chitinophagaceae proteins
+  downloaded from UniProtKB. Track\,4 (green) shows homology between
+  GeneMark-S predicted proteins and the published protein set of
+  \textcite{Boothby2015}}
 
 \pagebreak
 
 \section{Methods}
 
 \subsection*{GitHub repository}
-All script files are available from our GitHub repository (\url{https://github.com/greatfireball/hypsibius_genome_revised/}).
+All script files are available from our GitHub repository
+(\url{https://github.com/greatfireball/hypsibius_genome_revised/}).
 
 \subsection*{Data set}
-We used the data set provided by \textcite{Boothby2015} and downloaded the data from \url{http://weatherby.genetics.utah.edu/seq_transf/}. A complete list of the used input files are given in \cref{tab:inputdata}.
+We used the data set provided by \textcite{Boothby2015} and downloaded
+the data from \url{http://weatherby.genetics.utah.edu/seq_transf/}. A
+complete list of the used input files are given in
+\cref{tab:inputdata}.
 
 \begin{sidewaystable}
 \centering
-\captionof{table}{\label{tab:inputdata}Bla}
+\captionof{table}{\label{tab:inputdata}Data set used for our analysis including checksums for compressed and decompressed file content.}
 \begin{tabularx}{\linewidth}{>{\ttfamily\tiny}X>{\ttfamily\tiny}l>{\ttfamily\tiny}r*{2}{>{\ttfamily\tiny}l}}\toprule
 Filename and location                                          & Modification time    & Size in Bytes     & MD5 check sum                    & MD5 check sum decompressed \\ \midrule
 \href{http://weatherby.genetics.utah.edu/seq_transf/tg.genome.fsa.gz}{tg.genome.fsa.gz}
@@ -159,15 +187,16 @@ BEDTools    & v\,2.20.1 & \textcite{Quinlan2010} \\
 bioperl     & v\,1.69.1 & \textcite{Stajich2002} \\
 bowtie2     & v\,2.2.2 & \textcite{Langmead2012} \\
 bwa         & v\,0.7.10 & \textcite{Li2009a,Li2010} \\
-CGView      & v\,1.0 & \textcite{Grin2011} \textcolor{red}{???} \\
+CGView      & v\,1.0 & \textcite{Grin2011} \\
 Falcon      & v\,0.4.0 & \url{https://github.com/PacificBiosciences/falcon} \\
 Genemark-S  & v\,4.3.2 & \textcite{Besemer2001} \\
 Genemark-ET & v\,4.29 & \textcite{Lomsadze2014} \\
 Jellyfish   & v\,2.2.4  & \textcite{Marcais2011} \\
 Perl        & v\,5.14.2  & \url{https://www.perl.org/} \\
 samtools    & v\,1.1 & \textcite{Li2009b, Li2011a, Li2011b} \\
-skewer      & v\,0.1.124 & \textcolor{red}{XXX} \\
-Trimmomatic & v\,0.3.5 & \textcolor{red}{XXX} \\
+skewer      & v\,0.1.124 & \textcite{Jiang2014} \\
+`sm' R\,package & v\,2.2-5.4 & \textcite{Bowman2014} \\
+Trimmomatic & v\,0.3.5 & \textcite{Bolger2014} \\
 \end{tabularx}
 
 \subsection*{Trimming of the input data}
@@ -175,52 +204,34 @@ Trimmomatic & v\,0.3.5 & \textcolor{red}{XXX} \\
 Short reads were trimmed with skewer.
 
 \begin{lstlisting}{language=bash}
-skewer -m pe -q 30 -Q 30 -l 60 -t 64 HD_gen.il_L[358]*00_P1.fastq HD_gen.il_L[358]*00_P2.fastq
+skewer -m pe -q 30 -Q 30 -l 60 -t 64 \
+   HD_gen.il_L[358]*00_P1.fastq HD_gen.il_L[358]*00_P2.fastq
 \end{lstlisting}
 
 Long reads were trimmed with Trimmomatic.
 
 \begin{lstlisting}{language=bash}
-java -jar trimmomatic-0.35.jar SE -phred33 HD_gen.mo_L[12345]*.fastq HD_gen.mo_L[12345]*.trimmed.fastq ILLUMINACLIP:adapter.fa:2:30:10 LEADING:30 TRAILING:30 MINLEN:250
+java -jar trimmomatic-0.35.jar SE -phred33 HD_gen.mo_L[12345]*.fastq \
+   HD_gen.mo_L[12345]*.trimmed.fastq \
+   ILLUMINACLIP:adapter.fa:2:30:10 LEADING:30 TRAILING:30 MINLEN:250
 \end{lstlisting}
 
 \subsection*{Estimation of the genomes size}
 
-The genome size was esitmated by running the standalone error correction pipeline of Allpahts-LG.
+The genome size was estimated by the standalone error
+correction pipeline of Allpaths-LG.
 
 \begin{lstlisting}{language=bash}
-ErrorCorrectReads.pl PHRED_ENCODING=33 READS_OUT=$OUT KEEP_KMER_SPECTRA=1 MAX_MEMORY_GB=$MEM PAIRED_READS_A_IN=$PE1 PAIRED_READS_B_IN=$PE2 THREADS=$CPU HAPLOIDIFY=TRUE
+./scripts/genome_size_estimation.sh
 \end{lstlisting}
 
 \subsection*{Counting and Filtering bases on kmers}
 
-The kmers of all libraries where counted using the software jellyfish \parencite{Marcais2011}:
+The kmers of all libraries where counted using the software jellyfish
+\parencite{Marcais2011}:
 
 \begin{lstlisting}[language=bash]
-# counting the kmers inside the trimmed sequence libraries
-mkdir kmer
-cd kmer
-jellyfish count -t 32 -m 19 -s 30G -C \
-   -o HD_gen.il_L300.trimmed_mer_19 \
-   ../trimmed/HD_gen.il_L300.trimmed_P1.fastq \
-   ../trimmed/HD_gen.il_L300.trimmed_P2.fastq
-jellyfish count -t 32 -m 19 -s 30G -C \
-   -o HD_gen.il_L500.trimmed_mer_19 \
-   ../trimmed/HD_gen.il_L500.trimmed_P1.fastq \
-   ../trimmed/HD_gen.il_L500.trimmed_P2.fastq
-jellyfish count -t 32 -m 19 -s 30G -C \
-   -o HD_gen.il_L800.trimmed_mer_19 \
-   ../trimmed/HD_gen.il_L800.trimmed_P1.fastq \
-   ../trimmed/HD_gen.il_L800.trimmed_P2.fastq
-for i in $(find ../trimmed/ -name HD_gen.mo_L[12345]*.trimmed.formatted.fastq)
-do
-    jellyfish count -t 32 -m 19 -s 30G -C -o $(basename "$i" .fastq)_mer_19 "$i"
-done
-
-# merging of the moleculo hashes
-jellyfish merge \
-   -o HD_gen.mo_L1-5.trimmed.formatted_mer_19 \
-   HD_gen.mo_L[12345].trimmed.formatted_mer_19
+./scripts/count_kmers.sh
 \end{lstlisting}
 
 The resulting kmer hashes need to be dumped and converted to a hash
@@ -229,112 +240,24 @@ required \SI{>200}{\giga\byte} of memory and was performed by the perl
 script \texttt{prepare\_filter\_fastq\_by\_valid\_kmers.pl}.
 
 \begin{lstlisting}[language=bash]
-cd kmer
-
-# dumping the kmer hashes
-for i in *_mer_19
-do
-   jellyfish dump --column --tab -o $(basename "$i").dump "$i"
-done
-
-# merging kmer hash information into a single perl hash
-prepare_filter_fastq_by_valid_kmers.pl \
-   --output kmer_hash.bin \
-   --kmerlib 300=HD_gen.il_L300.trimmed_mer_19.dump \
-   --kmerlib 500=HD_gen.il_L500.trimmed_mer_19.dump \
-   --kmerlib 800=HD_gen.il_L800.trimmed_mer_19.dump \
-   --kmerlib Moleculo=HD_gen.mo_L1-5.trimmed.formatted_mer_19.dump
+./scripts/dump_kmers.sh
 \end{lstlisting}
 
-The generated hash was used to filter individual libraries by the perl
-script \texttt{filter\_fastq\_by\_valid\_kmers\_reduced.pl}.
+The generated hash was used to filter individual libraries. Therefore,
+we have written the perl script
+\texttt{filter\_fastq\_by\_valid\_kmers\_reduced.pl}.
 
 \begin{lstlisting}[language=bash]
-mkdir kmer_filtered
-cd kmer_filtered
-../scripts/filter_fastq_by_valid_kmers_reduced.pl \
-   --infile ../trimmed/HD_gen.il_L300.trimmed_P1.fastq,../trimmed/HD_gen.il_L300.trimmed_P2.fastq \
-   --kmerhash ../kmer/kmers_hash.bin \
-   --out HD_gen.il_L300.trimmed_P12.fastq.interleaved.filtered \
-   --paired
-
-../scripts/filter_fastq_by_valid_kmers_reduced.pl \
-   --infile ../trimmed/HD_gen.il_L500.trimmed_P1.fastq,../trimmed/HD_gen.il_L500.trimmed_P2.fastq \
-   --kmerhash ../kmer/kmers_hash.bin \
-   --out HD_gen.il_L500.trimmed_P12.fastq.interleaved.filtered \
-   --paired
-
-../scripts/filter_fastq_by_valid_kmers_reduced.pl \
-   --infile ../trimmed/HD_gen.il_L800.trimmed_P1.fastq,../trimmed/HD_gen.il_L800.trimmed_P2.fastq \
-   --kmerhash ../kmer/kmers_hash.bin \
-   --out HD_gen.il_L800.trimmed_P12.fastq.interleaved.filtered \
-   --paired
-
-for i in $(find ../trimmed/ -name HD_gen.mo_L[12345]*.trimmed.formatted.fastq)
-do
-   ../scripts/filter_fastq_by_valid_kmers_reduced.pl \
-      --infile "$i" \
-      --kmerhash ../kmer/kmers_hash.bin \
-      --out $(basename "$i").filtered
-done
+./scripts/filter_input_data.sh
 \end{lstlisting}
 
-The filtered data sets are classified as ``trusted'' or ``untrusted''
-based on the ``trusted'' kmer content. Reads with at least
-\SI{95}{\percent} ``trusted'' kmers content are called ``trusted''
-while reads below that threshold are classified as ``untrusted''.
+The filtered data sets are classified as `trusted' or `untrusted'
+based on the `trusted' kmer content. Reads with at least
+\SI{95}{\percent} `trusted' kmers content are called `trusted'
+while reads below that threshold are classified as `untrusted'.
 
 \begin{lstlisting}[language=bash]
-pv HD_gen.il_L300.trimmed_P12.interleave.kmerfiltered.fastq | \
-   perl -ne '
-      unless (/percent_valid:([\d.]+)/) { die "Fehler"; }
-
-      if ($1 < 0.95) {
-        print STDERR $_, scalar <>,
-                     scalar <>, scalar <>,
-                     scalar <>, scalar <>,
-                     scalar <>, scalar <>;
-      } else {
-        print $_,scalar <>,
-              scalar <>, scalar <>,
-              scalar <>, scalar <>,
-              scalar <>, scalar <>;
-      }' 2> HD_gen.il_L300.trimmed_P12.interleave.kmerfiltered.untrusted.fastq \
-          > HD_gen.il_L300.trimmed_P12.interleave.kmerfiltered.trusted.fastq
-
-pv HD_gen.il_L500.trimmed_P12.interleave.kmerfiltered.fastq | \
-   perl -ne '
-      unless (/percent_valid:([\d.]+)/) { die "Fehler"; }
-
-      if ($1 < 0.95) {
-        print STDERR $_, scalar <>,
-                     scalar <>, scalar <>,
-                     scalar <>, scalar <>,
-                     scalar <>, scalar <>;
-      } else {
-        print $_,scalar <>,
-              scalar <>, scalar <>,
-              scalar <>, scalar <>,
-              scalar <>, scalar <>;
-      }' 2> HD_gen.il_L500.trimmed_P12.interleave.kmerfiltered.untrusted.fastq \
-          > HD_gen.il_L500.trimmed_P12.interleave.kmerfiltered.trusted.fastq
-
-pv HD_gen.il_L800.trimmed_P12.interleave.kmerfiltered.fastq | \
-   perl -ne '
-      unless (/percent_valid:([\d.]+)/) { die "Fehler"; }
-
-      if ($1 < 0.95) {
-        print STDERR $_, scalar <>,
-                     scalar <>, scalar <>,
-                     scalar <>, scalar <>,
-                     scalar <>, scalar <>;
-      } else {
-        print $_,scalar <>,
-              scalar <>, scalar <>,
-              scalar <>, scalar <>,
-              scalar <>, scalar <>;
-      }' 2> HD_gen.il_L800.trimmed_P12.interleave.kmerfiltered.untrusted.fastq \
-          > HD_gen.il_L800.trimmed_P12.interleave.kmerfiltered.trusted.fastq
+./scripts/extract_classified_sequences.sh
 \end{lstlisting}
 
 \subsection*{Long Read Assembly}
@@ -352,20 +275,23 @@ See configuration files for parameter details.
 The trusted assembly was annotated with GeneMark-ES.
 
 \begin{lstlisting}[language=bash]
-gmes_petap.pl --sequence HD_gen.trusted.fasta --ES --cores 64
+gmes_petap.pl --sequence HD_gen.trusted.fasta \
+   --ES --cores 64
 \end{lstlisting}
 
-The untrusted assemmbly was annotated with GeneMark-S
+The untrusted assembly was annotated with GeneMark-S
 
 \begin{lstlisting}[language=bash]
-gmsn.pl --fnn --faa --species HD --gm --name HD HD_gen.unsupported.fasta
+gmsn.pl --fnn --faa --species HD --gm \
+   --name HD HD_gen.unsupported.fasta
 \end{lstlisting}
 
 The largest untrusted sequence was visualized using the CGView Server.
 
 \subsection*{Assembly Comparison}
 
-Trusted and untrusted assemblies were compared using GC content, mapping coverage, per-site variability and gene spacing.
+Trusted and untrusted assemblies were compared using GC content,
+mapping coverage, per-site variability and gene spacing.
 
 \paragraph{GC content}
 The GC content was determined for all contigs
@@ -387,112 +313,34 @@ done
 \end{lstlisting}
 
 \paragraph{Mapping Coverage}
-The mapping coverage was determinded by remapping of the short or
+The mapping coverage was determined by remapping of the short or
 longreads onto the assembled contig. For the short read libraries, we
 used \texttt{bowtie2} as mapper. Long read libraries were mapped by
 \texttt{bwa}. The per-base coverage was determined by bedtools.
 
 \begin{lstlisting}[language=bash]
-mkdir mapping
-cd mapping
-
-BWA=bwa
-SAMTOOLS=samtools
-
-ln -s ../assemblies/HD*.fasta ./
-
-# prepare mapping indices for bowtie2 and bwa
-for i in *.fasta
-do
-   # bowtie2 preparation
-   bowtie2-build "$i" \
-      $(basename "$i" .fasta) 2>&1 | \
-      tee bowtie2-build-$(basename "$i" .fasta).log
-   # bwa preparation
-   bwa index "$i" 2>&1 | \
-      tee bwa-index-$(basename "$i" .fasta).log
-done
-
-# mapping of short reads
-for REF in HD_gen.supported.fasta HD_gen.unsupported.fasta
-do
-   # 300 bp library
-   bowtie2 \
-        -x "$REF" \
-        -1 ../trimmed/HD_gen.il_L300.trimmed_P1.fastq \
-        -2 ../trimmed/HD_gen.il_L300.trimmed_P2.fastq \
-        -p 32 \
-        --minins 0 \
-        --maxins 900 | \
-        samtools view -uS - | \
-        samtools sort -@32 - "$REF"-il.L300
-
-   # 500 bp library
-   bowtie2 \
-        -x "$REF" \
-        -1 ../trimmed/HD_gen.il_L500.trimmed_P1.fastq \
-        -2 ../trimmed/HD_gen.il_L500.trimmed_P2.fastq \
-        -p 32 \
-        --minins 0 \
-        --maxins 1500 | \
-        samtools view -uS - | \
-        samtools sort -@32 - "$REF"-il.L500
-
-   # 800 bp library
-   bowtie2 \
-        -x "$REF" \
-        -1 ../trimmed/HD_gen.il_L800.trimmed_P1.fastq \
-        -2 ../trimmed/HD_gen.il_L800.trimmed_P2.fastq \
-        -p 32 \
-        --minins 0 \
-        --maxins 2400 | \
-        samtools view -uS - | \
-        samtools sort -@32 - "$REF"-il.L800
-done
-
-# mapping of long reads
-# combine all long reads
-find ../trimmed/ -name "HD_gen.mo_L[12345].trimmed.formatted.fastq" | \
-   xargs cat > ../trimmed/HD_gen.mo_L12345.trimmed.formatted.fastq
-
-# map the longreads
-for REF in HD_gen.supported.fasta HD_gen.unsupported.fasta
-do
-   for SEQ in ../trimmed/HD_gen.mo_L12345.trimmed.formatted.fastq
-      OUT=$(basename "$REF")_$(basename "$SEQ")
-
-      $BWA mem -t 32 "$REF" "$SEQ" | \
-      $SAMTOOLS view -uS - | \
-      $SAMTOOLS sort -@32 - "$OUT"
-   done
-done
-
-# extraction of per base coverage
-for REF in HD_gen.supported.fasta HD_gen.unsupported.fasta
-do
-   for BAM in "$REF"*.bam
-   do
-      OUT=$(basename "$BAM" .bam).cov
-      bedtools genomecov \
-         -ibam "$BAM" -d -g "$REF" > "$OUT"
-   done
-done
+./scripts/determine_mapping_coverage.sh
 \end{lstlisting}
 
-\paragraph{per-site Variability}
+\paragraph{Per-site Variability}
 
-The per-site variablity was calculated by counting bases covering each site of the two assembly. Each base that occurred at a given site with a minimum frequency of 0.2 was taken into account and a histogram of all these base frequencies was created.
+The per-site variability was calculated by counting bases covering each
+site of the two assemblies. Each base that occurred at a given site with
+a minimum frequency of \num{0.2} was taken into account and a histogram of
+all these base frequencies was created.
 
 \paragraph{Gene Spacing}
 
-Lenght of the intragenetic regions were directly extracted from the GeneMark-S/ES annotation files.
+Length of the intragenetic regions were directly extracted from the
+GeneMark-S/ES annotation files.
 
 \begin{lstlisting}[language=bash]
 gtf2genespacing.pl --gtf HD_gen.supported.gtf 
 gtf2genespacing.pl --gtf HD_gen.unsupported.gtf
 \end{lstlisting}
 
-All resulting data set were compared, tested and visualized using the GNU R package 'sm'.
+All resulting data sets were compared, tested and visualized using the
+GNU R package `sm'.
 
 \printbibliography
 

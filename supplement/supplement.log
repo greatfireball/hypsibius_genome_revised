@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.5)  21 DEC 2015 09:34
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.1.16)  22 DEC 2015 02:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**supplement.tex
+**supplement
 (./supplement.tex
 LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+Babel <3.9h> and hyphenation patterns for 78 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrartcl.cls
 Document Class: scrartcl 2013/12/19 v3.12 KOMA-Script document class (article)
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrkbase.sty
@@ -328,8 +328,6 @@ File: babel.def 2013/12/03 3.9h Babel common definitions
 \babel@savecnt=\count88
 \U@D=\dimen103
 )
-\l@british = a dialect from \language\l@english 
-\l@UKenglish = a dialect from \language\l@english 
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
@@ -1271,20 +1269,20 @@ Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (./supplement.aux)
 \openout1 = `supplement.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1314,7 +1312,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box58
-Package hyperref Info: Link coloring OFF on input line 84.
+Package hyperref Info: Link coloring OFF on input line 89.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -1324,9 +1322,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count381
 )
-LaTeX Info: Redefining \ref on input line 84.
-LaTeX Info: Redefining \pageref on input line 84.
-LaTeX Info: Redefining \nameref on input line 84.
+LaTeX Info: Redefining \ref on input line 89.
+LaTeX Info: Redefining \pageref on input line 89.
+LaTeX Info: Redefining \nameref on input line 89.
 
 (./supplement.out) (./supplement.out)
 \@outlinefile=\write4
@@ -1421,279 +1419,153 @@ Package biblatex Info: Automatic encoding selection.
 \openout3 = `supplement.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'supplement.bbl' not found.
-
-No file supplement.bbl.
-Package biblatex Info: Reference section=0 on input line 84.
-Package biblatex Info: Reference segment=0 on input line 84.
+Package biblatex Info: ... file 'supplement.bbl' found.
+ (./supplement.bbl)
+Package biblatex Info: Reference section=0 on input line 89.
+Package biblatex Info: Reference segment=0 on input line 89.
 \c@lstlisting=\count382
 \c__siunitx_mathsf_int=\count383
-LaTeX Font Info:    Try loading font information for U+msa on input line 84.
+LaTeX Font Info:    Try loading font information for U+msa on input line 89.
+
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 84.
+LaTeX Font Info:    Try loading font information for U+msb on input line 89.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 \c__siunitx_mathtt_int=\count384
-LaTeX Font Info:    Try loading font information for T1+cmss on input line 87.
+LaTeX Font Info:    Try loading font information for T1+cmss on input line 92.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmss.fd
 File: t1cmss.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-) [1
+)
+Overfull \hbox (14.9493pt too wide) in paragraph at lines 92--92
+ [][] 
+ []
+
+[1
 
 
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<./figures/supplementary_figure_1.pdf, id=20, 720.04243pt x 698.4286pt>
+<./figures/supplementary_figure_1.pdf, id=24, 720.04243pt x 698.4286pt>
 File: ./figures/supplementary_figure_1.pdf Graphic file (type pdf)
 
 <use ./figures/supplementary_figure_1.pdf>
 Package pdftex.def Info: ./figures/supplementary_figure_1.pdf used on input lin
-e 92.
+e 97.
 (pdftex.def)             Requested size: 448.13095pt x 434.68378pt.
  [2 <./figures/supplementary_figure_1.pdf>] <./figures/supplementary_figure_2.p
-df, id=74, 465.3623pt x 423.08063pt>
+df, id=78, 465.3623pt x 423.08063pt>
 File: ./figures/supplementary_figure_2.pdf Graphic file (type pdf)
 
 <use ./figures/supplementary_figure_2.pdf>
 Package pdftex.def Info: ./figures/supplementary_figure_2.pdf used on input lin
-e 100.
+e 105.
 (pdftex.def)             Requested size: 448.13095pt x 407.42455pt.
 
-Overfull \hbox (11.74713pt too wide) in paragraph at lines 100--101
+Overfull \hbox (11.74713pt too wide) in paragraph at lines 105--118
 [][] 
  []
 
 [3 <./figures/supplementary_figure_2.pdf>]
-<./figures/supplementary_figure_3.pdf, id=93, 1740.90402pt x 1756.96402pt>
+<./figures/supplementary_figure_3.pdf, id=97, 1740.90402pt x 1756.96402pt>
 File: ./figures/supplementary_figure_3.pdf Graphic file (type pdf)
 
 <use ./figures/supplementary_figure_3.pdf>
 Package pdftex.def Info: ./figures/supplementary_figure_3.pdf used on input lin
-e 105.
+e 122.
 (pdftex.def)             Requested size: 448.13095pt x 452.26913pt.
 
-Overfull \hbox (11.74713pt too wide) in paragraph at lines 105--106
+Overfull \hbox (11.74713pt too wide) in paragraph at lines 122--130
 [][] 
  []
 
 [4 <./figures/supplementary_figure_3.pdf>]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 113.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 138.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-Overfull \hbox (38.77231pt too wide) in paragraph at lines 113--114
+Overfull \hbox (38.77231pt too wide) in paragraph at lines 137--139
 \T1/cmr/m/n/12 All script files are avail-able from our GitHub repos-i-tory ([]
 $\T1/cmtt/m/n/12 https : / / github . com / greatfireball /
  []
 
-
-LaTeX Warning: Citation 'Boothby2015' on page 5 undefined on input line 116.
-
-
-LaTeX Warning: Citation 'Gnerre2011' on page 5 undefined on input line 171.
-
-
-LaTeX Warning: Citation 'Ribeiro2012' on page 5 undefined on input line 171.
-
-
-LaTeX Warning: Citation 'Quinlan2010' on page 5 undefined on input line 171.
-
-
-LaTeX Warning: Citation 'Stajich2002' on page 5 undefined on input line 171.
-
-
-LaTeX Warning: Citation 'Langmead2012' on page 5 undefined on input line 171.
-
-
-LaTeX Warning: Citation 'Li2009a' on page 5 undefined on input line 171.
-
-
-LaTeX Warning: Citation 'Li2010' on page 5 undefined on input line 171.
-
-
-LaTeX Warning: Citation 'Grin2011' on page 5 undefined on input line 171.
-
-
-LaTeX Warning: Citation 'Besemer2001' on page 5 undefined on input line 171.
-
-
-LaTeX Warning: Citation 'Lomsadze2014' on page 5 undefined on input line 171.
-
-
-LaTeX Warning: Citation 'Marcais2011' on page 5 undefined on input line 171.
-
-
-LaTeX Warning: Citation 'Li2009b' on page 5 undefined on input line 171.
-
-
-LaTeX Warning: Citation 'Li2011a' on page 5 undefined on input line 171.
-
-
-LaTeX Warning: Citation 'Li2011b' on page 5 undefined on input line 171.
-
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 177.
-
-Overfull \hbox (143.9302pt too wide) in paragraph at lines 178--179
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][] 
- []
-
-
-Overfull \hbox (610.0209pt too wide) in paragraph at lines 184--185
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][] 
- []
-
-[5] [6]
-Overfull \hbox (603.72238pt too wide) in paragraph at lines 192--193
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-LaTeX Warning: Citation 'Marcais2011' on page 7 undefined on input line 197.
-
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+nput line 206.
+[5] [6] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2013/08/26 1.5b listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2013/08/26 1.5b listings language file
-)
+) [7]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 202.
-
-Overfull \hbox (43.15384pt too wide) in paragraph at lines 215--216
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 304.
+ [8]
+[9]
+Overfull \hbox (2.79167pt too wide) in paragraph at lines 346--346
+[]\T1/cmr/m/n/12 Heng Li and Richard Durbin. ``Fast and ac-cu-rate long-read al
+ign-ment with Burrows-
  []
 
 
-Overfull \hbox (55.75089pt too wide) in paragraph at lines 217--218
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][] 
- []
-
-[7]
-Overfull \hbox (174.76974pt too wide) in paragraph at lines 249--251
-[]\T1/cmr/m/n/12 The gen-er-ated hash was used to fil-ter in-di-vid-ual li-brar
-ies by the perl script \T1/cmtt/m/n/12 filter_fastq_by_valid_kmers_reduced.pl\T
-1/cmr/m/n/12 . 
+Overfull \hbox (6.12004pt too wide) in paragraph at lines 346--346
+[]\T1/cmr/m/n/12 Heng Li and Richard Durbin. ``Fast and ac-cu-rate short read a
+lign-ment with Burrows-
  []
 
 
-Overfull \hbox (175.42282pt too wide) in paragraph at lines 256--257
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (5.14313pt too wide) in paragraph at lines 346--346
+[]\T1/cmr/m/n/12 Alexandre Lom-sadze, Paul D. Burns, and Mark Borodovsky. ``In-
+te-gra-tion of mapped
  []
 
-
-Overfull \hbox (175.42282pt too wide) in paragraph at lines 262--263
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (175.42282pt too wide) in paragraph at lines 268--269
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (43.15384pt too wide) in paragraph at lines 273--274
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (55.75089pt too wide) in paragraph at lines 302--303
-[][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (30.5568pt too wide) in paragraph at lines 303--305
-[][][][][][][][][][][][][][][][][][][] 
- []
-
-[8]
-Overfull \hbox (55.75089pt too wide) in paragraph at lines 319--320
-[][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (30.5568pt too wide) in paragraph at lines 320--322
-[][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (55.75089pt too wide) in paragraph at lines 336--337
-[][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (30.5568pt too wide) in paragraph at lines 337--338
-[][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (5.3627pt too wide) in paragraph at lines 361--362
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-[9] [10] [11]
-
-LaTeX Warning: Empty bibliography on input line 497.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 499.
-[12]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 499.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 347.
+[10]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 347.
  (./supplement.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 499.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 499.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 347.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 347.
 Package rerunfilecheck Info: File `supplement.out' has not changed.
 (rerunfilecheck)             Checksum: B13F8844AEA6C5610BF0DADDABF665C5;84.
-
-
-LaTeX Warning: There were undefined references.
-
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                supplement
-(biblatex)                and rerun LaTeX afterwards.
-
 Package logreq Info: Writing requests to 'supplement.run.xml'.
 \openout1 = `supplement.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 499.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 347.
  ) 
 Here is how much of TeX's memory you used:
- 26372 strings out of 495028
- 485855 string characters out of 6181498
- 910917 words of memory out of 5000000
- 28956 multiletter control sequences out of 15000+600000
- 22650 words of font info for 69 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
- 45i,15n,51p,10429b,2256s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/felixbemm/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsx1200.600pk> </ho
-me/felixbemm/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecit1000.600pk> </home/feli
-xbemm/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0800.450pk> </home/felixbemm/.
-texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </home/felixbemm/.texmf-v
-ar/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/felixbemm/.texmf-var/font
-s/pk/ljfour/jknappen/ec/ectt1200.600pk> </home/felixbemm/.texmf-var/fonts/pk/lj
-four/jknappen/ec/ecrm1200.600pk> </home/felixbemm/.texmf-var/fonts/pk/ljfour/jk
-nappen/ec/ecsx1440.600pk> </home/felixbemm/.texmf-var/fonts/pk/ljfour/jknappen/
-ec/ecsx1728.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texm
-f/fonts/type1/public/tex-gyre/qhvb.pfb></usr/share/texmf/fonts/type1/public/tex
--gyre/qhvr.pfb>
-Output written on supplement.pdf (12 pages, 2783907 bytes).
+ 26209 strings out of 493304
+ 485911 string characters out of 6139871
+ 900850 words of memory out of 5000000
+ 29211 multiletter control sequences out of 15000+600000
+ 23997 words of font info for 71 fonts, out of 8000000 for 9000
+ 957 hyphenation exceptions out of 8191
+ 45i,15n,58p,10425b,1510s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qhvb.p
+fb></usr/share/texmf/fonts/type1/public/tex-gyre/qhvr.pfb></usr/share/texmf/fon
+ts/type1/public/cm-super/sfcc1200.pfb></usr/share/texmf/fonts/type1/public/cm-s
+uper/sfit1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0600.pfb></
+usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/font
+s/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-su
+per/sfsx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx1440.pfb></u
+sr/share/texmf/fonts/type1/public/cm-super/sfsx1728.pfb></usr/share/texmf/fonts
+/type1/public/cm-super/sfti1200.pfb></usr/share/texmf/fonts/type1/public/cm-sup
+er/sftt0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb></us
+r/share/texmf/fonts/type1/public/cm-super/sftt1200.pfb>
+Output written on supplement.pdf (10 pages, 2954241 bytes).
 PDF statistics:
- 936 PDF objects out of 1000 (max. 8388607)
- 481 compressed objects within 5 object streams
- 265 named destinations out of 1000 (max. 500000)
+ 460 PDF objects out of 1000 (max. 8388607)
+ 338 compressed objects within 4 object streams
+ 92 named destinations out of 1000 (max. 500000)
  32 words of extra memory for PDF output out of 10000 (max. 10000000)
 
