@@ -97,7 +97,7 @@ CGView         | v1.0     | [Grin and Linke (2011)](#grin-and-linke-2011) |
 Falcon         | v0.4.0   | https://github.com/PacificBiosciences/falcon |
 Genemark-S     | v4.3.2   | [Besemer, *et al.* (2001)](#besemer-et-al-2001) |
 Genemark-ET    | v4.29    | [Lomsadze, *et al.* (2014)](#lomsadze-et-al-2014) |
-Jellyfish      | v2.2.4   | [Marçais and Kingsford (2011)](#marcais-and-kingsford-2011) |
+Jellyfish      | v2.2.4   | [Marçais and Kingsford (2011)](#marçais-and-kingsford-2011) |
 Perl           | v5.14.2  | https://www.perl.org/ |
 samtools       | v1.1     | [Li, *et al.* (2009b)](#li-et-al-2009b), [Li (2011a)](#li-2011a), [Li (2011b)](#li-2011b) |
 skewer         | v0.1.124 | [Jiang, *et al.* (2014)](#jiang-et-al-2014) |
