@@ -45,6 +45,21 @@ This repository comprises data set and scripts for our analysis of the manuscrip
   [Boothby, et al. (2015)](#References)*
 
 ##Methods
+###GitHub repository
+
+All script files are available from our GitHub repository
+https://github.com/greatfireball/hypsibius_genome_revised/.
+
+###Data set
+We used the data set provided by [Boothby, et al. (2015)](#References) and downloaded
+the data from http://weatherby.genetics.utah.edu/seq_transf/. A
+complete list of the used input files are given in the following table:
+
+
+**Table S1:** *Data set used for our analysis including checksums for compressed and decompressed file content.*
+| Filename and location | Modification time  | Size in Bytes  | MD5 check sum | MD5 check sum decompressed |
+|:---------------------:|:------------------:|---------------:|:-------------:|:--------------------------:|
+[tg.genome.fsa.gz](http://weatherby.genetics.utah.edu/seq_transf/tg.genome.fsa.gz) | 2015-11-25T01:34:44Z | 72215266 | b8bd39390ef35dd43d1cda1ca6944d5a | 77be374d28b91232c0810cc4d3cd37b9 |
 
 ##References
 
