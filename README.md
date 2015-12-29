@@ -97,7 +97,7 @@ CGView         | v1.0     | [Grin and Linke (2011)](#grin-and-linke-2011) |
 Falcon         | v0.4.0   | https://github.com/PacificBiosciences/falcon |
 Genemark-S     | v4.3.2   | [Besemer, *et al.* (2001)](#besemer-et-al-2001) |
 Genemark-ET    | v4.29    | [Lomsadze, *et al.* (2014)](#lomsadze-et-al-2014) |
-Jellyfish      | v2.2.4   | [Marcais and Kingsford (2011)](#marcais-and-kingsford-2011) |
+Jellyfish      | v2.2.4   | [Marçais and Kingsford (2011)](#marcais-and-kingsford-2011) |
 Perl           | v5.14.2  | https://www.perl.org/ |
 samtools       | v1.1     | [Li, *et al.* (2009b)](#li-et-al-2009b), [Li (2011a)](#li-2011a), [Li (2011b)](#li-2011b) |
 skewer         | v0.1.124 | [Jiang, *et al.* (2014)](#jiang-et-al-2014) |
@@ -246,20 +246,55 @@ GNU R package `sm`.
 
 ##References
 ######Besemer, *et al.* (2001)
+Besemer, J.; Lomsadze, A. & Borodovsky, M. GeneMarkS: a self-training method for prediction of gene starts in microbial genomes. Implications for finding sequence motifs in regulatory regions. Nucleic Acids Res, 2001, 29, 2607-2618
+
 ######Bolger, *et al.* (2014)
+Bolger, A. M.; Lohse, M. & Usadel, B. Trimmomatic: a flexible trimmer for Illumina sequence data. Bioinformatics, 2014, 30, 2114-2120
+
 ######Boothby, *et al.* (2015)
+Boothby, T. C.; Tenlen, J. R.; Smith, F. W.; Wang, J. R.; Patanella, K. A.; Osborne Nishimura, E.; Tintori, S. C.; Li, Q.; Jones, C. D.; Yandell, M.; Messina, D. N.; Glasscock, J. & Goldstein, B. Evidence for extensive horizontal gene transfer from the draft genome of a tardigrade Proceedings of the National Academy of Sciences, 2015
+
 ######Bowman and Azzalini (2014)
+Bowman, A. W. & Azzalini, A. R package sm: nonparametric smoothing methods (version 2.2-5.4) 2014
+
 ######Gnerre, *et al.* (2011)
+Gnerre, S.; Maccallum, I.; Przybylski, D.; Ribeiro, F. J.; Burton, J. N.; Walker, B. J.; Sharpe, T.; Hall, G.; Shea, T. P.; Sykes, S.; Berlin, A. M.; Aird, D.; Costello, M.; Daza, R.; Williams, L.; Nicol, R.; Gnirke, A.; Nusbaum, C.; Lander, E. S. & Jaffe, D. B. High-quality draft assemblies of mammalian genomes from massively parallel sequence data. Proc Natl Acad Sci U S A, 2011, 108, 1513-1518
+
 ######Grin and Linke (2011)
+Grin, I. & Linke, D. GCView: the genomic context viewer for protein homology searches. Nucleic Acids Res, 2011, 39, W353-W356
+
 ######Jiang, *et al.* (2014)
+Jiang, H.; Lei, R.; Ding, S.-W. & Zhu, S. Skewer: a fast and accurate adapter trimmer for next-generation sequencing paired-end reads. BMC Bioinformatics, 2014, 15, 182
+
 ######Langmead and Salzberg (2012)
+Langmead, B. & Salzberg, S. L. Fast gapped-read alignment with Bowtie 2. Nat Methods, 2012, 9, 357-359
+
 ######Li and Durbin (2009a)
+Li, H. & Durbin, R. Fast and accurate short read alignment with Burrows-Wheeler transform. Bioinformatics, 2009, 25, 1754-1760
+
 ######Li, *et al.* (2009b)
+Li, H.; Handsaker, B.; Wysoker, A.; Fennell, T.; Ruan, J.; Homer, N.; Marth, G.; Abecasis, G.; Durbin, R. & 1000 Genome Project Data Processing Subgroup The Sequence Alignment/Map format and SAMtools. Bioinformatics, 2009, 25, 2078-2079
+
 ######Li and Durbin (2010)
+Li, H. & Durbin, R. Fast and accurate long-read alignment with Burrows-Wheeler transform. Bioinformatics, 2010, 26, 589-595
+
 ######Li (2011a)
+Li, H. A statistical framework for SNP calling, mutation discovery, association mapping and population genetical parameter estimation from sequencing data. Bioinformatics, 2011, 27, 2987-2993
+
 ######Li (2011b)
+Li, H. Improving SNP discovery by base alignment quality. Bioinformatics, 2011, 27, 1157-1158
+
 ######Lomsadze, *et al.* (2014)
-######Marcais and Kingsford (2011)
+Lomsadze, A.; Burns, P. D. & Borodovsky, M. Integration of mapped RNA-Seq reads into automatic training of eukaryotic gene finding algorithm. Nucleic Acids Res, 2014, 42, e119
+
+######Marçais and Kingsford (2011)
+Marçais, G. & Kingsford, C. A fast, lock-free approach for efficient parallel counting of occurrences of k-mers Bioinformatics, 2011, 27, 764-770
+
 ######Quinlan and Hall (2010)
+Quinlan, A. R. & Hall, I. M. BEDTools: a flexible suite of utilities for comparing genomic features. Bioinformatics, 2010, 26, 841-842
+
 ######Ribeiro, *et al.* (2012)
+Ribeiro, F. J.; Przybylski, D.; Yin, S.; Sharpe, T.; Gnerre, S.; Abouelleil, A.; Berlin, A. M.; Montmayeur, A.; Shea, T. P.; Walker, B. J.; Young, S. K.; Russ, C.; Nusbaum, C.; MacCallum, I. & Jaffe, D. B. Finished bacterial genomes from shotgun sequence data. Genome Res, 2012, 22, 2270-2277
+
 ######Stajich, *et al.* (2002)
+Stajich, J. E.; Block, D.; Boulez, K.; Brenner, S. E.; Chervitz, S. A.; Dagdigian, C.; Fuellen, G.; Gilbert, J. G. R.; Korf, I.; Lapp, H.; Lehväslaiho, H.; Matsalla, C.; Mungall, C. J.; Osborne, B. I.; Pocock, M. R.; Schattner, P.; Senger, M.; Stein, L. D.; Stupka, E.; Wilkinson, M. D. & Birney, E. The Bioperl toolkit: Perl modules for the life sciences. Genome Res, 2002, 12, 1611-1618
