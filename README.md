@@ -11,6 +11,7 @@ This repository comprises data set and scripts for our analysis of the manuscrip
   - [Programs](#programs)
   - [Trimming of the input data](#trimming-of-the-input-data)
   - [Estimation of the genome size](#estimation-of-the-genome-size)
+  - [Counting and Filtering bases on kmers](#counting-and-filtering-bases-on-kmers)
 - [References](#references)
 
 ##Figures
@@ -93,7 +94,7 @@ CGView      | v1.0 | Grin2011 |
 Falcon      | v0.4.0 | https://github.com/PacificBiosciences/falcon |
 Genemark-S  | v4.3.2 | Besemer2001 |
 Genemark-ET | v4.29 | Lomsadze2014 |
-Jellyfish   | v2.2.4  | Marcais2011 |
+Jellyfish   | v2.2.4  | [Marcais and Kingsford (2011)](#references) |
 Perl        | v5.14.2  | https://www.perl.org/ |
 samtools    | v1.1 | Li2009b, Li2011a, Li2011b |
 skewer      | v0.1.124 | Jiang2014 |
@@ -126,7 +127,42 @@ correction pipeline of Allpaths-LG.
 ./scripts/genome_size_estimation.sh
 ```
 
+###Counting and Filtering bases on kmers
+
+The kmers of all libraries where counted using the software jellyfish
+[Marcais and Kingsford (2011)](#references):
+
+```bash
+./scripts/count_kmers.sh
+```
+
+The resulting kmer hashes need to be dumped and converted to a hash
+utilized later during the filtering step. This step and the following
+required >200 \giga\byte of memory and was performed by the perl
+script `prepare\_filter\_fastq\_by\_valid\_kmers.pl`.
+
+```bash
+./scripts/dump_kmers.sh
+```
+
+The generated hash was used to filter individual libraries. Therefore,
+we have written the perl script
+`filter\_fastq\_by\_valid\_kmers\_reduced.pl`.
+
+```bash
+./scripts/filter_input_data.sh
+```
+
+The filtered data sets are classified as 'trusted' or 'untrusted'
+based on the 'trusted' kmer content. Reads with at least
+95% 'trusted' kmers content are called 'trusted'
+while reads below that threshold are classified as 'untrusted'.
+
+```bash
+./scripts/extract_classified_sequences.sh
+```
 
 ##References
 
 - Boothby, et al. (2015)
+- Marcais and Kingsford (2011)
