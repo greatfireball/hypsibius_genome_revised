@@ -10,6 +10,7 @@ This repository comprises data set and scripts for our analysis of the manuscrip
   - [Data set](#data-set)
   - [Programs](#programs)
   - [Trimming of the input data](#trimming-of-the-input-data)
+  - [Estimation of the genome size](#estimation-of-the-genome-size)
 - [References](#references)
 
 ##Figures
@@ -115,6 +116,16 @@ java -jar trimmomatic-0.35.jar SE -phred33 HD_gen.mo_L[12345]*.fastq \
    HD_gen.mo_L[12345]*.trimmed.fastq \
    ILLUMINACLIP:adapter.fa:2:30:10 LEADING:30 TRAILING:30 MINLEN:250
 ```
+
+###Estimation of the genome size
+
+The genome size was estimated by the standalone error
+correction pipeline of Allpaths-LG.
+
+```bash
+./scripts/genome_size_estimation.sh
+```
+
 
 ##References
 
