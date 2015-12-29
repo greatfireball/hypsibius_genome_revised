@@ -6,6 +6,9 @@ This repository comprises data set and scripts for our analysis of the manuscrip
 
 - [Figures](#figures)
 - [Material and Methods](#methods)
+  - [GitHub repository](#github-repository)
+  - [Data set](#data-set)
+  - [Programs](#programs)
 - [References](#references)
 
 ##Figures
