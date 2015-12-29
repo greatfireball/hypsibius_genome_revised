@@ -1,6 +1,6 @@
 #A genome of a tardigrade --- Horizontal gene transfer or contamination
 
-This repository comprises data set and scripts for our analysis of the manuscript [Boothby, *et al.* (2015)](#references).
+This repository comprises data set and scripts for our analysis of the manuscript [Boothby, *et al.* (2015)](#boothby-et-al-2015).
 
 ##Content
 
@@ -51,7 +51,7 @@ This repository comprises data set and scripts for our analysis of the manuscrip
   regions of homology to a set of 30,844 Chitinophagaceae proteins
   downloaded from UniProtKB. Track 4 (green) shows homology between
   GeneMark-S predicted proteins and the published protein set of
-  [Boothby, *et al.* (2015)](#references)*
+  [Boothby, *et al.* (2015)](#boothby-et-al-2015)*
 
 ##Methods
 ###GitHub repository
@@ -60,7 +60,7 @@ All script files are available from our GitHub repository
 https://github.com/greatfireball/hypsibius_genome_revised/.
 
 ###Data set
-We used the data set provided by [Boothby, *et al.* (2015)](#references) and downloaded
+We used the data set provided by [Boothby, *et al.* (2015)](#boothby-et-al-2015) and downloaded
 the data from http://weatherby.genetics.utah.edu/seq_transf/. A
 complete list of the used input files are given in the following table:
 
@@ -86,23 +86,23 @@ complete list of the used input files are given in the following table:
 
 **Table S2:** *List of all programs including the version numbers and references to publications or websites used for the data processing and analysis*
 
-| Programname | Version | Reference |
-|:-----------:|:-------:|:----------|
-Allpath-LG  | v50378 | [Gnerre, *et al.* (2011)](#references), [Ribeiro, *et al.* (2012)](#references) |
-BEDTools    | v2.20.1 |  [Quinlan and Hall (2010)](#references) |
-bioperl     | v1.69.1 | [Stajich, *et al.* (2002)](#references) |
-bowtie2     | v2.2.2 | [Langmead and Salzberg (2012)](#references) |
-bwa         | v0.7.10 | Li2009a,Li2010 |
-CGView      | v1.0 | Grin2011 |
-Falcon      | v0.4.0 | https://github.com/PacificBiosciences/falcon |
-Genemark-S  | v4.3.2 | Besemer2001 |
-Genemark-ET | v4.29 | Lomsadze2014 |
-Jellyfish   | v2.2.4  | [Marcais and Kingsford (2011)](#references) |
-Perl        | v5.14.2  | https://www.perl.org/ |
-samtools    | v1.1 | Li2009b, Li2011a, Li2011b |
-skewer      | v0.1.124 | Jiang2014 |
-`sm` R package | v2.2-5.4 | Bowman2014 |
-Trimmomatic | v0.3.5 | Bolger2014 |
+| Programname  | Version  | Reference |
+|:------------:|:--------:|:----------|
+Allpath-LG     | v50378   | [Gnerre, *et al.* (2011)](#gnerre-et-al-2011), [Ribeiro, *et al.* (2012)](#ribeiro-et-al-2015) |
+BEDTools       | v2.20.1  |  [Quinlan and Hall (2010)](#quinlan-an-hall-2010) |
+bioperl        | v1.69.1  | [Stajich, *et al.* (2002)](#stajich-et-al-2002) |
+bowtie2        | v2.2.2   | [Langmead and Salzberg (2012)](#langmead-and-salzberg-2012) |
+bwa            | v0.7.10  | [Li and Durbin (2009a)](#li-and-durbin-2009a), [Li and Durbin (2010)](#li-and-durbin-2010) |
+CGView         | v1.0     | [Grin and Linke (2011)](#grin-and-linke-2011) |
+Falcon         | v0.4.0   | https://github.com/PacificBiosciences/falcon |
+Genemark-S     | v4.3.2   | [Besemer, *et al.* (2001)](#besemer-et-al-2001) |
+Genemark-ET    | v4.29    | [Lomsadze, *et al.* (2014)](#lomsadze-et-al-2014) |
+Jellyfish      | v2.2.4   | [Marcais and Kingsford (2011)](#marcais-and-kingsford-2011) |
+Perl           | v5.14.2  | https://www.perl.org/ |
+samtools       | v1.1     | [Li, *et al.* (2009b)](#li-et-al-2009b), [Li (2011a)](#li-2011a), [Li (2011b)](#li-2011b) |
+skewer         | v0.1.124 | [Jiang, *et al.* (2014)](#jiang-et-al-2014) |
+`sm` R package | v2.2-5.4 | [Bowman and Azzalini (2014)](#bowman-and-azzalini-2014) |
+Trimmomatic    | v0.3.5   | [Bolger, *et al.* (2014)](#bolger-et-al-2014) |
 
 ###Trimming of the input data
 
@@ -245,11 +245,21 @@ All resulting data sets were compared, tested and visualized using the
 GNU R package `sm`.
 
 ##References
-
-- Boothby, *et al.* (2015)
-- Gnerre, *et al.* (2011)
-- Langmead and Salzberg (2012)
-- Marcais and Kingsford (2011)
-- Quinlan and Hall (2010)
-- Ribeiro, *et al.* (2012)
-- Stajich, *et al.* (2002)
+######Besemer, *et al.* (2001)
+######Bolger, *et al.* (2014)
+######Boothby, *et al.* (2015)
+######Bowman and Azzalini (2014)
+######Gnerre, *et al.* (2011)
+######Grin and Linke (2011)
+######Jiang, *et al.* (2014)
+######Langmead and Salzberg (2012)
+######Li and Durbin (2009a)
+######Li, *et al.* (2009b)
+######Li and Durbin (2010)
+######Li (2011a)
+######Li (2011b)
+######Lomsadze, *et al.* (2014)
+######Marcais and Kingsford (2011)
+######Quinlan and Hall (2010)
+######Ribeiro, *et al.* (2012)
+######Stajich, *et al.* (2002)
