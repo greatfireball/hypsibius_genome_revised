@@ -9,6 +9,7 @@ This repository comprises data set and scripts for our analysis of the manuscrip
   - [GitHub repository](#github-repository)
   - [Data set](#data-set)
   - [Programs](#programs)
+  - [Trimming of the input data](#trimming-of-the-input-data)
 - [References](#references)
 
 ##Figures
@@ -97,6 +98,23 @@ samtools    | v1.1 | Li2009b, Li2011a, Li2011b |
 skewer      | v0.1.124 | Jiang2014 |
 'sm' R package | v2.2-5.4 | Bowman2014 |
 Trimmomatic | v0.3.5 | Bolger2014 |
+
+###Trimming of the input data
+
+Short reads were trimmed with skewer.
+
+```bash
+skewer -m pe -q 30 -Q 30 -l 60 -t 64 \
+   HD_gen.il_L[358]*00_P1.fastq HD_gen.il_L[358]*00_P2.fastq
+```
+
+Long reads were trimmed with Trimmomatic.
+
+```bash
+java -jar trimmomatic-0.35.jar SE -phred33 HD_gen.mo_L[12345]*.fastq \
+   HD_gen.mo_L[12345]*.trimmed.fastq \
+   ILLUMINACLIP:adapter.fa:2:30:10 LEADING:30 TRAILING:30 MINLEN:250
+```
 
 ##References
 
