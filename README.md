@@ -1,6 +1,6 @@
 #A genome of a tardigrade --- Horizontal gene transfer or contamination
 
-This repository comprises data set and scripts for our analysis of the manuscript [Boothby, **et al.** (2015)](#references).
+This repository comprises data set and scripts for our analysis of the manuscript [Boothby, *et al.* (2015)](#references).
 
 ##Content
 
@@ -51,7 +51,7 @@ This repository comprises data set and scripts for our analysis of the manuscrip
   regions of homology to a set of 30,844 Chitinophagaceae proteins
   downloaded from UniProtKB. Track 4 (green) shows homology between
   GeneMark-S predicted proteins and the published protein set of
-  [Boothby, **et al.** (2015)](#references)*
+  [Boothby, *et al.* (2015)](#references)*
 
 ##Methods
 ###GitHub repository
@@ -60,7 +60,7 @@ All script files are available from our GitHub repository
 https://github.com/greatfireball/hypsibius_genome_revised/.
 
 ###Data set
-We used the data set provided by [Boothby, **et al.** (2015)](#references) and downloaded
+We used the data set provided by [Boothby, *et al.* (2015)](#references) and downloaded
 the data from http://weatherby.genetics.utah.edu/seq_transf/. A
 complete list of the used input files are given in the following table:
 
@@ -88,9 +88,9 @@ complete list of the used input files are given in the following table:
 
 | Programname | Version | Reference |
 |:-----------:|:-------:|:----------|
-Allpath-LG  | v50378 | [Gnerre, **et al.** (2011)](#references), [Ribeiro, **et al.** (2012)](#references) |
+Allpath-LG  | v50378 | [Gnerre, *et al.* (2011)](#references), [Ribeiro, *et al.* (2012)](#references) |
 BEDTools    | v2.20.1 |  [Quinlan and Hall (2010)](#references) |
-bioperl     | v1.69.1 | [Stajich, **et al.** (2002)](#references) |
+bioperl     | v1.69.1 | [Stajich, *et al.* (2002)](#references) |
 bowtie2     | v2.2.2 | [Langmead and Salzberg (2012)](#references) |
 bwa         | v0.7.10 | Li2009a,Li2010 |
 CGView      | v1.0 | Grin2011 |
@@ -246,10 +246,10 @@ GNU R package `sm`.
 
 ##References
 
-- Boothby, et al. (2015)
-- Gnerre, **et al.** (2011)
+- Boothby, *et al.* (2015)
+- Gnerre, *et al.* (2011)
 - Langmead and Salzberg (2012)
 - Marcais and Kingsford (2011)
 - Quinlan and Hall (2010)
-- Ribeiro, **et al.** (2012)
-- Stajich, **et al.** (2002)
+- Ribeiro, *et al.* (2012)
+- Stajich, *et al.* (2002)
