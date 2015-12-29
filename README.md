@@ -1,6 +1,6 @@
 #A genome of a tardigrade --- Horizontal gene transfer or contamination
 
-This repository comprises data set and scripts for our analysis of the manuscript [Boothby, et al. (2015)](#References).
+This repository comprises data set and scripts for our analysis of the manuscript [Boothby, et al. (2015)](#references).
 
 ##Content
 
@@ -48,7 +48,7 @@ This repository comprises data set and scripts for our analysis of the manuscrip
   regions of homology to a set of 30,844 Chitinophagaceae proteins
   downloaded from UniProtKB. Track 4 (green) shows homology between
   GeneMark-S predicted proteins and the published protein set of
-  [Boothby, et al. (2015)](#References)*
+  [Boothby, et al. (2015)](#references)*
 
 ##Methods
 ###GitHub repository
@@ -57,7 +57,7 @@ All script files are available from our GitHub repository
 https://github.com/greatfireball/hypsibius_genome_revised/.
 
 ###Data set
-We used the data set provided by [Boothby, et al. (2015)](#References) and downloaded
+We used the data set provided by [Boothby, et al. (2015)](#references) and downloaded
 the data from http://weatherby.genetics.utah.edu/seq_transf/. A
 complete list of the used input files are given in the following table:
 
