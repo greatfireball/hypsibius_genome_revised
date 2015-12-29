@@ -1,8 +1,14 @@
-# A genome of a tardigrade --- Horizontal gene transfer or contamination
+#A genome of a tardigrade --- Horizontal gene transfer or contamination
 
-This repository comprises data set and scripts for our analysis of the manuscript Boothby, et al. (2015).
+This repository comprises data set and scripts for our analysis of the manuscript [Boothby, et al. (2015)](#References).
 
-## Figures
+##Content
+
+- [Figures](#Figures)
+- [Material and Methods](#Methods)
+- [References](#References)
+
+##Figures
 
 ![Image](https://cdn.rawgit.com/greatfireball/hypsibius_genome_revised/master/supplement/figures/supplementary_figure_1.svg)
 
@@ -36,4 +42,10 @@ This repository comprises data set and scripts for our analysis of the manuscrip
   regions of homology to a set of 30,844 Chitinophagaceae proteins
   downloaded from UniProtKB. Track 4 (green) shows homology between
   GeneMark-S predicted proteins and the published protein set of
-  Boothby, et al. (2015)*
+  [Boothby, et al. (2015)](#References)*
+
+##Methods
+
+##References
+
+1. Boothby, et al. (2015)
