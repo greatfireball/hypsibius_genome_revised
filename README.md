@@ -101,7 +101,7 @@ Jellyfish   | v2.2.4  | [Marcais and Kingsford (2011)](#references) |
 Perl        | v5.14.2  | https://www.perl.org/ |
 samtools    | v1.1 | Li2009b, Li2011a, Li2011b |
 skewer      | v0.1.124 | Jiang2014 |
-'sm' R package | v2.2-5.4 | Bowman2014 |
+`sm` R package | v2.2-5.4 | Bowman2014 |
 Trimmomatic | v0.3.5 | Bolger2014 |
 
 ###Trimming of the input data
@@ -141,8 +141,8 @@ The kmers of all libraries where counted using the software jellyfish
 
 The resulting kmer hashes need to be dumped and converted to a hash
 utilized later during the filtering step. This step and the following
-required >200 \giga\byte of memory and was performed by the perl
-script `prepare\_filter\_fastq\_by\_valid\_kmers.pl`.
+required `> 200 GB` of memory and was performed by the perl
+script `prepare_filter_fastq_by_valid_kmers.pl`.
 
 ```bash
 ./scripts/dump_kmers.sh
@@ -150,7 +150,7 @@ script `prepare\_filter\_fastq\_by\_valid\_kmers.pl`.
 
 The generated hash was used to filter individual libraries. Therefore,
 we have written the perl script
-`filter\_fastq\_by\_valid\_kmers\_reduced.pl`.
+`filter_fastq_by_valid_kmers_reduced.pl`.
 
 ```bash
 ./scripts/filter_input_data.sh
@@ -158,7 +158,7 @@ we have written the perl script
 
 The filtered data sets are classified as 'trusted' or 'untrusted'
 based on the 'trusted' kmer content. Reads with at least
-95% 'trusted' kmers content are called 'trusted'
+`95 %` 'trusted' kmers content are called 'trusted'
 while reads below that threshold are classified as 'untrusted'.
 
 ```bash
@@ -199,10 +199,9 @@ Trusted and untrusted assemblies were compared using GC content,
 mapping coverage, per-site variability and gene spacing.
 
 ####GC content
-The GC content was determined for all contigs
->=1 kbp using a sliding window of
-1 kbp and a stepsize of 100 bp by the
-perl script `sliding\_window\_gc.pl`.
+The GC content was determined for all contigs `>= 1 kbp` using a sliding window of
+`1 kbp` and a stepsize of `100 bp` by the
+perl script `sliding_window_gc.pl`.
 
 ```bash
 mkdir cg
