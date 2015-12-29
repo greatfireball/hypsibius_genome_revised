@@ -14,6 +14,7 @@ This repository comprises data set and scripts for our analysis of the manuscrip
   - [Counting and Filtering bases on kmers](#counting-and-filtering-bases-on-kmers)
   - [Long Read Assembly](#long-read-assembly)
   - [Assembly Annotation](#assembly-annotation)
+  - [Assembly Comparison](#assembly-comparison)
 - [References](#references)
 
 ##Figures
@@ -24,7 +25,7 @@ This repository comprises data set and scripts for our analysis of the manuscrip
   distribution for each library before (black line) and after
   classification into 'trusted' (green line) and 'untrusted' kmers
   (red line).*
-  
+
 ![Image](https://cdn.rawgit.com/greatfireball/hypsibius_genome_revised/master/supplement/figures/supplementary_figure_2.svg)
 
 **Figure S2: Assembly Feature Comparisons** *A) Per-site coverage
@@ -40,7 +41,7 @@ This repository comprises data set and scripts for our analysis of the manuscrip
   shows a typical diploid spectrum. D) Length distribution of
   intergenetic regions. Intragenetic regions are significantly larger
   in the trusted assembly than in the trusted.*
-  
+
   ![Image](https://cdn.rawgit.com/greatfireball/hypsibius_genome_revised/master/supplement/figures/supplementary_figure_3.svg)
 
 **Figure S3: Unknown Bacterial Genome** *Circular map of an
@@ -192,6 +193,57 @@ gmsn.pl --fnn --faa --species HD --gm \
 
 The largest untrusted sequence was visualized using the CGView Server.
 
+###Assembly Comparison
+
+Trusted and untrusted assemblies were compared using GC content,
+mapping coverage, per-site variability and gene spacing.
+
+####GC content
+The GC content was determined for all contigs
+>=1 kbp using a sliding window of
+1 kbp and a stepsize of 100 bp by the
+perl script `sliding\_window\_gc.pl`.
+
+```bash
+mkdir cg
+cd cg
+
+for i in ../assemblies/HD*.fasta
+do
+   ../scripts/sliding_window_gc/sliding_window_gc.pl
+      --in "$i" \
+      --min-length 1000
+      > $(basename "$i").sliding_gc.tsv
+done
+```
+
+####Mapping Coverage
+The mapping coverage was determined by remapping of the short or
+longreads onto the assembled contig. For the short read libraries, we
+used `bowtie2` as mapper. Long read libraries were mapped by
+`bwa`. The per-base coverage was determined by bedtools.
+
+```bash
+./scripts/determine_mapping_coverage.sh
+```
+
+####Per-site Variability
+The per-site variability was calculated by counting bases covering each
+site of the two assemblies. Each base that occurred at a given site with
+a minimum frequency of `0.2` was taken into account and a histogram of
+all these base frequencies was created.
+
+####Gene Spacing
+Length of the intragenetic regions were directly extracted from the
+GeneMark-S/ES annotation files.
+
+```bash
+gtf2genespacing.pl --gtf HD_gen.supported.gtf
+gtf2genespacing.pl --gtf HD_gen.unsupported.gtf
+```
+
+All resulting data sets were compared, tested and visualized using the
+GNU R package `sm`.
 
 ##References
 
