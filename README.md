@@ -4,9 +4,9 @@ This repository comprises data set and scripts for our analysis of the manuscrip
 
 ##Content
 
-- [Figures](#Figures)
-- [Material and Methods](#Methods)
-- [References](#References)
+- [Figures](#figures)
+- [Material and Methods](#methods)
+- [References](#references)
 
 ##Figures
 
