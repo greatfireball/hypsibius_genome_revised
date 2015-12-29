@@ -57,6 +57,7 @@ complete list of the used input files are given in the following table:
 
 
 **Table S1:** *Data set used for our analysis including checksums for compressed and decompressed file content.*
+
 | Filename and location | Modification time  | Size in Bytes  | MD5 check sum | MD5 check sum decompressed |
 |:---------------------:|:------------------:|---------------:|:-------------:|:--------------------------:|
 [tg.genome.fsa.gz](http://weatherby.genetics.utah.edu/seq_transf/tg.genome.fsa.gz) | 2015-11-25T01:34:44Z | 72215266 | b8bd39390ef35dd43d1cda1ca6944d5a | 77be374d28b91232c0810cc4d3cd37b9 |
