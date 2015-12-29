@@ -48,4 +48,4 @@ This repository comprises data set and scripts for our analysis of the manuscrip
 
 ##References
 
-1. Boothby, et al. (2015)
+- Boothby, et al. (2015)
