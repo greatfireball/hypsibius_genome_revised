@@ -13,6 +13,7 @@ This repository comprises data set and scripts for our analysis of the manuscrip
   - [Estimation of the genome size](#estimation-of-the-genome-size)
   - [Counting and Filtering bases on kmers](#counting-and-filtering-bases-on-kmers)
   - [Long Read Assembly](#long-read-assembly)
+  - [Assembly Annotation](#assembly-annotation)
 - [References](#references)
 
 ##Figures
@@ -173,6 +174,24 @@ fc_run.py untrusted.falcon.cfg
 ```
 
 See configuration files for parameter details.
+
+###Assembly Annotation
+The trusted assembly was annotated with GeneMark-ES.
+
+```bash
+gmes_petap.pl --sequence HD_gen.trusted.fasta \
+   --ES --cores 64
+```
+
+The untrusted assembly was annotated with GeneMark-S
+
+```bash
+gmsn.pl --fnn --faa --species HD --gm \
+   --name HD HD_gen.unsupported.fasta
+```
+
+The largest untrusted sequence was visualized using the CGView Server.
+
 
 ##References
 
