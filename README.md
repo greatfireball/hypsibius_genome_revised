@@ -55,7 +55,6 @@ We used the data set provided by [Boothby, et al. (2015)](#References) and downl
 the data from http://weatherby.genetics.utah.edu/seq_transf/. A
 complete list of the used input files are given in the following table:
 
-
 **Table S1:** *Data set used for our analysis including checksums for compressed and decompressed file content.*
 
 | Filename and location | Modification time  | Size in Bytes  | MD5 check sum | MD5 check sum decompressed |
@@ -73,6 +72,28 @@ complete list of the used input files are given in the following table:
 | [moleculo\_reads/LR6000049-DNA\_A01-LRAAD-03\_LongRead.fastq.gz](http://weatherby.genetics.utah.edu/seq_transf/moleculo_reads/LR6000049-DNA_A01-LRAAD-03_LongRead.fastq.gz) | 2015-11-30T17:52:51Z | 847867943 | 16276b6ef8dea90721eb67ac21d616e6 | 51d4ce37668684b4aa25e061fb95b4ef |
 | [moleculo\_reads/LR6000049-DNA\_A01-LRAAD-04\_LongRead.fastq.gz](http://weatherby.genetics.utah.edu/seq_transf/moleculo_reads/LR6000049-DNA_A01-LRAAD-04_LongRead.fastq.gz) | 2015-11-30T17:56:08Z | 859746540 | 3364040445c7377c9323f82d98a2258c | dbe06ec4248199f416bb1d02ff1e65f5 |
 | [moleculo\_reads/LR6000049-DNA\_A01-LRAAD-05\_LongRead.fastq.gz](http://weatherby.genetics.utah.edu/seq_transf/moleculo_reads/LR6000049-DNA_A01-LRAAD-05_LongRead.fastq.gz) | 2015-11-30T17:56:51Z | 854266597 | 7995559df803ef0de0250f1bfac71f1a | 98d30f3ceb813d9f53c6df2ed1fa2239
+
+###Programs
+
+**Table S2:** *List of all programs including the version numbers and references to publications or websites used for the data processing and analysis*
+
+| Programname | Version | Reference |
+|:-----------:|:-------:|:----------|
+Allpath-LG  | v50378 | Gnerre2011, Ribeiro2012 |
+BEDTools    | v2.20.1 |  Quinlan2010 |
+bioperl     | v1.69.1 | Stajich2002 |
+bowtie2     | v2.2.2 | Langmead2012 |
+bwa         | v0.7.10 | Li2009a,Li2010 |
+CGView      | v1.0 | Grin2011 |
+Falcon      | v0.4.0 | https://github.com/PacificBiosciences/falcon |
+Genemark-S  | v4.3.2 | Besemer2001 |
+Genemark-ET | v4.29 | Lomsadze2014 |
+Jellyfish   | v2.2.4  | Marcais2011 |
+Perl        | v5.14.2  | https://www.perl.org/ |
+samtools    | v1.1 | Li2009b, Li2011a, Li2011b |
+skewer      | v0.1.124 | Jiang2014 |
+'sm' R package | v2.2-5.4 | Bowman2014 |
+Trimmomatic | v0.3.5 | Bolger2014 |
 
 ##References
 
