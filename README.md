@@ -12,6 +12,7 @@ This repository comprises data set and scripts for our analysis of the manuscrip
   - [Trimming of the input data](#trimming-of-the-input-data)
   - [Estimation of the genome size](#estimation-of-the-genome-size)
   - [Counting and Filtering bases on kmers](#counting-and-filtering-bases-on-kmers)
+  - [Long Read Assembly](#long-read-assembly)
 - [References](#references)
 
 ##Figures
@@ -161,6 +162,17 @@ while reads below that threshold are classified as 'untrusted'.
 ```bash
 ./scripts/extract_classified_sequences.sh
 ```
+
+###Long Read Assembly
+
+Trusted and untrusted Moleculo reads were assembled with Falcon.
+
+```bash
+fc_run.py trusted.falcon.cfg
+fc_run.py untrusted.falcon.cfg
+```
+
+See configuration files for parameter details.
 
 ##References
 
