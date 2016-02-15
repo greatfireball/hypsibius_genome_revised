@@ -176,6 +176,8 @@ fc_run.py untrusted.falcon.cfg
 
 See configuration files for parameter details.
 
+The final assembly files for both sets are are located in the folder [assemblies](assemblies).
+
 ###Assembly Annotation
 The trusted assembly was annotated with GeneMark-ES.
 
