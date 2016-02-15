@@ -190,6 +190,7 @@ The untrusted assembly was annotated with GeneMark-S
 gmsn.pl --fnn --faa --species HD --gm \
    --name HD HD_gen.unsupported.fasta
 ```
+All annotation GFT files and corresponding CDS/protein sequences are located in the folder [annotation](annotation).
 
 The largest untrusted sequence was visualized using the CGView Server.
 
