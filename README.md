@@ -203,7 +203,7 @@ Trusted and untrusted assemblies were compared using GC content,
 mapping coverage, per-site variability and gene spacing.
 
 ####BLAST
-The original proteins predicted by [Boothby, *et al.* (2015)](#boothby-et-al-2015) were used for a BLASTp analysis against our annotation protein result. We used default BLAST parameters except an evalue cutoff of `1e-5`.
+The original proteins predicted by [Boothby, *et al.* (2015)](#boothby-et-al-2015) were used for a BLASTp [Camacho, *et al.* (2009)](#references) analysis against our annotation protein result. We used default BLAST parameters except an evalue cutoff of `1e-5`.
 
 ####GC content
 The GC content was determined for all contigs `>= 1 kbp` using a sliding window of
