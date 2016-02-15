@@ -91,6 +91,7 @@ complete list of the used input files are given in the following table:
 Allpath-LG     | v50378   | [Gnerre, *et al.* (2011)](#gnerre-et-al-2011), [Ribeiro, *et al.* (2012)](#ribeiro-et-al-2015) |
 BEDTools       | v2.20.1  |  [Quinlan and Hall (2010)](#quinlan-an-hall-2010) |
 bioperl        | v1.69.1  | [Stajich, *et al.* (2002)](#stajich-et-al-2002) |
+BLAST+         | v2.2.28+ | [Camacho, *et al.* (2009)](#camacho-et-al-2009) |
 bowtie2        | v2.2.2   | [Langmead and Salzberg (2012)](#langmead-and-salzberg-2012) |
 bwa            | v0.7.10  | [Li and Durbin (2009a)](#li-and-durbin-2009a), [Li and Durbin (2010)](#li-and-durbin-2010) |
 CGView         | v1.0     | [Grin and Linke (2011)](#grin-and-linke-2011) |
@@ -201,6 +202,9 @@ The largest untrusted sequence was visualized using the CGView Server.
 Trusted and untrusted assemblies were compared using GC content,
 mapping coverage, per-site variability and gene spacing.
 
+####BLAST
+The original proteins predicted by [Boothby, *et al.* (2015)](#boothby-et-al-2015) were used for a BLASTp analysis against our annotation protein result. We used default BLAST parameters except an evalue cutoff of `1e-5`.
+
 ####GC content
 The GC content was determined for all contigs `>= 1 kbp` using a sliding window of
 `1 kbp` and a stepsize of `100 bp` by the
@@ -259,6 +263,9 @@ Boothby, T. C.; Tenlen, J. R.; Smith, F. W.; Wang, J. R.; Patanella, K. A.; Osbo
 
 ######Bowman and Azzalini (2014)
 Bowman, A. W. & Azzalini, A. R package sm: nonparametric smoothing methods (version 2.2-5.4) 2014
+
+######Camacho, *et al.* (2009)
+Camacho, C.; Coulouris, G.; Avagyan, V.; Ma, N.; Papadopoulos, J.; Bealer, K. & Madden, T. L. BLAST+: architecture and applications. BMC Bioinformatics, 2009, 10, 421
 
 ######Gnerre, *et al.* (2011)
 Gnerre, S.; Maccallum, I.; Przybylski, D.; Ribeiro, F. J.; Burton, J. N.; Walker, B. J.; Sharpe, T.; Hall, G.; Shea, T. P.; Sykes, S.; Berlin, A. M.; Aird, D.; Costello, M.; Daza, R.; Williams, L.; Nicol, R.; Gnirke, A.; Nusbaum, C.; Lander, E. S. & Jaffe, D. B. High-quality draft assemblies of mammalian genomes from massively parallel sequence data. Proc Natl Acad Sci U S A, 2011, 108, 1513-1518
