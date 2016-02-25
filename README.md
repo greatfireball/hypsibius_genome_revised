@@ -95,6 +95,7 @@ BLAST+         | v2.2.28+ | [Camacho, *et al.* (2009)](#camacho-et-al-2009) |
 bowtie2        | v2.2.2   | [Langmead and Salzberg (2012)](#langmead-and-salzberg-2012) |
 bwa            | v0.7.10  | [Li and Durbin (2009a)](#li-and-durbin-2009a), [Li and Durbin (2010)](#li-and-durbin-2010) |
 CGView         | v1.0     | [Grin and Linke (2011)](#grin-and-linke-2011) |
+crb-BLAST      | v0.6.4   | [Aubry, *et al.* (2014)](#aubry-et-al-2014) |
 Falcon         | v0.4.0   | https://github.com/PacificBiosciences/falcon |
 Genemark-S     | v4.3.2   | [Besemer, *et al.* (2001)](#besemer-et-al-2001) |
 Genemark-ET    | v4.29    | [Lomsadze, *et al.* (2014)](#lomsadze-et-al-2014) |
@@ -255,6 +256,9 @@ All resulting data sets were compared, tested and visualized using the
 GNU R package `sm`.
 
 ##References
+######Aubry, *et al.* (2014)
+Aubry, S.; Kelly, S.; Kümpers, B. M. C.; Smith-Unna, R. D. & Hibberd, J. M. *Deep Evolutionary Comparison of Gene Expression Identifies Parallel Recruitment of Trans-Factors in Two Independent Origins of C4 Photosynthesis.* PLOS Genetics, **2014,** 10(6), e1004365
+
 ######Besemer, *et al.* (2001)
 Besemer, J.; Lomsadze, A. & Borodovsky, M. *GeneMarkS: a self-training method for prediction of gene starts in microbial genomes. Implications for finding sequence motifs in regulatory regions.* Nucleic Acids Res, **2001,** 29, 2607-2618
 
