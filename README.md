@@ -204,7 +204,7 @@ Trusted and untrusted assemblies were compared using GC content,
 mapping coverage, per-site variability and gene spacing.
 
 ####crb-BLAST
-The original proteins predicted by [Boothby, *et al.* (2015)](#boothby-et-al-2015) were used for a crb-blast [Aubry, *et al.* (2014)](#references) analysis against our annotation protein result. We used default crb-BLAST parameters with an evalue cutoff of `1e-5`. The result table was used to determine the number of predicted orthologous groups and the number of HGT-flagged proteins within that set. The crb-BLAST result table and the list of HGT-flagged protein are located in the folder [analysis](analysis).
+The original proteins predicted by [Boothby, *et al.* (2015)](#boothby-et-al-2015) were used for a crb-blast [Aubry, *et al.* (2014)](#references) analysis against our annotation protein result. We used default crb-BLAST parameters with an evalue cutoff of `1e-5`. The result table was used to determine the number of predicted orthologous groups and the number of HGT-flagged proteins within that set. The crb-BLAST result table and the list of HGT-flagged protein are located in the folder [analysis/hgt/](analysis/hgt/).
 
 ```bash
 scripts/get_boothby_orthologs_from_cbr-blast.pl \
