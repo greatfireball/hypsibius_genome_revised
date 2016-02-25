@@ -91,7 +91,7 @@ complete list of the used input files are given in the following table:
 Allpath-LG     | v50378   | [Gnerre, *et al.* (2011)](#gnerre-et-al-2011), [Ribeiro, *et al.* (2012)](#ribeiro-et-al-2015) |
 BEDTools       | v2.20.1  |  [Quinlan and Hall (2010)](#quinlan-and-hall-2010) |
 bioperl        | v1.69.1  | [Stajich, *et al.* (2002)](#stajich-et-al-2002) |
-BLAST+         | v2.2.28+ | [Camacho, *et al.* (2009)](#camacho-et-al-2009) |
+BLAST+         | v2.2.29+ | [Camacho, *et al.* (2009)](#camacho-et-al-2009) |
 bowtie2        | v2.2.2   | [Langmead and Salzberg (2012)](#langmead-and-salzberg-2012) |
 bwa            | v0.7.10  | [Li and Durbin (2009a)](#li-and-durbin-2009a), [Li and Durbin (2010)](#li-and-durbin-2010) |
 CGView         | v1.0     | [Grin and Linke (2011)](#grin-and-linke-2011) |
