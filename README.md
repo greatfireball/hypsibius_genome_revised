@@ -89,12 +89,13 @@ complete list of the used input files are given in the following table:
 | Programname  | Version  | Reference |
 |:------------:|:--------:|:----------|
 Allpath-LG     | v50378   | [Gnerre, *et al.* (2011)](#gnerre-et-al-2011), [Ribeiro, *et al.* (2012)](#ribeiro-et-al-2015) |
-BEDTools       | v2.20.1  |  [Quinlan and Hall (2010)](#quinlan-an-hall-2010) |
+BEDTools       | v2.20.1  |  [Quinlan and Hall (2010)](#quinlan-and-hall-2010) |
 bioperl        | v1.69.1  | [Stajich, *et al.* (2002)](#stajich-et-al-2002) |
 BLAST+         | v2.2.28+ | [Camacho, *et al.* (2009)](#camacho-et-al-2009) |
 bowtie2        | v2.2.2   | [Langmead and Salzberg (2012)](#langmead-and-salzberg-2012) |
 bwa            | v0.7.10  | [Li and Durbin (2009a)](#li-and-durbin-2009a), [Li and Durbin (2010)](#li-and-durbin-2010) |
 CGView         | v1.0     | [Grin and Linke (2011)](#grin-and-linke-2011) |
+crb-BLAST      | v0.6.4   | [Aubry, *et al.* (2014)](#aubry-et-al-2014) |
 Falcon         | v0.4.0   | https://github.com/PacificBiosciences/falcon |
 Genemark-S     | v4.3.2   | [Besemer, *et al.* (2001)](#besemer-et-al-2001) |
 Genemark-ET    | v4.29    | [Lomsadze, *et al.* (2014)](#lomsadze-et-al-2014) |
@@ -202,8 +203,14 @@ The largest untrusted sequence was visualized using the CGView Server.
 Trusted and untrusted assemblies were compared using GC content,
 mapping coverage, per-site variability and gene spacing.
 
-####BLAST
-The original proteins predicted by [Boothby, *et al.* (2015)](#boothby-et-al-2015) were used for a BLASTp [Camacho, *et al.* (2009)](#references) analysis against our annotation protein result. We used default BLAST parameters except an evalue cutoff of `1e-5`.
+####crb-BLAST
+The original proteins predicted by [Boothby, *et al.* (2015)](#boothby-et-al-2015) were used for a crb-blast [Camacho, *et al.* (2009)](#references) analysis against our annotation protein result. We used default crb-BLAST parameters with an evalue cutoff of `1e-5`. The result table was used to determine the number of predicted orthologous groups and the number of HGT-flagged proteins within that set. The crb-BLAST result table and the list of HGT-flagged protein are located in the folder [analysis](analysis).
+
+```bash
+scripts/get_boothby_orthologs_from_cbr-blast.pl \
+    analysis/hgt/HGT_flagged_genes_from_Boothby_supplementS1.txt \
+    analysis/hgt/HD_gen.unsupported.proteins.crb
+```
 
 ####GC content
 The GC content was determined for all contigs `>= 1 kbp` using a sliding window of
@@ -252,6 +259,9 @@ All resulting data sets were compared, tested and visualized using the
 GNU R package `sm`.
 
 ##References
+######Aubry, *et al.* (2014)
+Aubry, S.; Kelly, S.; Kümpers, B. M. C.; Smith-Unna, R. D. & Hibberd, J. M. *Deep Evolutionary Comparison of Gene Expression Identifies Parallel Recruitment of Trans-Factors in Two Independent Origins of C4 Photosynthesis.* PLOS Genetics, **2014,** 10(6), e1004365
+
 ######Besemer, *et al.* (2001)
 Besemer, J.; Lomsadze, A. & Borodovsky, M. *GeneMarkS: a self-training method for prediction of gene starts in microbial genomes. Implications for finding sequence motifs in regulatory regions.* Nucleic Acids Res, **2001,** 29, 2607-2618
 
