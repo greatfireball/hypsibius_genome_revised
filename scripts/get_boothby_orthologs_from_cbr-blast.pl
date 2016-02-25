@@ -60,6 +60,6 @@ foreach my $boothby_id (keys %boothby_hgt)
     }
 }
 
-printf "Number of boothby genes marked HGT: %d corresponding to %d of our genes (%d on first four contigs)\n", (keys %boothby_hgt)+0, (keys %own_hgt)+0, (grep {$_ =~ /gene_(\d+)/; $1 < 7808} (keys %own_hgt))+0;
+printf "Number of boothby genes marked HGT: %d corresponding to %d of our genes\n", (keys %boothby_hgt)+0, (keys %own_hgt)+0;
 
 
