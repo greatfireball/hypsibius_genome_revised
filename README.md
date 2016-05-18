@@ -2,6 +2,10 @@
 
 This repository comprises data set and scripts for our analysis of the manuscript [Boothby, *et al.* (2015)](#boothby-et-al-2015).
 
+##Latest updates
+Our letter was finally published in PNAS available under [Bemm, *et al.* (2016): "Genome of a tardigrade: Horizontal gene transfer or bacterial contamination?"   ![doi:10.1073/pnas.1525116113](https://img.shields.io/badge/DOI%3A-10.1073/pnas.1525116113-blue.svg)](https://doi.org/10.1073/pnas.1525116113)
+The data set which was used for data generation is available in that repository as [**release v1.0.0**](https://github.com/greatfireball/hypsibius_genome_revised/commit/da491feba822e2cd49774aa7b12b7da4638aa305) and might be cited using [![DOI](https://zenodo.org/badge/12732/greatfireball/hypsibius_genome_revised.svg)](https://zenodo.org/badge/latestdoi/12732/greatfireball/hypsibius_genome_revised).
+
 ##Content
 
 - [Figures](#figures)
